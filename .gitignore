@@ -17,6 +17,7 @@ dist/
 logs/
 tmp/
 output/
+run_public_casa.ps1
 docs/_qa_pdf/
 docs/ocr_debug/
 *.log

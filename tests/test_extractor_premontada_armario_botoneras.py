@@ -15,7 +15,7 @@ ESPERADO = ROOT / "tests" / "fixtures" / "expected"
 
 
 def test_extrae_premontada_armario_botoneras_de_654391_pagina_7() -> None:
-    pagina_7 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "654391.pdf").read_bytes())[6]
+    pagina_7 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "Raloe" / "654391.pdf").read_bytes())[6]
 
     resultado = ExtractorPremontadaArmarioBotonerasRaloeCrono().extraer(pagina_7)
 
@@ -23,7 +23,7 @@ def test_extrae_premontada_armario_botoneras_de_654391_pagina_7() -> None:
 
 
 def test_extrae_premontada_armario_botoneras_de_654340_pagina_6() -> None:
-    pagina_6 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "654340.pdf").read_bytes())[5]
+    pagina_6 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "Raloe" / "654340.pdf").read_bytes())[5]
 
     resultado = ExtractorPremontadaArmarioBotonerasRaloeCrono().extraer(pagina_6)
 
@@ -33,7 +33,7 @@ def test_extrae_premontada_armario_botoneras_de_654340_pagina_6() -> None:
 
 
 def test_extrae_premontada_armario_botoneras_de_654824_sin_valores_fijos() -> None:
-    pagina_6 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "654824.pdf").read_bytes())[5]
+    pagina_6 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "Raloe" / "654824.pdf").read_bytes())[5]
 
     resultado = ExtractorPremontadaArmarioBotonerasRaloeCrono().extraer(pagina_6)
 
@@ -58,7 +58,7 @@ def test_extrae_premontada_armario_botoneras_de_654824_sin_valores_fijos() -> No
 
 
 def test_extrae_acceso_e2_aunque_la_primera_fila_este_vacia_en_655009() -> None:
-    paginas = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "655009.pdf").read_bytes())
+    paginas = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "Raloe" / "655009.pdf").read_bytes())
     pagina = DetectorPaginaPremontadaArmarioBotonerasRaloeCrono().detectar(paginas)
 
     resultado = ExtractorPremontadaArmarioBotonerasRaloeCrono().extraer(pagina)

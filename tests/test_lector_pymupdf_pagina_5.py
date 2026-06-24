@@ -3,7 +3,7 @@
 from extractor_pdf.infrastructure.pdf.lector_pymupdf import LectorTextoPyMuPdf
 
 
-PDF_PATH = Path(__file__).resolve().parents[1] / "pdfs" / "654391.pdf"
+PDF_PATH = Path(__file__).resolve().parents[1] / "pdfs" / "Raloe" / "654391.pdf"
 
 
 def test_lee_texto_embebido_de_pagina_fisica_5() -> None:

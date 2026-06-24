@@ -1,19 +1,16 @@
-import json
-from pathlib import Path
-
 import pytest
 
+from tests.ocr_debug_helpers import cargar_o_generar_ocr_debug_raloe
 from extractor_pdf.infrastructure.selection.detector_ocr_raloe_crono import (
     DetectorPaginaTecnicaOcrRaloeCrono,
 )
 
-
-ROOT = Path(__file__).resolve().parents[1]
+pytestmark = pytest.mark.ocr
 
 
 def test_detecta_pagina_tecnica_desde_ocr_sin_numero_fijo() -> None:
-    pagina_tecnica = json.loads(
-        (ROOT / "docs" / "ocr_debug" / "654391_pagina_tecnica_page_5_ocr_tesseract.json").read_text(encoding="utf-8")
+    pagina_tecnica = cargar_o_generar_ocr_debug_raloe(
+        "654391_pagina_tecnica_page_5_ocr_tesseract.json", numero_pagina=5, dpi=200
     )
     paginas = [
         _pagina_ocr(1, "Pedido Compra Ref.Cliente Observaciones"),

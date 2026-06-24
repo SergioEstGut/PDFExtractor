@@ -15,6 +15,11 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+markers = [
+    "ocr: pruebas que dependen de Tesseract, OCR o artefactos OCR generados",
+    "llm: pruebas del flujo experimental de resolucion con LLM",
+    "diagnostico: pruebas de scripts/herramientas de diagnostico fuera del flujo principal",
+]
 
 [tool.ruff]
 line-length = 100

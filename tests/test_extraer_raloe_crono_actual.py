@@ -16,7 +16,7 @@ ESPERADO = ROOT / "tests" / "fixtures" / "expected"
 def test_extrae_alcance_actual_de_pdf_654391() -> None:
     resultado = CasoUsoExtraerRaloeCronoActual(
         lector_pdf=LectorTextoPyMuPdf()
-    ).ejecutar((ROOT / "pdfs" / "654391.pdf").read_bytes())
+    ).ejecutar((ROOT / "pdfs" / "Raloe" / "654391.pdf").read_bytes())
 
     assert resultado["metadata"] == {
         "summary_page": 1,
@@ -37,7 +37,7 @@ def test_extrae_alcance_actual_de_pdf_654391() -> None:
 def test_extrae_alcance_actual_de_pdf_654340() -> None:
     resultado = CasoUsoExtraerRaloeCronoActual(
         lector_pdf=LectorTextoPyMuPdf()
-    ).ejecutar((ROOT / "pdfs" / "654340.pdf").read_bytes())
+    ).ejecutar((ROOT / "pdfs" / "Raloe" / "654340.pdf").read_bytes())
 
     assert resultado["metadata"] == {
         "summary_page": 1,
@@ -131,7 +131,7 @@ def test_devuelve_campos_extra_para_pares_clave_valor_no_esperados() -> None:
 def test_reporta_checks_contractuales_encontrados_fuera_de_su_seccion() -> None:
     resultado = CasoUsoExtraerRaloeCronoActual(
         lector_pdf=LectorTextoPyMuPdf()
-    ).ejecutar((ROOT / "pdfs" / "654144.pdf").read_bytes())
+    ).ejecutar((ROOT / "pdfs" / "Raloe" / "654144.pdf").read_bytes())
 
     assert resultado["data"]["Botonera_Cabina"]["Reg_acustico_cabina_RAP"] == "No"
     assert resultado["data"]["Botonera_Exterior"]["Reg_acustico_pisos_RAP"] == "No"
@@ -152,7 +152,7 @@ def test_reporta_checks_contractuales_encontrados_fuera_de_su_seccion() -> None:
 def test_reporta_textos_no_negros_como_notas_extra() -> None:
     resultado = CasoUsoExtraerRaloeCronoActual(
         lector_pdf=LectorTextoPyMuPdf()
-    ).ejecutar((ROOT / "pdfs" / "654144.pdf").read_bytes())
+    ).ejecutar((ROOT / "pdfs" / "Raloe" / "654144.pdf").read_bytes())
 
     assert resultado["data"]["Notas_extra"] == [
         {"valor": "con pulsador", "pagina": 6, "seccion": "Opciones"},
@@ -169,7 +169,7 @@ def test_reporta_textos_no_negros_como_notas_extra() -> None:
 def test_no_confunde_gris_oscuro_del_formulario_con_notas_extra() -> None:
     resultado = CasoUsoExtraerRaloeCronoActual(
         lector_pdf=LectorTextoPyMuPdf()
-    ).ejecutar((ROOT / "pdfs" / "654436.pdf").read_bytes())
+    ).ejecutar((ROOT / "pdfs" / "Raloe" / "654436.pdf").read_bytes())
 
     assert resultado["data"]["Notas_extra"] == [
         {

@@ -1,6 +1,7 @@
-import json
 from pathlib import Path
 
+import pytest
+from tests.ocr_debug_helpers import cargar_o_generar_ocr_debug_raloe
 from extractor_pdf.domain.entidades import PaginaRenderizada
 from extractor_pdf.infrastructure.ocr_contract.pipeline_pagina_tecnica import (
     extraer_pagina_tecnica_ocr_desde_pdf,
@@ -9,15 +10,17 @@ from extractor_pdf.infrastructure.ocr_contract.pipeline_pagina_tecnica import (
 
 ROOT = Path(__file__).resolve().parents[1]
 
+pytestmark = pytest.mark.ocr
+
 
 def test_pipeline_ocr_detecta_pagina_tecnica_antes_de_extraer() -> None:
-    ocr_tecnico = json.loads(
-        (ROOT / "docs" / "ocr_debug" / "654391_pagina_tecnica_page_5_ocr_tesseract.json").read_text(encoding="utf-8")
+    ocr_tecnico = cargar_o_generar_ocr_debug_raloe(
+        "654391_pagina_tecnica_page_5_ocr_tesseract.json", numero_pagina=5, dpi=200
     )
     extractor = ExtractorVisualFake({5: ocr_tecnico})
 
     resultado = extraer_pagina_tecnica_ocr_desde_pdf(
-        (ROOT / "pdfs" / "654391.pdf").read_bytes(),
+        (ROOT / "pdfs" / "Raloe" / "654391.pdf").read_bytes(),
         extractor_visual=extractor,
         renderizador=RenderizadorFake(total_paginas=7),
     )

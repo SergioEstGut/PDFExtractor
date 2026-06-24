@@ -13,7 +13,7 @@ ESPERADO = ROOT / "tests" / "fixtures" / "expected"
 
 
 def test_extrae_foso_huida_opciones_de_654391_pagina_6() -> None:
-    pagina_6 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "654391.pdf").read_bytes())[5]
+    pagina_6 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "Raloe" / "654391.pdf").read_bytes())[5]
 
     resultado = ExtractorFosoHuidaOpcionesRaloeCrono().extraer(pagina_6)
 
@@ -21,7 +21,7 @@ def test_extrae_foso_huida_opciones_de_654391_pagina_6() -> None:
 
 
 def test_extrae_foso_huida_opciones_de_654340_pagina_5() -> None:
-    pagina_5 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "654340.pdf").read_bytes())[4]
+    pagina_5 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "Raloe" / "654340.pdf").read_bytes())[4]
 
     resultado = ExtractorFosoHuidaOpcionesRaloeCrono().extraer(pagina_5)
 
@@ -29,7 +29,7 @@ def test_extrae_foso_huida_opciones_de_654340_pagina_5() -> None:
 
 
 def test_debug_pdf_foso_opciones_marca_campos_pendientes_como_zona_vacia() -> None:
-    pagina_6 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "654391.pdf").read_bytes())[5]
+    pagina_6 = LectorTextoPyMuPdf().leer_paginas((ROOT / "pdfs" / "Raloe" / "654391.pdf").read_bytes())[5]
 
     resultado = ExtractorFosoHuidaOpcionesRaloeCrono().extraer_con_debug(pagina_6)
     debug = resultado["debug_pdf"]

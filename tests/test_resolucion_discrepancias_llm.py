@@ -1,3 +1,5 @@
+import pytest
+
 from extractor_pdf.infrastructure.llm.resolucion_discrepancias import (
     CandidatoResolucionCampo,
     ClienteLlamaServer,
@@ -9,6 +11,8 @@ from extractor_pdf.infrastructure.llm.resolucion_discrepancias import (
     resolver_candidato_con_llm,
     resolver_discrepancia_con_llm,
 )
+
+pytestmark = pytest.mark.llm
 
 
 def test_crea_discrepancias_para_diferencias_y_valores_solo_en_una_fuente() -> None:

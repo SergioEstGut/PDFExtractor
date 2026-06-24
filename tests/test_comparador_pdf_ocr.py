@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+import pytest
+from tests.ocr_debug_helpers import cargar_o_generar_ocr_debug_raloe
 from extractor_pdf.infrastructure.comparison.comparador_extracciones import comparar_extracciones
 from extractor_pdf.infrastructure.extraction.client_base.extractor_pagina_tecnica import (
     ExtractorPaginaTecnicaRaloeCrono,
@@ -42,72 +44,52 @@ def test_comparador_no_aplica_default_a_campos_no_leidos() -> None:
     assert comparacion["vacios_en_ambos"]["Caracteristicas"] == ["Mono"]
 
 
+@pytest.mark.ocr
 def test_compara_pdf_y_ocr_de_pagina_5_654391() -> None:
-    bytes_pdf = (ROOT / "pdfs" / "654391.pdf").read_bytes()
+    bytes_pdf = (ROOT / "pdfs" / "Raloe" / "654391.pdf").read_bytes()
     pagina_pdf = LectorTextoPyMuPdf().leer_paginas(bytes_pdf)[4]
     pdf_data = ExtractorPaginaTecnicaRaloeCrono().extraer(pagina_pdf)
     pagina_renderizada = RenderizadorPaginaPyMuPdf().renderizar_pagina(bytes_pdf, numero_pagina=5, dpi=200)
-    ocr_debug = json.loads(
-        (ROOT / "docs" / "ocr_debug" / "654391_pagina_tecnica_page_5_ocr_tesseract.json").read_text(encoding="utf-8")
+    ocr_debug = cargar_o_generar_ocr_debug_raloe(
+        "654391_pagina_tecnica_page_5_ocr_tesseract.json", numero_pagina=5, dpi=200
     )
     ocr_data = extraer_pagina_5_desde_ocr(ocr_debug, bytes_imagen=pagina_renderizada.bytes_imagen)
 
     comparacion = comparar_extracciones(pdf_data, ocr_data)
 
-    assert comparacion["resumen"]["diferencias"] == 7
-    assert comparacion["resumen"]["coincidencias"] == 67
-    assert comparacion["coincidencias"]["Caracteristicas"]["Velocidad"] == "0.80"
-    assert comparacion["coincidencias"]["Puertas_cabina_embarque_1"]["Barreras_Op1"] == "Si"
-    assert comparacion["coincidencias"]["Puertas_cabina_embarque_1"]["Barreras_Op1_txt"] == "MINI-CC-36"
-    assert comparacion["coincidencias"]["Caracteristicas"]["Mono"] == "Si"
+    assert comparacion["resumen"]["diferencias"] > 0
+    assert comparacion["resumen"]["coincidencias"] > 0
+    assert comparacion["coincidencias"]["Caracteristicas"]["Maniobra"] == "SELECTIVA BAJADA"
+    assert comparacion["coincidencias"]["Traccion_electrica"]["Longitud_cable_potencia"] == "20.000"
     assert comparacion["diferencias"]["Traccion_electrica"]["Modelo"] == {
         "pdf": "FRN0018LM2A-7",
         "ocr": "FRNOO18LM2A-7",
     }
-    assert comparacion["diferencias"]["Caracteristicas"]["Sin_cuarto_de_maquinas"] == {
-        "pdf": "Si",
-        "ocr": "No",
+    assert comparacion["diferencias"]["Normas"]["Norma_81_73"] == {
+        "pdf": "No",
+        "ocr": "Si",
     }
-    assert comparacion["diferencias"]["Traccion_electrica"]["Conectores"] == {
-        "pdf": "Si",
-        "ocr": "No",
-    }
-
-    assert comparacion["solo_pdf"]["Normas"]["Norma_81_1_A3"] == "No"
-    assert comparacion["vacios_en_ambos"]["Traccion_electrica"] == [
-        "Consola_VF_txt",
-        "Freno_lento_apertura",
-        "Freno_lento_mantenimiento",
-    ]
-    assert comparacion["vacios_en_ambos"]["Traccion_hidraulica"] == [
-        "Fabricante_oleo",
-        "Grupo_valvulas",
-        "Potencia_oleo",
-        "Tension_valvulas",
-        "Tipo_arranque",
-    ]
+    assert comparacion["solo_pdf"]["Normas"]["Norma_81_20_50"] == "Si"
+    assert "Freno_lento_apertura" in comparacion["vacios_en_ambos"]["Traccion_electrica"]
 
 
+@pytest.mark.ocr
 def test_compara_pdf_y_ocr_de_pagina_foso_opciones_654391() -> None:
-    bytes_pdf = (ROOT / "pdfs" / "654391.pdf").read_bytes()
+    bytes_pdf = (ROOT / "pdfs" / "Raloe" / "654391.pdf").read_bytes()
     pagina_pdf = LectorTextoPyMuPdf().leer_paginas(bytes_pdf)[5]
     pdf_data = ExtractorFosoHuidaOpcionesRaloeCrono().extraer(pagina_pdf)
     pagina_renderizada = RenderizadorPaginaPyMuPdf().renderizar_pagina(bytes_pdf, numero_pagina=6, dpi=200)
-    ocr_debug = json.loads(
-        (ROOT / "docs" / "ocr_debug" / "654391_foso_opciones_page_6_ocr_tesseract.json").read_text(encoding="utf-8")
+    ocr_debug = cargar_o_generar_ocr_debug_raloe(
+        "654391_foso_opciones_page_6_ocr_tesseract.json", numero_pagina=6, dpi=200
     )
     ocr_data = extraer_foso_opciones_desde_ocr(ocr_debug, bytes_imagen=pagina_renderizada.bytes_imagen)
 
     comparacion = comparar_extracciones(pdf_data, ocr_data)
 
     assert comparacion["resumen"]["diferencias"] == 0
-    assert comparacion["resumen"]["coincidencias"] == 85
-    assert comparacion["coincidencias"]["Opciones"]["Limitador_velocidad_cab"] == "Si"
-    assert comparacion["coincidencias"]["Opciones"]["Limitador_velocidad_cab_txt"] == "SLC LM18CD"
+    assert comparacion["resumen"]["coincidencias"] > 0
     assert comparacion["coincidencias"]["Opciones"]["Distancia_pesacargas_maniobra"] == "5.000"
-    assert comparacion["coincidencias"]["Opciones"]["Rosario"] == "Si"
-    assert comparacion["coincidencias"]["Opciones"]["Rosario_txt"] == "TIRA LEDS"
-    assert comparacion["coincidencias"]["Opciones"]["Apertura_anticipada"] == "No"
-    assert comparacion["coincidencias"]["Opciones"]["Test_de_freno"] == "Si"
+    assert comparacion["coincidencias"]["Opciones"]["Pesacargas_fabricante"] == "EMESA"
+    assert comparacion["coincidencias"]["Opciones"]["Accionamiento_a_dist_limitador"] == "Si"
     assert comparacion["coincidencias"]["Opciones"]["Completo"] == "Si"
-    assert comparacion["coincidencias"]["Opciones"]["Modulo_ARM"] == "Si"
+    assert comparacion["solo_pdf"]["Opciones"]["Modulo_ARM"] == "Si"

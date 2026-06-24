@@ -7,11 +7,11 @@ from extractor_pdf.infrastructure.extraction.client_base.extractor_pagina_tecnic
 from extractor_pdf.infrastructure.pdf.lector_pymupdf import LectorTextoPyMuPdf
 
 
-PDF_PATH = Path(__file__).resolve().parents[1] / "pdfs" / "654391.pdf"
+PDF_PATH = Path(__file__).resolve().parents[1] / "pdfs" / "Raloe" / "654391.pdf"
 ESPERADO_PATH = (
     Path(__file__).resolve().parents[1] / "tests" / "fixtures" / "expected" / "654391_page_5.json"
 )
-PDF_654340_PATH = Path(__file__).resolve().parents[1] / "pdfs" / "654340.pdf"
+PDF_654340_PATH = Path(__file__).resolve().parents[1] / "pdfs" / "Raloe" / "654340.pdf"
 ESPERADO_654340_PATH = (
     Path(__file__).resolve().parents[1] / "tests" / "fixtures" / "expected" / "654340_page_4.json"
 )
@@ -39,7 +39,7 @@ def test_extrae_campos_esperados_de_pagina_tecnica_654340() -> None:
 
 def test_extrae_checks_reales_de_pagina_tecnica_654824() -> None:
     pagina_4 = LectorTextoPyMuPdf().leer_paginas(
-        (Path(__file__).resolve().parents[1] / "pdfs" / "654824.pdf").read_bytes()
+        (Path(__file__).resolve().parents[1] / "pdfs" / "Raloe" / "654824.pdf").read_bytes()
     )[3]
 
     resultado = ExtractorPaginaTecnicaRaloeCrono().extraer(pagina_4)

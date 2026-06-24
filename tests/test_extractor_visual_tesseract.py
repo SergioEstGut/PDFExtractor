@@ -10,7 +10,9 @@ from extractor_pdf.infrastructure.ocr.extractor_visual_tesseract import (
 from extractor_pdf.infrastructure.pdf.renderizador_pymupdf import RenderizadorPaginaPyMuPdf
 
 
-PDF_PATH = Path(__file__).resolve().parents[1] / "pdfs" / "654391.pdf"
+PDF_PATH = Path(__file__).resolve().parents[1] / "pdfs" / "Raloe" / "654391.pdf"
+
+pytestmark = pytest.mark.ocr
 
 
 @pytest.mark.skipif(shutil.which("tesseract") is None, reason="Tesseract no esta instalado en PATH")

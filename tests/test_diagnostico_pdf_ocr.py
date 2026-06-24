@@ -1,8 +1,12 @@
+import pytest
+
 from scripts.diagnosticar_pdf_ocr_pedido import (
     clasificar_vacios_en_ambos,
     clasificar_vacios_ocr,
     fusionar_comparacion,
 )
+
+pytestmark = pytest.mark.diagnostico
 
 
 def test_fusion_prioriza_pdf_en_diferencias() -> None:
