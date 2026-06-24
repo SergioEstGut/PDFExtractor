@@ -1,0 +1,335 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Normas",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Norma_81_1_A3",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "EN 81-1 A3",
+        "Norma 81-1 A3",
+        "81-1 A3"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "81- 1/A3",
+            "81-1 A3",
+            "81-1/A3"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Normas"
+        }
+      }
+    },
+    {
+      "nombre": "Norma_81_2_A3",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "EN 81-2 A3",
+        "Norma 81-2 A3",
+        "81-2 A3"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "81- 2/A3",
+            "81-2 A3",
+            "81-2/A3"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Normas"
+        }
+      }
+    },
+    {
+      "nombre": "Norma_81_20_50",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "EN 81-20/50",
+        "EN 81-20 50",
+        "Norma 81-20/50",
+        "Norma 81-20 50",
+        "81-20/50"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "81- 20/50",
+            "81-20/50",
+            "81-20 50"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Normas"
+        }
+      }
+    },
+    {
+      "nombre": "Norma_81_70",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "EN 81-70",
+        "Norma 81-70",
+        "81-70"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "81- 70",
+            "81-70"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Normas"
+        }
+      }
+    },
+    {
+      "nombre": "Norma_81_71_CAT_1",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "EN 81-71 CAT 1",
+        "EN 81-71 CAT. 1",
+        "Norma 81-71 CAT 1",
+        "81-71 CAT 1",
+        "Antivandalico CAT 1",
+        "Antivandálico CAT 1"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "81-71 CAT.1",
+            "81-71 CAT 1"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Normas"
+        }
+      }
+    },
+    {
+      "nombre": "Norma_81_71_CAT_2",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "EN 81-71 CAT 2",
+        "EN 81-71 CAT. 2",
+        "Norma 81-71 CAT 2",
+        "81-71 CAT 2",
+        "Antivandalico CAT 2",
+        "Antivandálico CAT 2"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "81-71 CAT.2",
+            "81-71 CAT 2"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Normas"
+        }
+      }
+    },
+    {
+      "nombre": "BS9999",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "BS9999",
+        "BS 9999"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "BS9999",
+            "BS 9999"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Normas"
+        }
+      }
+    },
+    {
+      "nombre": "Norma_81_72",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "EN 81-72",
+        "Norma 81-72",
+        "81-72",
+        "Bomberos"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "81-72"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Normas"
+        }
+      }
+    },
+    {
+      "nombre": "Norma_81_77",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "EN 81-77",
+        "Norma 81-77",
+        "81-77",
+        "Sismico",
+        "Sísmico"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "81.77",
+            "81-77"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Normas"
+        }
+      }
+    },
+    {
+      "nombre": "Norma_81_73",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "EN 81-73",
+        "Norma 81-73",
+        "81-73",
+        "Incendio"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "81- 73",
+            "81-73"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Normas"
+        }
+      }
+    },
+    {
+      "nombre": "Norma_81_73_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "EN 81-73",
+        "Norma 81-73",
+        "81-73",
+        "Incendio",
+        "Norma 81 73 valor",
+        "Norma 81 73 texto",
+        "Norma 81 73"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Norma_81_73",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "81- 73",
+            "81-73"
+          ],
+          "hasta_aliases": [
+            "Shabbat"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Shabbat",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Shabbat",
+        "Shabat",
+        "Sabbath"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Shabbat"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Normas"
+        }
+      }
+    }
+  ],
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Normas": {
+        "inicio": [
+          "Normas:"
+        ],
+        "fin": [
+          "Caracter?sticas:",
+          "Caracteristicas:"
+        ]
+      }
+    }
+  }
+}

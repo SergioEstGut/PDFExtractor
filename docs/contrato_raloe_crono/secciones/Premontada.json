@@ -1,0 +1,590 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Premontada",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Piso_E1",
+      "tipo": "tabla_columna",
+      "valor_defecto": "",
+      "aliases": [
+        "Piso E1",
+        "Piso A/M E1",
+        "Piso embarque 1"
+      ],
+      "reglas": {
+        "tabla": "Premontada_accesos",
+        "tipo_celda": "texto",
+        "relleno_celda_vacia": "-",
+        "conservar_alineacion_filas": true,
+        "omitir_filas_finales_totalmente_vacias": true,
+        "formato_salida": "csv",
+        "columna": "Piso_E1"
+      }
+    },
+    {
+      "nombre": "Piso_E2",
+      "tipo": "tabla_columna",
+      "valor_defecto": "",
+      "aliases": [
+        "Piso E2",
+        "Piso A/M E2",
+        "Piso embarque 2"
+      ],
+      "reglas": {
+        "tabla": "Premontada_accesos",
+        "tipo_celda": "texto",
+        "relleno_celda_vacia": "-",
+        "conservar_alineacion_filas": true,
+        "omitir_filas_finales_totalmente_vacias": true,
+        "formato_salida": "csv",
+        "columna": "Piso_E2"
+      }
+    },
+    {
+      "nombre": "Acceso_E1",
+      "tipo": "tabla_columna",
+      "valor_defecto": "",
+      "aliases": [
+        "Acceso E1",
+        "Acceso embarque 1"
+      ],
+      "reglas": {
+        "tabla": "Premontada_accesos",
+        "tipo_celda": "texto",
+        "relleno_celda_vacia": "-",
+        "conservar_alineacion_filas": true,
+        "omitir_filas_finales_totalmente_vacias": true,
+        "formato_salida": "csv",
+        "columna": "Acceso_E1"
+      }
+    },
+    {
+      "nombre": "Acceso_E2",
+      "tipo": "tabla_columna",
+      "valor_defecto": "",
+      "aliases": [
+        "Acceso E2",
+        "Acceso embarque 2"
+      ],
+      "reglas": {
+        "tabla": "Premontada_accesos",
+        "tipo_celda": "texto",
+        "relleno_celda_vacia": "-",
+        "conservar_alineacion_filas": true,
+        "omitir_filas_finales_totalmente_vacias": true,
+        "formato_salida": "csv",
+        "columna": "Acceso_E2"
+      }
+    },
+    {
+      "nombre": "Display_modelo_E1",
+      "tipo": "tabla_columna",
+      "valor_defecto": "",
+      "aliases": [
+        "Display modelo E1",
+        "Display E1 modelo",
+        "Modelo display E1"
+      ],
+      "reglas": {
+        "tabla": "Premontada_accesos",
+        "tipo_celda": "texto",
+        "relleno_celda_vacia": "-",
+        "conservar_alineacion_filas": true,
+        "omitir_filas_finales_totalmente_vacias": true,
+        "formato_salida": "csv",
+        "columna": "Display_modelo_E1"
+      }
+    },
+    {
+      "nombre": "Display_modelo_E2",
+      "tipo": "tabla_columna",
+      "valor_defecto": "",
+      "aliases": [
+        "Display modelo E2",
+        "Display E2 modelo",
+        "Modelo display E2"
+      ],
+      "reglas": {
+        "tabla": "Premontada_accesos",
+        "tipo_celda": "texto",
+        "relleno_celda_vacia": "-",
+        "conservar_alineacion_filas": true,
+        "omitir_filas_finales_totalmente_vacias": true,
+        "formato_salida": "csv",
+        "columna": "Display_modelo_E2"
+      }
+    },
+    {
+      "nombre": "Orient_E1",
+      "tipo": "tabla_columna",
+      "valor_defecto": "",
+      "aliases": [
+        "Orient E1",
+        "Orientación E1",
+        "Orientacion E1",
+        "Orient display E1"
+      ],
+      "reglas": {
+        "tabla": "Premontada_accesos",
+        "tipo_celda": "texto",
+        "relleno_celda_vacia": "-",
+        "conservar_alineacion_filas": true,
+        "omitir_filas_finales_totalmente_vacias": true,
+        "formato_salida": "csv",
+        "columna": "Orient_E1"
+      }
+    },
+    {
+      "nombre": "Orient_E2",
+      "tipo": "tabla_columna",
+      "valor_defecto": "",
+      "aliases": [
+        "Orient E2",
+        "Orientación E2",
+        "Orientacion E2",
+        "Orient display E2"
+      ],
+      "reglas": {
+        "tabla": "Premontada_accesos",
+        "tipo_celda": "texto",
+        "relleno_celda_vacia": "-",
+        "conservar_alineacion_filas": true,
+        "omitir_filas_finales_totalmente_vacias": true,
+        "formato_salida": "csv",
+        "columna": "Orient_E2"
+      }
+    },
+    {
+      "nombre": "Distancia_niveles",
+      "tipo": "tabla_columna",
+      "valor_defecto": "",
+      "aliases": [
+        "Distancia entre niveles",
+        "Distancia niveles"
+      ],
+      "reglas": {
+        "tabla": "Premontada_distancias",
+        "columna": "Distancia_niveles",
+        "tipo_celda": "double",
+        "extraer_solo_numero": true,
+        "omitir_celdas_vacias": true,
+        "formato_salida": "csv"
+      }
+    },
+    {
+      "nombre": "Puertas_piso_precableadas",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Puertas Piso Precableadas",
+        "Puertas piso precableadas"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Puertas Piso Precableadas"
+          ],
+          "subseccion_pdf": "Resumen_premontada",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Doble_acceso_alternado",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Doble acceso alternado",
+        "Alternado"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Doble acceso alternado"
+          ],
+          "subseccion_pdf": "Resumen_premontada",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Doble_acceso_simultaneo",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Doble acceso simultáneo",
+        "Doble acceso simultaneo",
+        "Simultáneo",
+        "Simultaneo"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Doble acceso simultáneo"
+          ],
+          "subseccion_pdf": "Resumen_premontada",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Doble_acceso_simultaneo_selectivo",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Doble acceso simultáneo selectivo",
+        "Doble acceso simultaneo selectivo",
+        "Simultáneo Selectivo",
+        "Simultaneo Selectivo"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Doble acceso simultáneo selectivo"
+          ],
+          "subseccion_pdf": "Resumen_premontada",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Planta_acceso_bomberos",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Planta acceso bomberos"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Planta_acceso_bomberos_2",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Planta acceso bomberos 2",
+        "Planta acceso bomberos E2"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Planta_principal",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Planta Principal",
+        "Planta principal"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Planta Principal"
+          ],
+          "subseccion_pdf": "Resumen_premontada",
+          "hasta_aliases": [
+            "Planta Principal",
+            "Recorrido",
+            "Foso",
+            "Huida"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Recorrido",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Recorrido"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Recorrido"
+          ],
+          "subseccion_pdf": "Resumen_premontada"
+        }
+      }
+    },
+    {
+      "nombre": "Foso",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Foso"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Foso"
+          ],
+          "subseccion_pdf": "Resumen_premontada"
+        }
+      }
+    },
+    {
+      "nombre": "Huida",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Huida"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Huida"
+          ],
+          "subseccion_pdf": "Resumen_premontada"
+        }
+      }
+    },
+    {
+      "nombre": "Distancia_maniobra_motor",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Distancia maniobra motor",
+        "Distancia maniobra-motor"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Distancia maniobra motor"
+          ],
+          "subseccion_pdf": "Resumen_premontada"
+        }
+      }
+    },
+    {
+      "nombre": "Dist_maniobra_piso_mas_prox",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Dist. Maniobra-Piso más próx.",
+        "Dist Maniobra Piso mas prox",
+        "Distancia maniobra piso más próximo"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Dist. Maniobra-Piso más próx."
+          ],
+          "subseccion_pdf": "Resumen_premontada"
+        }
+      }
+    },
+    {
+      "nombre": "Manguera_plana",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Manguera Plana",
+        "Manguera plana"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Manguera Plana"
+          ],
+          "subseccion_pdf": "Resumen_premontada"
+        }
+      }
+    },
+    {
+      "nombre": "Extra",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Extra"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Extra"
+          ],
+          "subseccion_pdf": "Resumen_premontada"
+        }
+      }
+    },
+    {
+      "nombre": "P",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "P",
+        "Peso"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "P"
+          ],
+          "subseccion_pdf": "Resumen_premontada"
+        }
+      }
+    },
+    {
+      "nombre": "Carga_nominal",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Carga Nominal",
+        "Carga nominal"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Carga Nominal"
+          ],
+          "subseccion_pdf": "Resumen_premontada"
+        }
+      }
+    },
+    {
+      "nombre": "Cableado_LSF",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Cableado LSF"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Cableado LSF"
+          ],
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Premontada_mas_larga",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Premontada más larga",
+        "Premontada mas larga"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Premontada más larga"
+          ],
+          "subseccion_pdf": "Resumen_premontada",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Medidas_cabina_ancho",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Medidas Cabina ancho",
+        "Medidas cabina ancho",
+        "Ancho cabina",
+        "Ancho"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Medidas Cabina ancho"
+          ],
+          "subseccion_pdf": "Resumen_premontada"
+        }
+      }
+    },
+    {
+      "nombre": "Medidas_cabina_profundo",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Medidas Cabina profundo",
+        "Medidas cabina profundo",
+        "Profundo cabina",
+        "Profundo"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Medidas Cabina profundo"
+          ],
+          "subseccion_pdf": "Resumen_premontada"
+        }
+      }
+    }
+  ],
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Tabla_accesos": {
+        "inicio": [
+          "Premontada:"
+        ],
+        "fin": [
+          "Puertas Piso Precableadas"
+        ]
+      },
+      "Resumen_premontada": {
+        "inicio": [
+          "Puertas Piso Precableadas"
+        ],
+        "fin": [
+          "Armario"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Caja_Inspeccion",
+  "descripcion": "Datos de caja de inspeccion del formulario Felesa CRONO.",
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Caja_Inspeccion": {
+        "inicio": [
+          "CAJA INSPECCIÓN",
+          "CAJA INSPECCION",
+          "Caja Inspeccion"
+        ],
+        "fin": [
+          "OBSERVACIONES",
+          "Observaciones"
+        ],
+        "x_min": 410,
+        "x_max": 580
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Tipo_base_enchufe",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo base de enchufe"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": [
+            "Tipo base de enchufe"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Iluminacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Iluminacion",
+        "Iluminación"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": [
+            "Iluminación",
+            "Iluminacion"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Stops_adicionales",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Stops adicionales"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": [
+            "Stops adicionales"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

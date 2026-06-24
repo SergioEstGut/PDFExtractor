@@ -1,0 +1,178 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Rescates",
+  "descripcion": "Datos de rescate del formulario Felesa CRONO.",
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Rescates": {
+        "inicio": [
+          "RESCATES",
+          "Rescates"
+        ],
+        "fin": [
+          "DATOS CABINA",
+          "Datos Cabina"
+        ]
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Automatico",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Automatico",
+        "Automático"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": [
+            "Automático",
+            "Automatico"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Piso_rescate",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Piso de Rescate",
+        "Piso Rescate",
+        "* Piso de Rescate"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": [
+            "* Piso de Rescate",
+            "Piso de Rescate"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Carga_util_cabina",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Carga Util Cabina",
+        "Carga Útil Cabina",
+        "Carga Util Cabina (Q)",
+        "Carga Útil Cabina (Q)"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": [
+            "* Carga Útil Cabina (Q)",
+            "* Carga Util Cabina (Q)",
+            "Carga Útil Cabina (Q)",
+            "Carga Util Cabina (Q)"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Peso_cabina",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Peso Cabina",
+        "Peso Cabina (P)"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": [
+            "Peso Cabina (P)",
+            "Peso Cabina"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Maniobra_electrica_socorro",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Maniobra electrica de Socorro",
+        "Maniobra eléctrica de Socorro",
+        "Maniobra de Socorro"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": [
+            "Maniobra eléctrica de Socorro",
+            "Maniobra electrica de Socorro"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Iluminacion_zona_rescate",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Iluminacion en zona Rescate",
+        "Iluminación en zona Rescate",
+        "Iluminaicon en zona Rescate",
+        "Iluminaicón en zona Rescate"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": [
+            "Iluminación en zona Rescate",
+            "Iluminacion en zona Rescate",
+            "Iluminaicón en zona Rescate"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Consola_maniobra_crono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Consola Maniobra Crono"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": [
+            "Consola Maniobra Crono"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

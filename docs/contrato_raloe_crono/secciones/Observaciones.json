@@ -1,0 +1,47 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Observaciones",
+  "descripcion": "Texto libre de observaciones del pedido, incluyendo continuaciones en paginas siguientes cuando aparezcan antes de una seccion de detalle.",
+  "campos": [
+    {
+      "nombre": "Observaciones",
+      "tipo": "texto_multilinea",
+      "valor_defecto": "",
+      "aliases": [
+        "Observaciones",
+        "Pedido con observaciones",
+        "Ref. Cliente",
+        "Ref Cliente"
+      ],
+      "reglas": {
+        "opcional": true,
+        "normalizar_saltos_linea": true,
+        "unir_fragmentos_con": " ",
+        "fuentes": [
+          {
+            "pagina": 1,
+            "inicio_despues_de": "Ref. Cliente",
+            "fin_antes_de": [
+              "Fecha entrega:",
+              "Nº lote interno:",
+              "Pedido Venta:"
+            ]
+          },
+          {
+            "paginas": "siguientes",
+            "omitir_cabecera": true,
+            "inicio": "principio_contenido",
+            "fin_antes_de": [
+              "DETALLE DE ETIQUETAS DE PRECIO",
+              "DETALLE DE MATERIAL",
+              "Gestión foso / huida reducida:",
+              "Premontada:"
+            ],
+            "solo_si_hay_lineas_tipo_observacion": true
+          }
+        ]
+      }
+    }
+  ]
+}

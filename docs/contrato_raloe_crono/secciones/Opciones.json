@@ -1,0 +1,3040 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Opciones",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Resistencia_de_caldeo",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Resistencia de Caldeo",
+        "Resistencia caldeo"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Resistencia de Caldeo"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Refrigerador_de_aceite",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Refrigerador de Aceite",
+        "Refrigerador aceite"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Refrigerador de Aceite"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Presostato_sobrc_na",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Presostato sobrc. N/A",
+        "Presostato sobrecarga N/A",
+        "Presostato sobrec."
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Presostato sobrc. N/A"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Limitador_velocidad_cab",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Limitador velocidad Cab",
+        "Limitador velocidad cabina",
+        "Limitador de velocidad cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Limitador velocidad Cab"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Limitador_cabina"
+        }
+      }
+    },
+    {
+      "nombre": "Limitador_velocidad_cab_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Limitador velocidad Cab",
+        "Limitador velocidad cabina",
+        "Limitador de velocidad cabina",
+        "Limitador velocidad cab valor",
+        "Limitador velocidad cab texto",
+        "Limitador velocidad cab"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Limitador_velocidad_cab",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Limitador velocidad Cab",
+            "Limitador velocidad cabina",
+            "Limitador de velocidad cabina"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Posición",
+            "Posicion",
+            "Ubicación",
+            "Ubicacion",
+            "Accionamiento a dist Limitador",
+            "Accionamiento a distancia limitador",
+            "Cont Sobrevel Manual",
+            "Contacto sobrevelocidad manual",
+            "Cont Sobrevel a Dist",
+            "Contacto sobrevelocidad a distancia"
+          ],
+          "subseccion_pdf": "Limitador_cabina"
+        }
+      }
+    },
+    {
+      "nombre": "Limitador_posicion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Posición",
+        "Posicion",
+        "Posición limitador",
+        "Posicion limitador"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Posición",
+            "Posicion",
+            "Posición limitador"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Ubicación",
+            "Ubicacion",
+            "Accionamiento a dist Limitador",
+            "Accionamiento a distancia limitador",
+            "Cont Sobrevel Manual",
+            "Contacto sobrevelocidad manual",
+            "Cont Sobrevel a Dist",
+            "Contacto sobrevelocidad a distancia"
+          ],
+          "subseccion_pdf": "Limitador_cabina"
+        }
+      }
+    },
+    {
+      "nombre": "Limitador_ubicacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Ubicación",
+        "Ubicacion",
+        "Ubicación limitador",
+        "Ubicacion limitador"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Ubicación",
+            "Ubicacion",
+            "Ubicación limitador"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Accionamiento a dist Limitador",
+            "Accionamiento a distancia limitador",
+            "Cont Sobrevel Manual",
+            "Contacto sobrevelocidad manual",
+            "Cont Sobrevel a Dist",
+            "Contacto sobrevelocidad a distancia",
+            "Sistema antideriva CBL",
+            "Sistema antideriva"
+          ],
+          "subseccion_pdf": "Limitador_cabina"
+        }
+      }
+    },
+    {
+      "nombre": "Accionamiento_a_dist_limitador",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Accionamiento a dist Limitador",
+        "Accionamiento a distancia limitador"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Accionamiento a dist Limitador"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Limitador_cabina"
+        }
+      }
+    },
+    {
+      "nombre": "Accionamiento_a_dist_limitador_txt",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Accionamiento a dist Limitador",
+        "Accionamiento a distancia limitador",
+        "Accionamiento a dist limitador valor",
+        "Accionamiento a dist limitador texto",
+        "Accionamiento a dist limitador"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "infiere_check_marcado": "Accionamiento_a_dist_limitador",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Accionamiento a dist Limitador",
+            "Accionamiento a distancia limitador",
+            "Accionamiento a dist limitador"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Cont Sobrevel Manual",
+            "Contacto sobrevelocidad manual",
+            "Cont Sobrevel a Dist",
+            "Contacto sobrevelocidad a distancia",
+            "Sistema antideriva CBL",
+            "Sistema antideriva",
+            "Limitador vel. Contrapeso",
+            "Limitador velocidad contrapeso"
+          ],
+          "subseccion_pdf": "Limitador_cabina"
+        }
+      }
+    },
+    {
+      "nombre": "Cont_sobrevel_manual",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Cont Sobrevel Manual",
+        "Contacto sobrevelocidad manual"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Cont Sobrevel Manual"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Limitador_cabina"
+        }
+      }
+    },
+    {
+      "nombre": "Cont_sobrevel_a_dist",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Cont Sobrevel a Dist",
+        "Contacto sobrevelocidad a distancia"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Cont Sobrevel a Dist"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Limitador_cabina"
+        }
+      }
+    },
+    {
+      "nombre": "Cont_sobrevel_a_dist_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Cont Sobrevel a Dist",
+        "Contacto sobrevelocidad a distancia",
+        "Cont sobrevel a dist valor",
+        "Cont sobrevel a dist texto",
+        "Cont sobrevel a dist"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Cont_sobrevel_a_dist",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Cont Sobrevel a Dist"
+          ],
+          "despues_de": "Opciones:",
+          "subseccion_pdf": "Limitador_cabina"
+        }
+      }
+    },
+    {
+      "nombre": "Sistema_antideriva_CBL",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Sistema antideriva CBL",
+        "Sistema antideriva",
+        "CBL"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Sistema antideriva CBL"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Limitador_cabina"
+        }
+      }
+    },
+    {
+      "nombre": "Sistema_antideriva_CBL_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Sistema antideriva CBL",
+        "Sistema antideriva",
+        "CBL",
+        "Sistema antideriva CBL valor",
+        "Sistema antideriva CBL texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Sistema_antideriva_CBL",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Sistema antideriva CBL",
+            "Sistema antideriva",
+            "CBL"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Limitador vel. Contrapeso",
+            "Limitador velocidad contrapeso",
+            "Posición contrapeso",
+            "Posicion contrapeso",
+            "Ubicación contrapeso",
+            "Ubicacion contrapeso",
+            "Accionamiento a dist Limitador contrapeso",
+            "Accionamiento a distancia limitador contrapeso"
+          ],
+          "subseccion_pdf": "Limitador_cabina"
+        }
+      }
+    },
+    {
+      "nombre": "Limitador_vel_contrapeso",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Limitador vel. Contrapeso",
+        "Limitador velocidad contrapeso",
+        "Limitador de velocidad contrapeso"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Limitador vel. Contrapeso",
+            "Limitador velocidad contrapeso"
+          ],
+          "subseccion_pdf": "Limitador_contrapeso",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Limitador_contrapeso_posicion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Posición contrapeso",
+        "Posicion contrapeso",
+        "Posición limitador contrapeso"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Posición contrapeso",
+            "Posicion contrapeso",
+            "Posición limitador contrapeso"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Limitador vel. Contrapeso",
+            "Limitador velocidad contrapeso",
+            "Ubicación contrapeso",
+            "Ubicacion contrapeso",
+            "Accionamiento a dist Limitador contrapeso",
+            "Accionamiento a distancia limitador contrapeso",
+            "Cont Sobrevel Manual contrapeso",
+            "Contacto sobrevelocidad manual contrapeso",
+            "Cont Sobrevel a Dist contrapeso",
+            "Contacto sobrevelocidad a distancia contrapeso"
+          ],
+          "subseccion_pdf": "Limitador_contrapeso"
+        }
+      }
+    },
+    {
+      "nombre": "Limitador_vel_contrapeso_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Limitador vel. Contrapeso",
+        "Limitador velocidad contrapeso",
+        "Limitador de velocidad contrapeso",
+        "Limitador vel contrapeso valor",
+        "Limitador vel contrapeso texto",
+        "Limitador vel contrapeso"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Limitador_vel_contrapeso",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Limitador vel. Contrapeso",
+            "Limitador velocidad contrapeso"
+          ],
+          "subseccion_pdf": "Limitador_contrapeso",
+          "hasta_aliases": [
+            "Posici?n",
+            "Posicion",
+            "Ubicaci?n",
+            "Ubicacion",
+            "Accionamiento a dist Limitador contrapeso"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Limitador_contrapeso_ubicacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Ubicación contrapeso",
+        "Ubicacion contrapeso",
+        "Ubicación limitador contrapeso"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Ubicación contrapeso",
+            "Ubicacion contrapeso",
+            "Ubicación limitador contrapeso"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Accionamiento a dist Limitador contrapeso",
+            "Accionamiento a distancia limitador contrapeso",
+            "Cont Sobrevel Manual contrapeso",
+            "Contacto sobrevelocidad manual contrapeso",
+            "Cont Sobrevel a Dist contrapeso",
+            "Contacto sobrevelocidad a distancia contrapeso",
+            "Sistema antideriva contrapeso CBL",
+            "Sistema antideriva contrapeso"
+          ],
+          "subseccion_pdf": "Limitador_contrapeso"
+        }
+      }
+    },
+    {
+      "nombre": "Accionamiento_a_dist_limitador_contrapeso",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Accionamiento a dist Limitador contrapeso",
+        "Accionamiento a distancia limitador contrapeso"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Accionamiento a dist Limitador contrapeso"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Limitador_contrapeso"
+        }
+      }
+    },
+    {
+      "nombre": "Accionamiento_a_dist_limitador_contrapeso_txt",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Accionamiento a dist Limitador contrapeso",
+        "Accionamiento a distancia limitador contrapeso",
+        "Accionamiento a dist limitador contrapeso valor",
+        "Accionamiento a dist limitador contrapeso texto",
+        "Accionamiento a dist limitador contrapeso"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "infiere_check_marcado": "Accionamiento_a_dist_limitador_contrapeso",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Accionamiento a dist Limitador contrapeso",
+            "Accionamiento a distancia limitador contrapeso",
+            "Accionamiento a dist limitador contrapeso"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Cont Sobrevel Manual contrapeso",
+            "Contacto sobrevelocidad manual contrapeso",
+            "Cont Sobrevel a Dist contrapeso",
+            "Contacto sobrevelocidad a distancia contrapeso",
+            "Sistema antideriva contrapeso CBL",
+            "Sistema antideriva contrapeso",
+            "Pesacargas Fabricante",
+            "Fabricante pesacargas"
+          ],
+          "subseccion_pdf": "Limitador_contrapeso"
+        }
+      }
+    },
+    {
+      "nombre": "Cont_sobrevel_manual_contrapeso",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Cont Sobrevel Manual contrapeso",
+        "Contacto sobrevelocidad manual contrapeso"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Cont Sobrevel Manual contrapeso"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Limitador_contrapeso"
+        }
+      }
+    },
+    {
+      "nombre": "Cont_sobrevel_a_dist_contrapeso",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Cont Sobrevel a Dist contrapeso",
+        "Contacto sobrevelocidad a distancia contrapeso"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Cont Sobrevel a Dist contrapeso"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Limitador_contrapeso"
+        }
+      }
+    },
+    {
+      "nombre": "Cont_sobrevel_a_dist_contrapeso_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Cont Sobrevel a Dist contrapeso",
+        "Contacto sobrevelocidad a distancia contrapeso",
+        "Cont sobrevel a dist contrapeso valor",
+        "Cont sobrevel a dist contrapeso texto",
+        "Cont sobrevel a dist contrapeso"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Cont_sobrevel_a_dist_contrapeso",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Cont Sobrevel a Dist contrapeso",
+            "Contacto sobrevelocidad a distancia contrapeso",
+            "Cont sobrevel a dist contrapeso"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Sistema antideriva contrapeso CBL",
+            "Sistema antideriva contrapeso",
+            "Pesacargas Fabricante",
+            "Fabricante pesacargas",
+            "Tipo pesacargas",
+            "Pesacargas tipo",
+            "Modelo pesacargas",
+            "Pesacargas modelo",
+            "Qt",
+            "Carga Qt"
+          ],
+          "subseccion_pdf": "Limitador_contrapeso"
+        }
+      }
+    },
+    {
+      "nombre": "Sistema_antideriva_contrapeso_CBL",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Sistema antideriva contrapeso CBL",
+        "Sistema antideriva contrapeso"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Sistema antideriva contrapeso CBL"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Limitador_contrapeso"
+        }
+      }
+    },
+    {
+      "nombre": "Sistema_antideriva_contrapeso_CBL_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Sistema antideriva contrapeso CBL",
+        "Sistema antideriva contrapeso",
+        "Sistema antideriva contrapeso CBL valor",
+        "Sistema antideriva contrapeso CBL texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Sistema_antideriva_contrapeso_CBL",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Sistema antideriva contrapeso CBL",
+            "Sistema antideriva contrapeso"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Pesacargas Fabricante",
+            "Fabricante pesacargas",
+            "Tipo pesacargas",
+            "Pesacargas tipo",
+            "Modelo pesacargas",
+            "Pesacargas modelo",
+            "Qt",
+            "Carga Qt",
+            "Nº Cables",
+            "N Cables",
+            "Ø",
+            "Diametro cables"
+          ],
+          "subseccion_pdf": "Limitador_contrapeso"
+        }
+      }
+    },
+    {
+      "nombre": "Pesacargas_fabricante",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Pesacargas Fabricante",
+        "Fabricante pesacargas"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Pesacargas Fabricante",
+            "Fabricante pesacargas"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Tipo",
+            "Modelo"
+          ],
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_pesacargas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo pesacargas",
+        "Pesacargas tipo"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Tipo pesacargas",
+            "Pesacargas tipo"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Modelo"
+          ],
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Modelo_pesacargas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Modelo pesacargas",
+        "Pesacargas modelo"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Modelo pesacargas",
+            "Pesacargas modelo"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Qt",
+            "Carga Qt",
+            "Nº Cables",
+            "N Cables",
+            "Ø",
+            "Diametro cables",
+            "Tensión",
+            "Tension",
+            "Distancia pesacargas-maniobra",
+            "Distancia pesacargas maniobra",
+            "Completo",
+            "Pesacargas completo"
+          ],
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Qt",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Qt",
+        "Carga Qt"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Qt",
+            "Carga Qt"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Nº Cables",
+            "N Cables",
+            "Ø",
+            "Diametro cables",
+            "Tensión",
+            "Tension",
+            "Distancia pesacargas-maniobra",
+            "Distancia pesacargas maniobra",
+            "Completo",
+            "Pesacargas completo",
+            "Luz emergencia cabina",
+            "Luz de emergencia cabina"
+          ],
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "N_cables",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Nº Cables",
+        "N Cables",
+        "Numero cables",
+        "Número cables"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Nº Cables",
+            "N Cables",
+            "Numero cables"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Ø",
+            "Diametro cables",
+            "Tensión",
+            "Tension",
+            "Distancia pesacargas-maniobra",
+            "Distancia pesacargas maniobra",
+            "Completo",
+            "Pesacargas completo",
+            "Luz emergencia cabina",
+            "Luz de emergencia cabina",
+            "Rescate"
+          ],
+          "entero": true,
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Diametro_cables",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Ø",
+        "Diametro cables",
+        "Diámetro cables",
+        "Diametro de cables"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Ø",
+            "Diametro cables",
+            "Diámetro cables"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Tensión",
+            "Tension",
+            "Distancia pesacargas-maniobra",
+            "Distancia pesacargas maniobra",
+            "Completo",
+            "Pesacargas completo",
+            "Luz emergencia cabina",
+            "Luz de emergencia cabina",
+            "Rescate",
+            "Pos.Caja Cuñas",
+            "Pos Caja Cunas"
+          ],
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Tension_pesacargas",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tensión",
+        "Tension",
+        "Tensión pesacargas",
+        "Tension pesacargas"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Tensión",
+            "Tension",
+            "Tensión pesacargas"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Distancia pesacargas-maniobra",
+            "Distancia pesacargas maniobra",
+            "Completo",
+            "Pesacargas completo",
+            "Luz emergencia cabina",
+            "Luz de emergencia cabina",
+            "Rescate",
+            "Pos.Caja Cuñas",
+            "Pos Caja Cunas",
+            "Luz emergencia cabina 3h",
+            "Luz de emergencia cabina 3h"
+          ],
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Distancia_pesacargas_maniobra",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Distancia pesacargas-maniobra",
+        "Distancia pesacargas maniobra"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Distancia pesacargas-maniobra",
+            "Distancia pesacargas maniobra"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Completo",
+            "Pesacargas completo",
+            "Luz emergencia cabina",
+            "Luz de emergencia cabina",
+            "Rescate",
+            "Pos.Caja Cuñas",
+            "Pos Caja Cunas",
+            "Luz emergencia cabina 3h",
+            "Luz de emergencia cabina 3h",
+            "Comunicación Suministro",
+            "Comunicacion Suministro"
+          ],
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Completo",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Completo",
+        "Pesacargas completo"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Completo"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Luz_emergencia_cabina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Luz emergencia cabina",
+        "Luz de emergencia cabina"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Luz emergencia cabina",
+            "Luz de emergencia cabina"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Rescate",
+            "Pos.Caja Cuñas",
+            "Pos Caja Cunas",
+            "Luz emergencia cabina 3h",
+            "Luz de emergencia cabina 3h",
+            "Comunicación Suministro",
+            "Comunicacion Suministro",
+            "Modelo comunicación",
+            "Modelo comunicacion"
+          ],
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Rescate",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Rescate"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Rescate"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Pos.Caja Cuñas",
+            "Pos Caja Cunas",
+            "Luz emergencia cabina 3h",
+            "Luz de emergencia cabina 3h",
+            "Comunicación Suministro",
+            "Comunicacion Suministro",
+            "Modelo comunicación",
+            "Modelo comunicacion",
+            "Bucle inductivo sordos",
+            "Bucl inductivo sordos"
+          ],
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Pos_caja_cunas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Pos.Caja Cuñas",
+        "Pos Caja Cunas",
+        "Posición caja cuñas",
+        "Posicion caja cunas"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Pos.Caja Cuñas",
+            "Pos Caja Cunas",
+            "Posición caja cuñas"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Luz emergencia cabina 3h",
+            "Luz de emergencia cabina 3h",
+            "Comunicación Suministro",
+            "Comunicacion Suministro",
+            "Modelo comunicación",
+            "Modelo comunicacion",
+            "Bucle inductivo sordos",
+            "Bucl inductivo sordos",
+            "Comunicación Adicional",
+            "Comunicacion Adicional"
+          ],
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Luz_emergencia_cabina_3h",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Luz emergencia cabina 3h",
+        "Luz de emergencia cabina 3h"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Luz emergencia cabina 3h"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Pesacargas"
+        }
+      }
+    },
+    {
+      "nombre": "Comunicacion_suministro",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Comunicación Suministro",
+        "Comunicacion Suministro"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Comunicación Suministro"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Comunicacion_suministro_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Comunicación Suministro",
+        "Comunicacion Suministro",
+        "Comunicacion suministro valor",
+        "Comunicacion suministro texto",
+        "Comunicacion suministro"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Comunicacion_suministro",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Comunicación Suministro",
+            "Comunicacion Suministro",
+            "Comunicacion suministro"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Modelo"
+          ],
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Modelo_comunicacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Modelo comunicación",
+        "Modelo comunicacion"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Modelo comunicación",
+            "Modelo comunicacion"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Bucle inductivo sordos",
+            "Bucl inductivo sordos",
+            "Comunicación Adicional",
+            "Comunicacion Adicional",
+            "Síntesis Voz",
+            "Sintesis Voz",
+            "Idioma 1",
+            "Idioma voz 1",
+            "Idioma 2",
+            "Idioma voz 2"
+          ],
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Bucl_inductivo_sordos",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Bucle inductivo sordos",
+        "Bucl inductivo sordos"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Bucle inductivo sordos"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Comunicacion_adicional",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Comunicación Adicional",
+        "Comunicacion Adicional"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Comunicación Adicional"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Sintesis_voz",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Síntesis Voz",
+        "Sintesis Voz",
+        "Síntesis de voz"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Síntesis Voz"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Sintesis_voz_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Síntesis Voz",
+        "Sintesis Voz",
+        "Síntesis de voz",
+        "Sintesis voz valor",
+        "Sintesis voz texto",
+        "Sintesis voz"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Sintesis_voz",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Síntesis Voz",
+            "Sintesis Voz",
+            "Síntesis de voz"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Idioma"
+          ],
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Idioma_voz_1",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Idioma 1",
+        "Idioma voz 1",
+        "Primer idioma voz",
+        "Idioma principal voz"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Idioma 1",
+            "Idioma voz 1",
+            "Primer idioma voz"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Idioma 2",
+            "Idioma voz 2",
+            "Interfono Suministro",
+            "Interfono suministro",
+            "GSM",
+            "Intercomunicadores EN81.72",
+            "Intercomunicadores EN81-72"
+          ],
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Idioma_voz_2",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Idioma 2",
+        "Idioma voz 2",
+        "Segundo idioma voz",
+        "Idioma secundario voz"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Idioma 2",
+            "Idioma voz 2",
+            "Segundo idioma voz"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Interfono Suministro",
+            "Interfono suministro",
+            "GSM",
+            "Intercomunicadores EN81.72",
+            "Intercomunicadores EN81-72",
+            "Renivelación",
+            "Renivelacion"
+          ],
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Interfono_suministro",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Interfono Suministro",
+        "Interfono suministro"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Interfono Suministro"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Interfono_suministro_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Interfono Suministro",
+        "Interfono suministro",
+        "Interfono suministro valor",
+        "Interfono suministro texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Interfono_suministro",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Interfono Suministro",
+            "Interfono suministro"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "GSM",
+            "Intercomunicadores EN81.72",
+            "Intercomunicadores EN81-72",
+            "Renivelación",
+            "Renivelacion",
+            "Apertura anticipada"
+          ],
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "GSM",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "GSM"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "GSM"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "GSM_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "GSM",
+        "GSM valor",
+        "GSM texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "GSM",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "GSM"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Intercomunicadores EN81.72",
+            "Intercomunicadores EN81-72",
+            "Renivelación",
+            "Renivelacion",
+            "Apertura anticipada",
+            "Luz en armario"
+          ],
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Intercomunicadores_EN81_72",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Intercomunicadores EN81.72",
+        "Intercomunicadores EN81-72",
+        "Intercomunicadores EN 81-72"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Intercomunicadores EN81.72"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Comunicacion"
+        }
+      }
+    },
+    {
+      "nombre": "Renivelacion",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Renivelación",
+        "Renivelacion"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Renivelación"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Renivelacion_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Renivelación",
+        "Renivelacion",
+        "Renivelacion valor",
+        "Renivelacion texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Renivelacion",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Renivelaci?n",
+            "Renivelacion"
+          ],
+          "hasta_aliases": [
+            "Apertura anticipada",
+            "Luz en armario"
+          ],
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Apertura_anticipada",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Apertura anticipada"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Apertura anticipada"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Apertura_anticipada_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Apertura anticipada",
+        "Apertura anticipada valor",
+        "Apertura anticipada texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Apertura_anticipada",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Apertura anticipada"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Luz en armario",
+            "Socorro Eléctrico en Maniobra",
+            "Socorro Electrico en Maniobra",
+            "Trampilla techo cabina",
+            "Escalera techo con contacto",
+            "Socorro Eléctrico en Botonera",
+            "Socorro Electrico en Botonera",
+            "Escalera Foso con contacto",
+            "Escalera foso con contacto"
+          ],
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Luz_en_armario",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Luz en armario"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Luz en armario"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Socorro_electrico_en_maniobra",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Socorro Eléctrico en Maniobra",
+        "Socorro Electrico en Maniobra"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Socorro Eléctrico en Maniobra"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Trampilla_techo_cabina",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Trampilla techo cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Trampilla techo cabina"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Escalera_techo_con_contacto",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Escalera techo con contacto"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Escalera techo con contacto"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Socorro_electrico_en_botonera",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Socorro Eléctrico en Botonera",
+        "Socorro Electrico en Botonera"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Socorro Eléctrico en Botonera"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Escalera_foso_con_contacto",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Escalera Foso con contacto",
+        "Escalera foso con contacto"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Escalera Foso con contacto"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Escalera_interior_cabina_con_contacto",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Escalera interior cabina con contacto"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Escalera interior cabina con contacto"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Magnetotermicos_y_diferenciales",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Magnetotérmicos y Diferenciales",
+        "Magnetotermicos y Diferenciales"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Magnetotérmicos y Diferenciales"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Bloqueo_mecanico_protec",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Bloqueo mecánico Protec.",
+        "Bloqueo mecanico Protec",
+        "Bloqueo mecánico protección"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Bloqueo mecánico Protec."
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Enchufes",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Enchufes",
+        "Tipo enchufes"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Enchufes"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Enchufes_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Enchufes",
+        "Tipo enchufes",
+        "Enchufes valor",
+        "Enchufes texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Enchufes",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Enchufes",
+            "Tipo enchufes"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Distancia a Maniobra",
+            "Distancia a maniobra",
+            "Stop Adicional Máquina",
+            "Stop Adicional Maquina",
+            "Ventilación Máq.Tipo",
+            "Ventilacion Maq Tipo",
+            "Stop Adicional Foso Cant",
+            "Stop adicional foso cantidad"
+          ],
+          "subseccion_pdf": "Maniobra_y_seguridad"
+        }
+      }
+    },
+    {
+      "nombre": "Distancia_a_maniobra",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Distancia a Maniobra",
+        "Distancia a maniobra"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Distancia a Maniobra",
+            "Distancia a maniobra"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Stop Adicional Máquina",
+            "Stop Adicional Maquina",
+            "Ventilación Máq.Tipo",
+            "Ventilacion Maq Tipo",
+            "Stop Adicional Foso Cant",
+            "Stop adicional foso cantidad",
+            "Gong exteriores"
+          ],
+          "subseccion_pdf": "Stops_y_topes"
+        }
+      }
+    },
+    {
+      "nombre": "Stop_adicional_maquina",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Stop Adicional Máquina",
+        "Stop Adicional Maquina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Stop Adicional Máquina"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Stops_y_topes"
+        }
+      }
+    },
+    {
+      "nombre": "Ventilacion_maq_tipo",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Ventilación Máq.Tipo",
+        "Ventilacion Maq Tipo",
+        "Ventilación máquina tipo"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Ventilaci?n M?q.Tipo",
+            "Ventilacion Maq Tipo",
+            "Ventilaci?n Maq Tipo",
+            "Ventilacion MaqTipo"
+          ],
+          "subseccion_pdf": "Stops_y_topes",
+          "distancia_maxima": 45,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Ventilacion_maq_tipo_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Ventilación Máq.Tipo",
+        "Ventilacion Maq Tipo",
+        "Ventilación máquina tipo",
+        "Ventilacion maq tipo valor",
+        "Ventilacion maq tipo texto",
+        "Ventilacion maq tipo"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Ventilacion_maq_tipo",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Ventilación Máq.Tipo",
+            "Ventilacion Maq Tipo",
+            "Ventilación máquina tipo"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Stop Adicional Foso Cant",
+            "Stop adicional foso cantidad",
+            "Gong exteriores",
+            "Stop Adicional Techo Cab. Cant",
+            "Stop adicional techo cabina cantidad",
+            "Gong Cabina",
+            "Gong cabina"
+          ],
+          "subseccion_pdf": "Stops_y_topes"
+        }
+      }
+    },
+    {
+      "nombre": "Stop_adicional_foso_cant",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Stop Adicional Foso Cant",
+        "Stop adicional foso cantidad"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Stop Adicional Foso Cant",
+            "Stop adicional foso cantidad"
+          ],
+          "subseccion_pdf": "Stops_y_topes",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Stop_adicional_foso_cant_txt",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Stop Adicional Foso Cant",
+        "Stop adicional foso cantidad",
+        "Stop adicional foso cant valor",
+        "Stop adicional foso cant texto",
+        "Stop adicional foso cant"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "infiere_check_marcado": "Stop_adicional_foso_cant",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Stop Adicional Foso Cant",
+            "Stop adicional foso cantidad",
+            "Stop adicional foso cant"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Gong exteriores",
+            "Stop Adicional Techo Cab. Cant",
+            "Stop adicional techo cabina cantidad",
+            "Gong Cabina",
+            "Gong cabina",
+            "Test de freno",
+            "Tope extra foso 1 contacto Cant",
+            "Tope extra foso 1 contacto cantidad"
+          ],
+          "entero": true,
+          "subseccion_pdf": "Stops_y_topes"
+        }
+      }
+    },
+    {
+      "nombre": "Gong_exteriores",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Gong exteriores"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Gong exteriores"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Stops_y_topes"
+        }
+      }
+    },
+    {
+      "nombre": "Stop_adicional_techo_cab_cant",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Stop Adicional Techo Cab. Cant",
+        "Stop adicional techo cabina cantidad"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Stop Adicional Techo Cab. Cant",
+            "Stop adicional techo cabina cantidad"
+          ],
+          "subseccion_pdf": "Stops_y_topes",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Stop_adicional_techo_cab_cant_txt",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Stop Adicional Techo Cab. Cant",
+        "Stop adicional techo cabina cantidad",
+        "Stop adicional techo cab cant valor",
+        "Stop adicional techo cab cant texto",
+        "Stop adicional techo cab cant"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "infiere_check_marcado": "Stop_adicional_techo_cab_cant",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Stop Adicional Techo Cab. Cant",
+            "Stop adicional techo cabina cantidad",
+            "Stop adicional techo cab cant"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Gong Cabina",
+            "Gong cabina",
+            "Test de freno",
+            "Tope extra foso 1 contacto Cant",
+            "Tope extra foso 1 contacto cantidad",
+            "Rosario",
+            "Rosario TIRA LEDS"
+          ],
+          "entero": true,
+          "subseccion_pdf": "Stops_y_topes"
+        }
+      }
+    },
+    {
+      "nombre": "Gong_cabina",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Gong Cabina",
+        "Gong cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Gong Cabina"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Stops_y_topes"
+        }
+      }
+    },
+    {
+      "nombre": "Test_de_freno",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Test de freno"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Test de freno"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Stops_y_topes"
+        }
+      }
+    },
+    {
+      "nombre": "Tope_extra_foso_1_contacto_cant",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Tope extra foso 1 contacto Cant",
+        "Tope extra foso 1 contacto cantidad"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Tope extra foso 1 contacto Cant",
+            "Tope extra foso 1 contacto cantidad"
+          ],
+          "subseccion_pdf": "Stops_y_topes",
+          "distancia_maxima": 95,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Tope_extra_foso_1_contacto_cant_txt",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Tope extra foso 1 contacto Cant",
+        "Tope extra foso 1 contacto cantidad",
+        "Tope extra foso 1 contacto cant valor",
+        "Tope extra foso 1 contacto cant texto",
+        "Tope extra foso 1 contacto cant"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "infiere_check_marcado": "Tope_extra_foso_1_contacto_cant",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Tope extra foso 1 contacto Cant",
+            "Tope extra foso 1 contacto cantidad",
+            "Tope extra foso 1 contacto cant"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Rosario",
+            "Rosario TIRA LEDS",
+            "Cant rosario",
+            "Cantidad rosario",
+            "Embalaje Fitosanitario",
+            "Embalaje fitosanitario",
+            "Posicionamiento",
+            "Rescate Autom. Hidráulicos",
+            "Rescate Autom Hidraulicos"
+          ],
+          "entero": true,
+          "subseccion_pdf": "Stops_y_topes"
+        }
+      }
+    },
+    {
+      "nombre": "Rosario",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Rosario",
+        "Rosario TIRA LEDS"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Rosario"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Rosario_posicionamiento"
+        }
+      }
+    },
+    {
+      "nombre": "Rosario_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Rosario",
+        "Rosario TIRA LEDS",
+        "Rosario valor",
+        "Rosario texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Rosario",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Rosario",
+            "Rosario TIRA LEDS"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Cant"
+          ],
+          "subseccion_pdf": "Rosario_posicionamiento"
+        }
+      }
+    },
+    {
+      "nombre": "Cant_rosario",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Cant rosario",
+        "Cantidad rosario"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Cant rosario",
+            "Cantidad rosario"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Embalaje Fitosanitario",
+            "Embalaje fitosanitario",
+            "Posicionamiento",
+            "Rescate Autom. Hidráulicos",
+            "Rescate Autom Hidraulicos",
+            "Módulo ARM",
+            "Modulo ARM",
+            "Botonera Revisión Aérea Especial",
+            "Botonera Revision Aerea Especial",
+            "Rescate Manual Hidráulicos",
+            "Rescate Manual Hidraulicos"
+          ],
+          "entero": true,
+          "subseccion_pdf": "Rosario_posicionamiento"
+        }
+      }
+    },
+    {
+      "nombre": "Embalaje_fitosanitario",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Embalaje Fitosanitario",
+        "Embalaje fitosanitario"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Embalaje Fitosanitario"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Rosario_posicionamiento"
+        }
+      }
+    },
+    {
+      "nombre": "Posicionamiento",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Posicionamiento"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Posicionamiento"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Rescate Autom. Hidráulicos",
+            "Rescate Autom Hidraulicos",
+            "Módulo ARM",
+            "Modulo ARM",
+            "Botonera Revisión Aérea Especial",
+            "Botonera Revision Aerea Especial",
+            "Rescate Manual Hidráulicos",
+            "Rescate Manual Hidraulicos",
+            "Módulo DCI",
+            "Modulo DCI",
+            "Doble Relé Control de Freno",
+            "Doble Rele Control de Freno"
+          ],
+          "subseccion_pdf": "Rosario_posicionamiento"
+        }
+      }
+    },
+    {
+      "nombre": "Rescate_autom_hidraulicos",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Rescate Autom. Hidráulicos",
+        "Rescate Autom Hidraulicos",
+        "Rescate automático hidráulicos"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Rescate Autom. Hidráulicos"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Hidraulicos_modulos"
+        }
+      }
+    },
+    {
+      "nombre": "Modulo_ARM",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Módulo ARM",
+        "Modulo ARM"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Módulo ARM"
+          ],
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Hidraulicos_modulos"
+        }
+      }
+    },
+    {
+      "nombre": "Botonera_revision_aerea_especial",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Botonera Revisión Aérea Especial",
+        "Botonera Revision Aerea Especial"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Botonera Revisión Aérea Especial"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Hidraulicos_modulos"
+        }
+      }
+    },
+    {
+      "nombre": "Rescate_manual_hidraulicos",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Rescate Manual Hidráulicos",
+        "Rescate Manual Hidraulicos"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Rescate Manual Hidráulicos"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Hidraulicos_modulos"
+        }
+      }
+    },
+    {
+      "nombre": "Modulo_DCI",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Módulo DCI",
+        "Modulo DCI"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Módulo DCI"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Hidraulicos_modulos"
+        }
+      }
+    },
+    {
+      "nombre": "Doble_rele_control_de_freno",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Doble Relé Control de Freno",
+        "Doble Rele Control de Freno"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Doble Relé Control de Freno"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Hidraulicos_modulos"
+        }
+      }
+    },
+    {
+      "nombre": "Semaforos_MCH",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Semáforos MCH",
+        "Semaforos MCH"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Semáforos MCH"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Cableados_contactos"
+        }
+      }
+    },
+    {
+      "nombre": "Cableado_CCTV",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Cableado CCTV"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Cableado CCTV"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Cableados_contactos"
+        }
+      }
+    },
+    {
+      "nombre": "Cableado_CCTV_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Cableado CCTV",
+        "Cableado CCTV valor",
+        "Cableado CCTV texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Cableado_CCTV",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Cableado CCTV"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Contactos magnéticos pta Cab.Cant",
+            "Contactos magneticos pta Cab Cant",
+            "Luz emergencia foso 3h",
+            "Luz de emergencia foso 3h",
+            "Centrado coche MCH",
+            "Ventilación Cabina",
+            "Ventilacion Cabina"
+          ],
+          "subseccion_pdf": "Cableados_contactos"
+        }
+      }
+    },
+    {
+      "nombre": "Contactos_magneticos_pta_cab",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Contactos magnéticos pta Cab.Cant",
+        "Contactos magneticos pta Cab Cant",
+        "Contactos magnéticos puerta cabina cantidad"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Contactos magnéticos pta Cab.Cant"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Cableados_contactos"
+        }
+      }
+    },
+    {
+      "nombre": "Contactos_magneticos_pta_cab_txt",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Contactos magnéticos pta Cab.Cant",
+        "Contactos magneticos pta Cab Cant",
+        "Contactos magnéticos puerta cabina cantidad",
+        "Contactos magneticos pta cab valor",
+        "Contactos magneticos pta cab texto",
+        "Contactos magneticos pta cab"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "infiere_check_marcado": "Contactos_magneticos_pta_cab",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Contactos magnéticos pta Cab.Cant",
+            "Contactos magneticos pta Cab Cant",
+            "Contactos magnéticos puerta cabina cantidad"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Luz emergencia foso 3h",
+            "Luz de emergencia foso 3h",
+            "Centrado coche MCH",
+            "Ventilación Cabina",
+            "Ventilacion Cabina",
+            "Sistema regenerativo"
+          ],
+          "entero": true,
+          "subseccion_pdf": "Cableados_contactos"
+        }
+      }
+    },
+    {
+      "nombre": "Luz_emergencia_foso_3h",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Luz emergencia foso 3h",
+        "Luz de emergencia foso 3h"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Luz emergencia foso 3h"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Ventilacion_BMS"
+        }
+      }
+    },
+    {
+      "nombre": "Centrado_coche_MCH",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Centrado coche MCH"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Centrado coche MCH"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Ventilacion_BMS"
+        }
+      }
+    },
+    {
+      "nombre": "Ventilacion_cabina",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Ventilación Cabina",
+        "Ventilacion Cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Ventilación Cabina"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Ventilacion_BMS"
+        }
+      }
+    },
+    {
+      "nombre": "Ventilacion_cabina_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Ventilación Cabina",
+        "Ventilacion Cabina",
+        "Ventilacion cabina valor",
+        "Ventilacion cabina texto",
+        "Ventilacion cabina"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Ventilacion_cabina",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Ventilación Cabina",
+            "Ventilacion Cabina",
+            "Ventilacion cabina"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Sistema regenerativo",
+            "BMS",
+            "Suministrar Mandos MCH",
+            "Suministrar mandos MCH",
+            "Suministrar Mandos MCH Cant",
+            "Suministrar mandos MCH cantidad",
+            "Suministrar soporteria CS",
+            "Suministrar soporter?a CS"
+          ],
+          "subseccion_pdf": "Ventilacion_BMS"
+        }
+      }
+    },
+    {
+      "nombre": "Sistema_regenerativo",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Sistema regenerativo"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Sistema regenerativo"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Ventilacion_BMS"
+        }
+      }
+    },
+    {
+      "nombre": "Sistema_regenerativo_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Sistema regenerativo",
+        "Sistema regenerativo valor",
+        "Sistema regenerativo texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Sistema_regenerativo",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Sistema regenerativo"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "BMS",
+            "Suministrar Mandos MCH",
+            "Suministrar mandos MCH",
+            "Suministrar Mandos MCH Cant",
+            "Suministrar mandos MCH cantidad",
+            "Suministrar soporteria CS",
+            "Suministrar soporter?a CS"
+          ],
+          "subseccion_pdf": "Ventilacion_BMS"
+        }
+      }
+    },
+    {
+      "nombre": "BMS",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "BMS"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "BMS"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Ventilacion_BMS"
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_mandos_MCH_cant",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Suministrar Mandos MCH",
+        "Suministrar mandos MCH"
+      ],
+      "reglas": {
+        "valor_no_marcado": "No",
+        "valor_marcado_sin_valor": "Si",
+        "valor_marcado": "Si",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Suministrar Mandos MCH"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Ventilacion_BMS"
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_mandos_MCH_cant_txt",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Suministrar Mandos MCH Cant",
+        "Suministrar mandos MCH cantidad",
+        "Cantidad suministrar mandos MCH"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "infiere_check_marcado": "Suministrar_mandos_MCH_cant",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Suministrar Mandos MCH Cant",
+            "Suministrar mandos MCH cantidad",
+            "Cantidad suministrar mandos MCH"
+          ],
+          "despues_de": "Opciones:",
+          "hasta_aliases": [
+            "Suministrar soporteria CS",
+            "Suministrar soporter?a CS"
+          ],
+          "entero": true,
+          "subseccion_pdf": "Ventilacion_BMS"
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_soporteria_CS",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Suministrar soporteria CS",
+        "Suministrar soporter?a CS",
+        "Soporter?a CS",
+        "Soporteria CS"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Suministrar soporteria CS"
+          ],
+          "despues_de": "Opciones:",
+          "distancia_maxima": 45,
+          "tolerancia_y": 10,
+          "si_no_hay_check": "No",
+          "subseccion_pdf": "Ventilacion_BMS"
+        }
+      }
+    }
+  ],
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Limitador_cabina": {
+        "inicio": [
+          "Limitador velocidad Cab",
+          "Limitador velocidad cabina"
+        ],
+        "fin": [
+          "Limitador vel. Contrapeso",
+          "Limitador velocidad contrapeso"
+        ]
+      },
+      "Limitador_contrapeso": {
+        "inicio": [
+          "Limitador vel. Contrapeso",
+          "Limitador velocidad contrapeso"
+        ],
+        "fin": [
+          "Pesacargas Fabricante",
+          "Fabricante pesacargas"
+        ]
+      },
+      "Pesacargas": {
+        "inicio": [
+          "Pesacargas Fabricante",
+          "Fabricante pesacargas"
+        ],
+        "fin": [
+          "Comunicaci?n Suministro",
+          "Comunicacion Suministro"
+        ]
+      },
+      "Comunicacion": {
+        "inicio": [
+          "Comunicaci?n Suministro",
+          "Comunicacion Suministro"
+        ],
+        "fin": [
+          "Renivelaci?n",
+          "Renivelacion",
+          "Socorro El?ctrico en Maniobra",
+          "Socorro Electrico en Maniobra"
+        ]
+      },
+      "Maniobra_y_seguridad": {
+        "inicio": [
+          "Renivelaci?n",
+          "Renivelacion"
+        ],
+        "fin": [
+          "Distancia a Maniobra"
+        ]
+      },
+      "Stops_y_topes": {
+        "inicio": [
+          "Distancia a Maniobra"
+        ],
+        "fin": [
+          "Rosario"
+        ]
+      },
+      "Rosario_posicionamiento": {
+        "inicio": [
+          "Rosario"
+        ],
+        "fin": [
+          "Rescate Autom. Hidr?ulicos",
+          "Rescate Autom Hidraulicos"
+        ]
+      },
+      "Hidraulicos_modulos": {
+        "inicio": [
+          "Rescate Autom. Hidr?ulicos",
+          "Rescate Autom Hidraulicos"
+        ],
+        "fin": [
+          "Sem?foros MCH",
+          "Semaforos MCH"
+        ]
+      },
+      "Cableados_contactos": {
+        "inicio": [
+          "Sem?foros MCH",
+          "Semaforos MCH"
+        ],
+        "fin": [
+          "Luz emergencia foso 3h"
+        ]
+      },
+      "Ventilacion_BMS": {
+        "inicio": [
+          "Luz emergencia foso 3h"
+        ],
+        "fin": []
+      }
+    }
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Pesacargas",
+  "descripcion": "Datos de pesacargas del formulario Felesa CRONO.",
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Pesacargas": {
+        "inicio": [
+          "PESACARGAS",
+          "Pesacargas"
+        ],
+        "fin": [
+          "BOTONERA DE CABINA",
+          "Botonera de Cabina"
+        ],
+        "x_min": 205,
+        "x_max": 410
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Tipo_pesacargas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo",
+        "Tipo Pesacargas"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Tipo"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_pesacargas",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension",
+        "Tensión",
+        "Tension Pesacargas",
+        "Tensión Pesacargas"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Tensión",
+            "Tension"
+          ],
+          "hasta_aliases": [
+            "Suministrar"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_pesacargas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Suministrar"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Suministrar"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_cables",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Nº Cables",
+        "N Cables",
+        "Numero Cables",
+        "Número Cables"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Nº Cables",
+            "N Cables"
+          ],
+          "hasta_aliases": [
+            "Diámetro",
+            "Diametro"
+          ],
+          "entero": true,
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Diametro",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Diametro",
+        "Diámetro"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Diámetro",
+            "Diametro"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Celulas_dummies",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Celulas/Dummies",
+        "Células/Dummies"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Células/Dummies",
+            "Celulas/Dummies"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Unidad_control_fabricante",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Unidad Control",
+        "Unidad Control (Fabricante)"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Unidad Control (Fabricante)",
+            "Unidad Control"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Gong_llegada",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Gong Llegada"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Gong Llegada"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Ventilador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Ventilador"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Ventilador"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Telefono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Telefono",
+        "Teléfono"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Teléfono",
+            "Telefono"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Instalado",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Instalado"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Instalado"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Idioma_sintesis",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Idioma Sintesis",
+        "Idioma Síntesis"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Idioma Síntesis",
+            "Idioma Sintesis"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Sintesis_especial",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Sintesis Especial",
+        "Síntesis Especial"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Síntesis Especial",
+            "Sintesis Especial"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Bucle_inductivo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Bucle Inductivo"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": [
+            "Bucle Inductivo"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

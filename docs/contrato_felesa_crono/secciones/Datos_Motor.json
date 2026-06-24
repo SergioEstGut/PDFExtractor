@@ -1,0 +1,307 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Datos_Motor",
+  "descripcion": "Datos del motor del formulario Felesa CRONO.",
+  "campos": [
+    {
+      "nombre": "Tension_motor",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension",
+        "Tensión",
+        "Tension motor",
+        "Tensión motor"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "Tensión",
+            "Tension"
+          ],
+          "hasta_aliases": [
+            "Consumo"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_motor_mono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension motor mono",
+        "Tensión motor mono",
+        "Monofasica",
+        "Monofásica"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "Tensión",
+            "Tension"
+          ],
+          "hasta_aliases": [
+            "Consumo"
+          ],
+          "token": "I",
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_motor_tri",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension motor tri",
+        "Tensión motor tri",
+        "Trifasica",
+        "Trifásica"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "Tensión",
+            "Tension"
+          ],
+          "hasta_aliases": [
+            "Consumo"
+          ],
+          "token": "III",
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Consumo",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Consumo"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "Consumo"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Potencia_cv",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Potencia CV",
+        "CV"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "Potencia"
+          ],
+          "indice_numero": 0,
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Potencia_kw",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Potencia KW",
+        "KW",
+        "kW"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "Potencia"
+          ],
+          "indice_numero": 1,
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Ventilador_motor",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Ventilador Motor",
+        "Ventilador"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "Ventilador Motor"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Freno_tension_excitacion",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Freno Tension excitacion",
+        "Freno Tensión excitación",
+        "Tension excitacion",
+        "Tensión excitación"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "Freno Tensión excitación",
+            "Freno Tension excitacion"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Freno_tension_mantenimiento",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Freno Tension mantenimiento",
+        "Freno Tensión mantenimiento",
+        "Tension mantenimiento",
+        "Tensión mantenimiento"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "Freno Tensión mantenimiento",
+            "Freno Tension mantenimiento"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_encoder",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo Encoder",
+        "*Tipo Encoder"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "*Tipo Encoder",
+            "Tipo Encoder"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Marca_encoder",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Marca",
+        "*Marca"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "*Marca",
+            "Marca"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Modelo_encoder",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Modelo",
+        "*Modelo"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Motor",
+          "aliases": [
+            "*Modelo",
+            "Modelo"
+          ],
+          "hasta_aliases": [
+            "CONTROL MOTOR",
+            "Control Motor"
+          ],
+          "limite_x_derecha": 205,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ],
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Datos_Motor": {
+        "inicio": [
+          "DATOS MOTOR",
+          "Datos Motor"
+        ],
+        "fin": [
+          "CONTROL MOTOR",
+          "Control Motor"
+        ]
+      }
+    }
+  }
+}

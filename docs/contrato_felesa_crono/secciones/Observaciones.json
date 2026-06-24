@@ -1,0 +1,39 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Observaciones",
+  "descripcion": "Observaciones del formulario Felesa CRONO. Se concatenan las observaciones de pagina 1 y pagina 2 con salto de linea.",
+  "campos": [
+    {
+      "nombre": "Observaciones",
+      "tipo": "texto_multilinea",
+      "valor_defecto": "",
+      "aliases": [
+        "Observaciones",
+        "OBSERVACIONES"
+      ],
+      "reglas": {
+        "opcional": true,
+        "normalizar_saltos_linea": true,
+        "unir_fragmentos_con": "\n",
+        "fuentes": [
+          {
+            "pagina": 1,
+            "inicio_despues_de": "OBSERVACIONES",
+            "fin_antes_de": [
+              "Plantilla-EM"
+            ]
+          },
+          {
+            "pagina": 2,
+            "inicio_despues_de": "Observaciones",
+            "fin_antes_de": [
+              "Nota:",
+              "Plantilla-Bot.Rellano"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

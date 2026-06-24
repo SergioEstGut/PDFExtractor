@@ -1,0 +1,399 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Botonera_Exterior",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Botonera_ext_fabricante",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Botonera fabricante",
+        "Botonera exterior fabricante",
+        "Fabricante botonera exterior"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Enviaran_botoneras_para_cablear_ext",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Enviarán botoneras para cablear",
+        "Enviaran botoneras para cablear",
+        "Enviar botoneras para cablear exterior"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Botoneras_ubicadas_en_marco",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Botoneras ubicadas en marco",
+        "Marco"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Botoneras_ubicadas_en_pared",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Botoneras ubicadas en pared",
+        "Pared"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Flechas_direccion",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Flechas dirección",
+        "Flechas direccion"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Flechas_direccion_dintel",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Flechas dirección dintel",
+        "Flechas direccion dintel",
+        "Dintel"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Flechas_direccion_botonera",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Flechas dirección botonera",
+        "Flechas direccion botonera",
+        "Botonera"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Flechas_predirecc",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Flechas predirecc",
+        "Flechas predireccionales"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Flechas_predirecc_exterior",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Flechas predirecc exterior",
+        "Flechas predireccionales exterior",
+        "Exterior"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Flechas_predirecc_embocadura_cab",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Flechas predirecc embocadura cab",
+        "Flechas predireccionales embocadura cab",
+        "Embocadura cab"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Esta",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Está",
+        "Esta"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Ocupado",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Ocupado"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Pta_abierta",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Pta abierta",
+        "Puerta abierta"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Reg_ext",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Reg.ext.",
+        "Registro exterior",
+        "Regulador exterior"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true
+      }
+    },
+    {
+      "nombre": "Prohibido_paso",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Prohibido paso"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Prohibido_paso_cant",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Prohibido paso cant",
+        "Prohibido paso cantidad",
+        "Cant prohibido paso"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true
+      }
+    },
+    {
+      "nombre": "Llavin_pulsador_ext",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Llavín Pulsador",
+        "Llavin Pulsador",
+        "Llavín pulsador exterior"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Llavin_pulsador_ext_cant",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Llavín Pulsador Cant",
+        "Llavin Pulsador Cant",
+        "Cantidad llavín pulsador exterior",
+        "Cantidad llavin pulsador exterior",
+        "Cant llavín pulsador exterior"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true
+      }
+    },
+    {
+      "nombre": "Llavin_extra_ext",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Llavín Extra",
+        "Llavin Extra",
+        "Llavín extra exterior"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Llavin_extra_ext_cant",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Llavín Extra Cant",
+        "Llavin Extra Cant",
+        "Cantidad llavín extra exterior",
+        "Cantidad llavin extra exterior",
+        "Cant llavín extra exterior"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true
+      }
+    },
+    {
+      "nombre": "Llavin_extra_ext_funcion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Función llavín extra exterior",
+        "Funcion llavin extra exterior",
+        "Función"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Display_ext_E1",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Display Ext 1",
+        "Display exterior E1",
+        "Display exterior embarque 1"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Display_ext_E1_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Display Ext 1",
+        "Display exterior E1",
+        "Display exterior embarque 1",
+        "Display ext E1 valor",
+        "Display ext E1 texto",
+        "Display ext E1"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Display_ext_E1"
+      }
+    },
+    {
+      "nombre": "Display_ext_E1_cant",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Display Ext 1 cant",
+        "Display exterior E1 cantidad",
+        "Cant display ext 1"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true
+      }
+    },
+    {
+      "nombre": "Display_ext_E2",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Display Ext 2",
+        "Display exterior E2",
+        "Display exterior embarque 2"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Display_ext_E2_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Display Ext 2",
+        "Display exterior E2",
+        "Display exterior embarque 2",
+        "Display ext E2 valor",
+        "Display ext E2 texto",
+        "Display ext E2"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Display_ext_E2"
+      }
+    },
+    {
+      "nombre": "Display_ext_E2_cant",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Display Ext 2 cant",
+        "Display exterior E2 cantidad",
+        "Cant display ext 2"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true
+      }
+    },
+    {
+      "nombre": "Reg_acustico_pisos_RAP",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Reg. acústico pisos (RAP)",
+        "Reg. acustico pisos (RAP)",
+        "Registro acústico pisos RAP"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    }
+  ],
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Botonera_Exterior": {
+        "inicio": [
+          "Botonera Exterior:",
+          "Botonera Exterior"
+        ],
+        "fin": [
+          "FO.231.02.01"
+        ]
+      }
+    }
+  }
+}

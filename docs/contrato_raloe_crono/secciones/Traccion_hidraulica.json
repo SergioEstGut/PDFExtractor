@@ -1,0 +1,159 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Traccion_hidraulica",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Fabricante_oleo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Fabricante oleo",
+        "Fabricante óleo",
+        "Fabricante grupo oleo",
+        "Fabricante grupo óleo",
+        "Oleo fabricante",
+        "Óleo fabricante"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Fabricante"
+          ],
+          "hasta_aliases": [
+            "Grupo V?lvulas",
+            "Grupo Valvulas"
+          ],
+          "despues_de": "Tracci?n Hidr?ulica"
+        }
+      }
+    },
+    {
+      "nombre": "Grupo_valvulas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Grupo valvulas",
+        "Grupo válvulas",
+        "Grupo de valvulas",
+        "Grupo de válvulas",
+        "Valvulas",
+        "Válvulas"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Grupo V?lvulas",
+            "Grupo Valvulas"
+          ],
+          "hasta_aliases": [
+            "Tensi?n V?lvulas",
+            "Tension Valvulas"
+          ],
+          "despues_de": "Tracci?n Hidr?ulica"
+        }
+      }
+    },
+    {
+      "nombre": "Tension_valvulas",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension valvulas",
+        "Tensión válvulas",
+        "Tension de valvulas",
+        "Tensión de válvulas",
+        "Tension grupo valvulas",
+        "Tensión grupo válvulas"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Tensi?n V?lvulas",
+            "Tension Valvulas"
+          ],
+          "despues_de": "Tracci?n Hidr?ulica"
+        }
+      }
+    },
+    {
+      "nombre": "Potencia_oleo",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Potencia oleo",
+        "Potencia óleo",
+        "Potencia grupo oleo",
+        "Potencia grupo óleo",
+        "Potencia motor oleo",
+        "Potencia motor óleo"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Potencia"
+          ],
+          "despues_de": "Tracci?n Hidr?ulica"
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_arranque",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo arranque",
+        "Tipo de arranque",
+        "Arranque",
+        "Arranque hidraulico",
+        "Arranque hidráulico"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Tipo Arranque"
+          ],
+          "hasta_aliases": [
+            "Suministrar softstarter"
+          ],
+          "despues_de": "Tracci?n Hidr?ulica"
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_softstarter",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Suministrar softstarter",
+        "Suministrar soft starter",
+        "Softstarter",
+        "Soft starter",
+        "Arrancador suave"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Suministrar softstarter",
+            "Softstarter"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Tracci?n Hidr?ulica"
+        }
+      }
+    }
+  ]
+}

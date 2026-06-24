@@ -1,0 +1,112 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Opciones_Especiales",
+  "descripcion": "Opciones especiales del formulario Felesa CRONO.",
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Opciones_Especiales": {
+        "inicio": [
+          "OPCIONES ESPECIALES",
+          "Opciones Especiales"
+        ],
+        "fin": [
+          "OBSERVACIONES",
+          "Observaciones"
+        ],
+        "x_min": 205,
+        "x_max": 410
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Telemetria_remota_M2CS_ARM",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Telemetria Remota M2CS ARM",
+        "Telemetría Remota M2CS ARM",
+        "Telemetria Remota M2CS \"ARM\"",
+        "Telemetría Remota M2CS \"ARM\""
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Opciones_Especiales",
+          "aliases": [
+            "Telemetría Remota M2CS \"ARM\"",
+            "Telemetria Remota M2CS \"ARM\"",
+            "Telemetría Remota M2CS ARM",
+            "Telemetria Remota M2CS ARM"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Pasalera_datos_track_GSM",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Pasalera de datos Track GSM",
+        "Pasarela de datos Track GSM",
+        "Track GSM"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Opciones_Especiales",
+          "aliases": [
+            "Pasalera de datos Track GSM",
+            "Pasarela de datos Track GSM"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Escalera_foso_contacto",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Escalera de foso c/contacto",
+        "Escalera de foso con contacto"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Opciones_Especiales",
+          "aliases": [
+            "Escalera de foso c/contacto",
+            "Escalera de foso con contacto"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_epic_power",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Suministrar Epic Power",
+        "Epic Power"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Opciones_Especiales",
+          "aliases": [
+            "Suministrar Epic Power"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

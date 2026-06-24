@@ -1,0 +1,950 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Placas_Botoneras_Rellano",
+  "descripcion": "Tabla de placas para botoneras de rellano. Los campos de logo se leen como texto literal; los modelos NEO son checks y sus cantidades son enteros.",
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Un_Taladro": {
+        "inicio": [
+          "NEO 1T"
+        ],
+        "fin": [
+          "NEO 2TT"
+        ],
+        "y_min": 225,
+        "y_max": 352,
+        "x_min": 20,
+        "x_max": 580
+      },
+      "Dos_Taladros": {
+        "inicio": [
+          "NEO 2TT"
+        ],
+        "fin": [
+          "NEO 3KTT"
+        ],
+        "y_min": 355,
+        "y_max": 482,
+        "x_min": 20,
+        "x_max": 580
+      },
+      "Tres_Taladros": {
+        "inicio": [
+          "NEO 3KTT"
+        ],
+        "fin": [
+          "Observaciones"
+        ],
+        "y_min": 485,
+        "y_max": 612,
+        "x_min": 20,
+        "x_max": 580
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Un_Taladro_con_logo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "CON LOGO"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Un_Taladro",
+          "x_min": 55,
+          "x_max": 82,
+          "y_min": 248,
+          "y_max": 280
+        }
+      }
+    },
+    {
+      "nombre": "Un_Taladro_sin_logo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "SIN LOGO"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Un_Taladro",
+          "x_min": 55,
+          "x_max": 82,
+          "y_min": 292,
+          "y_max": 322
+        }
+      }
+    },
+    {
+      "nombre": "NEO_1T",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 1T"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Un_Taladro",
+          "x_min": 150,
+          "x_max": 240,
+          "y_min": 306,
+          "y_max": 336
+        }
+      }
+    },
+    {
+      "nombre": "NEO_1T_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 1T cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Un_Taladro",
+          "x_min": 150,
+          "x_max": 240,
+          "y_min": 338,
+          "y_max": 360,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_1K",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 1K"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Un_Taladro",
+          "x_min": 260,
+          "x_max": 350,
+          "y_min": 306,
+          "y_max": 336
+        }
+      }
+    },
+    {
+      "nombre": "NEO_1K_tipo_llavin",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO_1K tipo llavin",
+        "NEO_1K tipo llav?n"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Un_Taladro",
+          "x_min": 260,
+          "x_max": 350,
+          "y_min": 328,
+          "y_max": 342,
+          "ignorar_valores": [
+            "---"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "NEO_1K_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 1K cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Un_Taladro",
+          "x_min": 260,
+          "x_max": 350,
+          "y_min": 338,
+          "y_max": 360,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_DTFT",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO DTFT"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Un_Taladro",
+          "x_min": 380,
+          "x_max": 470,
+          "y_min": 306,
+          "y_max": 336
+        }
+      }
+    },
+    {
+      "nombre": "NEO_DTFT_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO DTFT cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Un_Taladro",
+          "x_min": 380,
+          "x_max": 470,
+          "y_min": 338,
+          "y_max": 360,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_FLD",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO FLD"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Un_Taladro",
+          "x_min": 495,
+          "x_max": 575,
+          "y_min": 306,
+          "y_max": 336
+        }
+      }
+    },
+    {
+      "nombre": "NEO_FLD_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO FLD cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Un_Taladro",
+          "x_min": 495,
+          "x_max": 575,
+          "y_min": 338,
+          "y_max": 360,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "Dos_Taladros_con_logo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "CON LOGO"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 55,
+          "x_max": 82,
+          "y_min": 377,
+          "y_max": 410
+        }
+      }
+    },
+    {
+      "nombre": "Dos_Taladros_sin_logo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "SIN LOGO"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 55,
+          "x_max": 82,
+          "y_min": 422,
+          "y_max": 452
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2TT",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 2TT"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 145,
+          "x_max": 215,
+          "y_min": 432,
+          "y_max": 466
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2TT_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 2TT cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 145,
+          "x_max": 215,
+          "y_min": 468,
+          "y_max": 490,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2TF",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 2TF"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 220,
+          "x_max": 290,
+          "y_min": 432,
+          "y_max": 466
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2TF_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 2TF cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 220,
+          "x_max": 290,
+          "y_min": 468,
+          "y_max": 490,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2TP",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 2TP"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 295,
+          "x_max": 365,
+          "y_min": 432,
+          "y_max": 466
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2TP_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 2TP cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 295,
+          "x_max": 365,
+          "y_min": 468,
+          "y_max": 490,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2KT",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 2KT"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 370,
+          "x_max": 440,
+          "y_min": 432,
+          "y_max": 466
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2KT_tipo_llavin",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO_2KT tipo llavin",
+        "NEO_2KT tipo llav?n"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 370,
+          "x_max": 440,
+          "y_min": 458,
+          "y_max": 472,
+          "ignorar_valores": [
+            "---"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2KT_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 2KT cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 370,
+          "x_max": 440,
+          "y_min": 468,
+          "y_max": 490,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2KF",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 2KF"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 445,
+          "x_max": 515,
+          "y_min": 432,
+          "y_max": 466
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2KF_tipo_llavin",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO_2KF tipo llavin",
+        "NEO_2KF tipo llav?n"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 445,
+          "x_max": 515,
+          "y_min": 458,
+          "y_max": 472,
+          "ignorar_valores": [
+            "---"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2KF_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 2KF cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 445,
+          "x_max": 515,
+          "y_min": 468,
+          "y_max": 490,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2KP",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 2KP"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 515,
+          "x_max": 580,
+          "y_min": 432,
+          "y_max": 466
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2KP_tipo_llavin",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO_2KP tipo llavin",
+        "NEO_2KP tipo llav?n"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 515,
+          "x_max": 580,
+          "y_min": 458,
+          "y_max": 472,
+          "ignorar_valores": [
+            "---"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "NEO_2KP_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 2KP cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Dos_Taladros",
+          "x_min": 515,
+          "x_max": 580,
+          "y_min": 468,
+          "y_max": 490,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "Tres_Taladros_con_logo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "CON LOGO"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 55,
+          "x_max": 82,
+          "y_min": 507,
+          "y_max": 538
+        }
+      }
+    },
+    {
+      "nombre": "Tres_Taladros_sin_logo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "SIN LOGO"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 55,
+          "x_max": 82,
+          "y_min": 552,
+          "y_max": 582
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3KTT",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 3KTT"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 145,
+          "x_max": 215,
+          "y_min": 560,
+          "y_max": 596
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3KTT_tipo_llavin",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO_3KTT tipo llavin",
+        "NEO_3KTT tipo llav?n"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 145,
+          "x_max": 215,
+          "y_min": 588,
+          "y_max": 602,
+          "ignorar_valores": [
+            "---"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3KTT_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 3KTT cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 145,
+          "x_max": 215,
+          "y_min": 590,
+          "y_max": 620,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3KTF",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 3KTF"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 220,
+          "x_max": 290,
+          "y_min": 560,
+          "y_max": 596
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3KTF_tipo_llavin",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO_3KTF tipo llavin",
+        "NEO_3KTF tipo llav?n"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 220,
+          "x_max": 290,
+          "y_min": 588,
+          "y_max": 602,
+          "ignorar_valores": [
+            "---"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3KTF_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 3KTF cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 220,
+          "x_max": 290,
+          "y_min": 590,
+          "y_max": 620,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3KTP",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 3KTP"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 295,
+          "x_max": 365,
+          "y_min": 560,
+          "y_max": 596
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3KTP_tipo_llavin",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO_3KTP tipo llavin",
+        "NEO_3KTP tipo llav?n"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 295,
+          "x_max": 365,
+          "y_min": 588,
+          "y_max": 602,
+          "ignorar_valores": [
+            "---"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3KTP_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 3KTP cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 295,
+          "x_max": 365,
+          "y_min": 590,
+          "y_max": 620,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3TTF",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 3TTF"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 370,
+          "x_max": 440,
+          "y_min": 560,
+          "y_max": 596
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3TTF_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 3TTF cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 370,
+          "x_max": 440,
+          "y_min": 590,
+          "y_max": 620,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3TTP",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 3TTP"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 445,
+          "x_max": 515,
+          "y_min": 560,
+          "y_max": 596
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3TTP_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 3TTP cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 445,
+          "x_max": 515,
+          "y_min": 590,
+          "y_max": 620,
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3TFP",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "NEO 3TFP"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 515,
+          "x_max": 580,
+          "y_min": 560,
+          "y_max": 596
+        }
+      }
+    },
+    {
+      "nombre": "NEO_3TFP_cantidad",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NEO 3TFP cantidad"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_en_zona",
+          "subseccion_pdf": "Tres_Taladros",
+          "x_min": 515,
+          "x_max": 580,
+          "y_min": 590,
+          "y_max": 620,
+          "entero": true
+        }
+      }
+    }
+  ]
+}

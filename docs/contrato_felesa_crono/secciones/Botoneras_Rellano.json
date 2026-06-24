@@ -1,0 +1,338 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Botoneras_Rellano",
+  "descripcion": "Datos de instalacion de botoneras de rellano del formulario Felesa CRONO.",
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Botoneras_Rellano": {
+        "inicio": [
+          "BOTONERAS DE RELLANO",
+          "Botoneras de Rellano"
+        ],
+        "fin": [
+          "PLACA PARA BOTONERAS DE RELLANO",
+          "Placa para Botoneras de Rellano"
+        ]
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Tipo_Display",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo Display"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Tipo Display"
+          ],
+          "hasta_aliases": [
+            "Flechas"
+          ],
+          "limite_x_derecha": 300,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Ubicacion_Display",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Ubicacion Display",
+        "Ubicación Display"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Ubicación Display",
+            "Ubicacion Display"
+          ],
+          "hasta_aliases": [
+            "Suministrar FLD"
+          ],
+          "limite_x_derecha": 300,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Suministrar"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Suministrar"
+          ],
+          "hasta_aliases": [
+            "Luminoso"
+          ],
+          "limite_x_derecha": 300,
+          "tolerancia_y": 8,
+          "ocurrencia_alias": 1
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_Pulsador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo Pulsador"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Tipo Pulsador"
+          ],
+          "hasta_aliases": [
+            "Llamada prioritaria"
+          ],
+          "limite_x_derecha": 300,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_Llavines_Ext",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Nº Llavines Ext.",
+        "N Llavines Ext."
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Nº Llavines Ext.",
+            "N Llavines Ext."
+          ],
+          "hasta_aliases": [
+            "Longitud cables"
+          ],
+          "entero": true,
+          "limite_x_derecha": 300,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_Llavin",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo Llavin",
+        "Tipo Llavín"
+      ],
+      "reglas": {
+        "depende_de": {
+          "campo": "Num_Llavines_Ext",
+          "si_valores": [
+            "0",
+            ""
+          ],
+          "valor": ""
+        },
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Tipo Llavín",
+            "Tipo Llavin"
+          ],
+          "hasta_aliases": [
+            "Pisos Cables Especial"
+          ],
+          "limite_x_derecha": 300,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Funcion_Llavin",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Funcion Llavin",
+        "Función Llavín"
+      ],
+      "reglas": {
+        "depende_de": {
+          "campo": "Num_Llavines_Ext",
+          "si_valores": [
+            "0",
+            ""
+          ],
+          "valor": ""
+        },
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Función Llavín",
+            "Funcion Llavin"
+          ],
+          "hasta_aliases": [
+            "Botoneras Cable Especial"
+          ],
+          "limite_x_derecha": 300,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Flechas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Flechas"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Flechas"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_FLD",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Suministrar FLD´s",
+        "Suministrar FLD"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Suministrar FLD´s",
+            "Suministrar FLD"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Luminoso",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Luminoso"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Luminoso"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Llamada_prioritaria",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Llamada prioritaria"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Llamada prioritaria"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Longitud_cables",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Longitud cables"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Longitud cables"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Pisos_Cables_Especial",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Pisos Cables Especial"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Pisos Cables Especial"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Botoneras_Cable_Especial",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Botoneras Cable Especial"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Botoneras_Rellano",
+          "aliases": [
+            "Botoneras Cable Especial"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

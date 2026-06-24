@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-multipart
+pymupdf
+pillow
+opencv-python
+pytesseract
+httpx
+orjson
+python-dotenv
+pytest

@@ -1,0 +1,267 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Puertas_cabina_embarque_2",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Fabricante_op2",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Fabricante op2",
+        "Fabricante puerta op2",
+        "Fabricante puerta cabina embarque 2",
+        "Fabricante puertas cabina embarque 2",
+        "Fabricante puerta 2"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": ["Fabricante"],
+          "despues_de": "Puertas de Cabina Embarque 1",
+          "ocurrencia_alias": 1
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_op2",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo op2",
+        "Tipo puerta op2",
+        "Tipo puerta cabina embarque 2",
+        "Tipo puertas cabina embarque 2",
+        "Tipo puerta 2"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": ["Tipo"],
+          "despues_de": "Puertas de Cabina Embarque 1",
+          "ocurrencia_alias": 1
+        }
+      }
+    },
+    {
+      "nombre": "Mano_op2",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Mano op2",
+        "Mano puerta op2",
+        "Mano puerta cabina embarque 2",
+        "Mano puerta 2",
+        "Apertura mano op2"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": ["Mano"],
+          "despues_de": "Puertas de Cabina Embarque 1",
+          "ocurrencia_alias": 1
+        }
+      }
+    },
+    {
+      "nombre": "Circuito_op2",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Circuito op2",
+        "Circuito puerta op2",
+        "Circuito puerta cabina embarque 2",
+        "Circuito puerta 2"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": ["Circuito"],
+          "despues_de": "Puertas de Cabina Embarque 1",
+          "ocurrencia_alias": 1
+        }
+      }
+    },
+    {
+      "nombre": "Tension_op2",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension op2",
+        "Tensión op2",
+        "Tension puerta op2",
+        "Tensión puerta op2",
+        "Tension puerta cabina embarque 2",
+        "Tensión puerta cabina embarque 2",
+        "Tension puerta 2",
+        "Tensión puerta 2"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": ["Tension"],
+          "despues_de": "Puertas de Cabina Embarque 1",
+          "ocurrencia_alias": 1
+        }
+      }
+    },
+    {
+      "nombre": "Barreras_op2",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Barreras op2",
+        "Barreras OP2",
+        "Barreras puerta op2",
+        "Barreras puerta cabina embarque 2",
+        "Barreras puerta 2",
+        "Barrera op2"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": ["Barreras"],
+          "despues_de": "Puertas de Cabina Embarque 1",
+          "ocurrencia_alias": 1,
+          "distancia_maxima": 45,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Barreras_Op2_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Barreras op2",
+        "Barreras OP2",
+        "Barreras puerta op2",
+        "Barreras puerta cabina embarque 2",
+        "Barreras puerta 2",
+        "Barrera op2",
+        "Barreras op2 valor",
+        "Barreras op2 texto",
+        "Barreras Op2",
+        "Barreras Op2 valor"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Barreras_op2",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": ["Barreras"],
+          "despues_de": "Puertas de Cabina Embarque 1",
+          "ocurrencia_alias": 1
+        }
+      }
+    },
+    {
+      "nombre": "Apertura_emergencia_op2",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Apertura emergencia op2",
+        "Apertura de emergencia op2",
+        "Apertura emergencia puerta op2",
+        "Apertura emergencia puerta cabina embarque 2",
+        "Apertura emergencia puerta 2"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": ["Apertura de emergencia", "Apertura emergencia"],
+          "despues_de": "Puertas de Cabina Embarque 1",
+          "ocurrencia_alias": 1,
+          "distancia_maxima": 45,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Apertura_emergencia_op2_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Apertura emergencia op2",
+        "Apertura de emergencia op2",
+        "Apertura emergencia puerta op2",
+        "Apertura emergencia puerta cabina embarque 2",
+        "Apertura emergencia puerta 2",
+        "Apertura emergencia op2 valor",
+        "Apertura emergencia op2 texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Apertura_emergencia_op2",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": ["Apertura de emergencia", "Apertura emergencia"],
+          "despues_de": "Puertas de Cabina Embarque 1",
+          "ocurrencia_alias": 1,
+          "hasta_aliases": ["Leva electrica"]
+        }
+      }
+    },
+    {
+      "nombre": "Leva_electrica_op2",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Leva electrica op2",
+        "Leva eléctrica op2",
+        "Leva electrica puerta op2",
+        "Leva eléctrica puerta op2",
+        "Leva electrica puerta cabina embarque 2",
+        "Leva eléctrica puerta cabina embarque 2",
+        "Leva electrica puerta 2",
+        "Leva eléctrica puerta 2"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": ["Leva electrica"],
+          "despues_de": "Puertas de Cabina Embarque 1",
+          "ocurrencia_alias": 1,
+          "distancia_maxima": 45,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Leva_electrica_op2_txt",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Leva electrica op2",
+        "Leva eléctrica op2",
+        "Leva electrica puerta op2",
+        "Leva eléctrica puerta op2",
+        "Leva electrica puerta cabina embarque 2",
+        "Leva eléctrica puerta cabina embarque 2",
+        "Leva electrica puerta 2",
+        "Leva eléctrica puerta 2",
+        "Leva electrica op2 valor",
+        "Leva electrica op2 texto"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "infiere_check_marcado": "Leva_electrica_op2",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": ["Leva electrica"],
+          "despues_de": "Puertas de Cabina Embarque 1",
+          "ocurrencia_alias": 1
+        }
+      }
+    }
+  ]
+}

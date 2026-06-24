@@ -1,0 +1,342 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Datos_Cabina",
+  "descripcion": "Datos de cabina del formulario Felesa CRONO.",
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Datos_Cabina": {
+        "inicio": [
+          "DATOS CABINA",
+          "Datos Cabina"
+        ],
+        "fin": [
+          "PESACARGAS",
+          "Pesacargas"
+        ],
+        "x_min": 195,
+        "x_max": 410
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Operador_1",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Operador -1-",
+        "Operador 1"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Operador -1-"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Operador_1_abre_en_plantas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Abre en Plantas Operador 1",
+        "Abre en Plantas"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Abre en Plantas"
+          ],
+          "ocurrencia_alias": 0,
+          "separador_tokens": ",",
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Operador_2",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Operador -2-",
+        "Operador 2"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Operador -2-"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Operador_2_abre_en_plantas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Abre en Plantas Operador 2",
+        "Abre en Plantas"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Abre en Plantas"
+          ],
+          "ocurrencia_alias": 1,
+          "separador_tokens": ",",
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Operador_3",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Operador -3-",
+        "Operador 3"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Operador -3-"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Operador_3_abre_en_plantas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Abre en Plantas Operador 3",
+        "Abre en Plantas"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Abre en Plantas"
+          ],
+          "ocurrencia_alias": 2,
+          "separador_tokens": ",",
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Doble_embarque_selectivo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Doble Embarque Selectivo"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Doble Embarque Selectivo"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Emergencia_en_puertas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Emergencia en Puertas"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Emergencia en Puertas"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Puertas_anticipadas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Puertas Anticipadas"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Puertas Anticipadas"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Nivelacion_en_paradas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Nivelacion en Paradas",
+        "Nivelación en Paradas"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Nivelación en Paradas",
+            "Nivelacion en Paradas"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_celulas",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension de Celulas",
+        "Tensión de Células"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Tensión de Células",
+            "Tension de Celulas"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Leva_electrica",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Leva Electrica",
+        "Leva Eléctrica"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Leva Eléctrica",
+            "Leva Electrica"
+          ],
+          "hasta_aliases": [
+            "Tensión",
+            "Tension"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Leva_electrica_tension",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension Leva Electrica",
+        "Tensión Leva Eléctrica"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Tensión",
+            "Tension"
+          ],
+          "en_fila_con": "Leva Eléctrica",
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Premontada_en_cabina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Premontada En Cabina",
+        "Premontada en Cabina"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Premontada En Cabina",
+            "Premontada en Cabina"
+          ],
+          "hasta_aliases": [
+            "Tipo de Faldón",
+            "Tipo de Faldon"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Trampilla_en_techo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Trampilla en Techo"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": [
+            "Trampilla en Techo"
+          ],
+          "limite_x_derecha": 410,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

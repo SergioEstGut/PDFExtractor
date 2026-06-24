@@ -1,0 +1,373 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Botonera_Cabina",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Botonera_cab_fabricante",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Botonera fabricante",
+        "Botonera cabina fabricante",
+        "Fabricante botonera cabina"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Modelo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Modelo",
+        "Modelo botonera",
+        "Modelo botonera cabina"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Pulsador_fabricante",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Pulsador fabricante",
+        "Fabricante pulsador"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Color_pulsador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Color Pulsador",
+        "Color pulsador"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Doble_botonera_en_cabina",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Doble botonera en cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Comunicacion_en_2a_botonera",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Comunicación en 2ª botonera",
+        "Comunicacion en 2a botonera",
+        "Comunicación en segunda botonera"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Enviaran_botonera_para_cablear_cab",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Enviarán botonera para cablear",
+        "Enviaran botonera para cablear",
+        "Enviar botonera para cablear cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Pulsador_abrir_puertas",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Pulsador abrir puertas",
+        "Abrir puertas"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "AP_iluminado_en_cierre",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "AP iluminado en cierre",
+        "Abrir puertas iluminado en cierre"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Pulsador_cerrar_puertas",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Pulsador cerrar puertas",
+        "Cerrar puertas"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Luminoso_exceso_carga",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Luminoso exceso carga",
+        "Exceso carga"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Luminoso_prohibido_fumar",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Luminoso prohibido fumar",
+        "Prohibido fumar"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Llavin_pulsador_cab",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Llavín Pulsador",
+        "Llavin Pulsador",
+        "Llavín pulsador cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Llavin_pulsador_cab_cant",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Cantidad llavín pulsador",
+        "Cantidad llavin pulsador",
+        "Cant llavín pulsador"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true
+      }
+    },
+    {
+      "nombre": "Llavin_extra_cab",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Llavín Extra",
+        "Llavin Extra",
+        "Llavín extra cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Llavin_extra_cab_Funcion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Función llavín extra",
+        "Funcion llavin extra",
+        "Función"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Pulsador_de_stop_en_cabina",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Pulsador de stop en cabina",
+        "Pulsador stop cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Pulsador_alarma",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Pulsador alarma",
+        "Alarma"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Pulsador_alarma_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Pulsador alarma",
+        "Alarma",
+        "Pulsador alarma valor",
+        "Pulsador alarma texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Pulsador_alarma"
+      }
+    },
+    {
+      "nombre": "Llavin_VIP_bomberos",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Llavín VIP/Bomberos",
+        "Llavin VIP/Bomberos",
+        "VIP Bomberos"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Placa_caract_retroiluminada",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Placa Caract. Retroiluminada",
+        "Placa características retroiluminada",
+        "Placa caracteristicas retroiluminada"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Display_cabina",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Display Cabina",
+        "Display cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No"
+      }
+    },
+    {
+      "nombre": "Display_cabina_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Display Cabina",
+        "Display cabina",
+        "Display cabina valor",
+        "Display cabina texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Display_cabina"
+      }
+    },
+    {
+      "nombre": "Secuencia",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Secuencia",
+        "Secuencia display"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Texto_display",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Texto",
+        "Texto display",
+        "Texto del display"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Orientacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Orientación",
+        "Orientacion",
+        "Orientación display"
+      ],
+      "reglas": {}
+    },
+    {
+      "nombre": "Reg_acustico_cabina_RAP",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Reg. acústico cabina (RAP)",
+        "Reg. acustico cabina (RAP)",
+        "Registro acústico cabina RAP"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Reg. ac?stico cabina (RAP)",
+            "Reg. acustico cabina (RAP)",
+            "Registro ac?stico cabina RAP"
+          ],
+          "subseccion_pdf": "Botonera_Cabina",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    }
+  ],
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Botonera_Cabina": {
+        "inicio": [
+          "Botonera Cabina:",
+          "Botonera Cabina"
+        ],
+        "fin": [
+          "FO.231.02.01"
+        ]
+      }
+    }
+  }
+}

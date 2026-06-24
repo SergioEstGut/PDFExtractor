@@ -1,0 +1,547 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Armario",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Planta_ubicacion_armario",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Planta ubicación armario",
+        "Planta ubicacion armario",
+        "Planta armario"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Planta ubicación armario"
+          ],
+          "subseccion_pdf": "Armario",
+          "hasta_aliases": [
+            "Acabado",
+            "1 pieza",
+            "2 piezas",
+            "Longitud cables",
+            "Control en rellano",
+            "Control en marco puerta",
+            "Apertura marco",
+            "Talla Cabina"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Acabado",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Acabado",
+        "Acabado armario",
+        "Acabado del armario"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Acabado"
+          ],
+          "subseccion_pdf": "Armario",
+          "hasta_aliases": [
+            "Acabado",
+            "1 pieza",
+            "2 piezas",
+            "Longitud cables",
+            "Control en rellano",
+            "Control en marco puerta",
+            "Apertura marco",
+            "Talla Cabina"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Una_pieza_integral",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Una pieza integral",
+        "1 pieza integral",
+        "Armario una pieza integral"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Una pieza integral"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Tapa_trasera_para_zocalo",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Tapa trasera para zocalo",
+        "Tapa trasera para zócalo",
+        "Tapa trasera zocalo",
+        "Tapa trasera zócalo"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Tapa trasera para zocalo"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Dos_piezas",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Dos piezas",
+        "2 piezas",
+        "Armario dos piezas"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Dos piezas"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Longitud_cables_interconexion_armarios",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Longitud cables interconexion armarios",
+        "Longitud cables interconexión armarios",
+        "Cables interconexion armarios",
+        "Cables interconexión armarios",
+        "Longitud interconexion armarios"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Longitud cables interconexion armarios"
+          ],
+          "subseccion_pdf": "Armario"
+        }
+      }
+    },
+    {
+      "nombre": "Longitud_cables_potencia_modulo_de_piso",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Longitud cables potencia modulo de piso",
+        "Longitud cables potencia módulo de piso",
+        "Cables potencia modulo de piso",
+        "Cables potencia módulo de piso",
+        "Longitud potencia modulo piso"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Longitud cables potencia modulo de piso"
+          ],
+          "subseccion_pdf": "Armario"
+        }
+      }
+    },
+    {
+      "nombre": "Control_en_rellano",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Control en rellano",
+        "Control rellano",
+        "Maniobra en rellano"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Control en rellano"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Control_en_marco_puerta",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Control en marco puerta",
+        "Control en marco de puerta",
+        "Control marco puerta",
+        "Maniobra en marco puerta"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Control en marco puerta"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Control_en_marco_puerta_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Control en marco puerta",
+        "Control en marco de puerta",
+        "Control marco puerta",
+        "Maniobra en marco puerta",
+        "Control en marco puerta valor",
+        "Control en marco puerta texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Control_en_marco_puerta",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Control en marco puerta"
+          ],
+          "subseccion_pdf": "Armario",
+          "hasta_aliases": [
+            "Acabado",
+            "1 pieza",
+            "2 piezas",
+            "Longitud cables",
+            "Control en rellano",
+            "Control en marco puerta",
+            "Apertura marco",
+            "Talla Cabina"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Apertura_marco",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Apertura marco",
+        "Apertura del marco",
+        "Apertura marco puerta"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Apertura marco"
+          ],
+          "subseccion_pdf": "Armario",
+          "hasta_aliases": [
+            "Acabado",
+            "1 pieza",
+            "2 piezas",
+            "Longitud cables",
+            "Control en rellano",
+            "Control en marco puerta",
+            "Apertura marco",
+            "Talla Cabina"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Talla_cabina_1",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Talla cabina 1",
+        "Cabina talla 1",
+        "T1 cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Talla cabina 1"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Talla_cabina_2",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Talla cabina 2",
+        "Cabina talla 2",
+        "T2 cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Talla cabina 2"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Talla_cabina_3",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Talla cabina 3",
+        "Cabina talla 3",
+        "T3 cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Talla cabina 3"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Talla_cabina_4",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Talla cabina 4",
+        "Cabina talla 4",
+        "T4 cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Talla cabina 4"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Talla_cabina_5",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Talla cabina 5",
+        "Cabina talla 5",
+        "T5 cabina"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Talla cabina 5"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Talla_hueco_1",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Talla hueco 1",
+        "Hueco talla 1",
+        "T1 hueco"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Talla hueco 1"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Talla_hueco_2",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Talla hueco 2",
+        "Hueco talla 2",
+        "T2 hueco"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Talla hueco 2"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Talla_hueco_3",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Talla hueco 3",
+        "Hueco talla 3",
+        "T3 hueco"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Talla hueco 3"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Talla_hueco_4",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Talla hueco 4",
+        "Hueco talla 4",
+        "T4 hueco"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Talla hueco 4"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Talla_hueco_5",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Talla hueco 5",
+        "Hueco talla 5",
+        "T5 hueco"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Talla hueco 5"
+          ],
+          "subseccion_pdf": "Armario",
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    }
+  ],
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Armario": {
+        "inicio": [
+          "Armario"
+        ],
+        "fin": [
+          "Botonera Cabina:",
+          "Botonera Cabina"
+        ]
+      }
+    }
+  }
+}

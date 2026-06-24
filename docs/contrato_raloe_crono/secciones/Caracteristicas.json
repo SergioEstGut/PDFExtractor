@@ -1,0 +1,435 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Caracteristicas",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Maniobra",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Maniobra",
+        "Tipo maniobra",
+        "Maniobra Carlos Silva"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Maniobra"
+          ],
+          "hasta_aliases": [
+            "Tipo"
+          ],
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Tipo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo",
+        "Tipo ascensor",
+        "Tipo de ascensor"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Tipo"
+          ],
+          "hasta_aliases": [
+            "Consola Maniobra"
+          ],
+          "tokens": 1,
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Arq",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Arq",
+        "Arquitectura",
+        "Arquitectura maniobra"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Tipo"
+          ],
+          "hasta_aliases": [
+            "Consola Maniobra"
+          ],
+          "saltar_tokens": 1,
+          "tokens": 1,
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Consola_maniobra",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Consola maniobra",
+        "Consola de maniobra"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Consola Maniobra"
+          ],
+          "distancia_maxima": 95,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Tension_linea",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension linea",
+        "Tensión línea",
+        "Tension de linea",
+        "Tensión de línea",
+        "Tension linea motor",
+        "Tensión línea motor"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Tensi?n L?nea / Motor",
+            "Tension Linea / Motor",
+            "Motor"
+          ],
+          "indice_numero": 0,
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Tension_motor",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension motor",
+        "Tensión motor",
+        "Tension de motor",
+        "Tensión de motor",
+        "Tension linea motor",
+        "Tensión línea motor"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Tensi?n L?nea / Motor",
+            "Tension Linea / Motor",
+            "Motor"
+          ],
+          "indice_numero": 1,
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Mono",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Mono",
+        "Monofasico",
+        "Monofásico"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Mono"
+          ],
+          "distancia_maxima": 45,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Tri",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Tri",
+        "Trifasico",
+        "Trifásico"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Tri"
+          ],
+          "distancia_maxima": 45,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Velocidad",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Velocidad",
+        "Velocidad nominal",
+        "Vel."
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Velocidad"
+          ],
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Paradas",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Paradas",
+        "Numero de paradas",
+        "Número de paradas",
+        "N paradas",
+        "Nº paradas"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Paradas"
+          ],
+          "entero": true,
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Intensidad_motor",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Intensidad motor",
+        "Intensidad de motor",
+        "Intensidad nominal motor"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Intensidad motor"
+          ],
+          "despues_de_inicio_fila": "Intensidad motor",
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Frecuencia_50_Hz",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Frecuencia 50 Hz",
+        "50 Hz",
+        "50Hz"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "50 Hz"
+          ],
+          "distancia_maxima": 45,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Frecuencia_60_Hz",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Frecuencia 60 Hz",
+        "60 Hz",
+        "60Hz"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "60 Hz"
+          ],
+          "distancia_maxima": 45,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Neutro",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Neutro",
+        "Con neutro"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Neutro"
+          ],
+          "distancia_maxima": 95,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Intensidad_sobredim",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Intensidad sobredim",
+        "Intensidad sobredimensionada",
+        "Intensidad sobredimensionamiento"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Intensidad sobredim.",
+            "Intensidad sobredim"
+          ],
+          "despues_de_inicio_fila": "Intensidad sobredim.",
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Sin_cuarto_de_maquinas",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Sin cuarto de maquinas",
+        "Sin cuarto de máquinas",
+        "SCM",
+        "Sin cuarto maquinas"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Sin cuarto de m?quinas",
+            "Sin cuarto de maquinas"
+          ],
+          "distancia_maxima": 95,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Maquina_arriba",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Maquina arriba",
+        "Máquina arriba",
+        "Maquina superior",
+        "Máquina superior"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "M?quina arriba",
+            "Maquina arriba"
+          ],
+          "distancia_maxima": 95,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Caracteristicas"
+        }
+      }
+    },
+    {
+      "nombre": "Maquina_abajo",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Maquina abajo",
+        "Máquina abajo",
+        "Maquina inferior",
+        "Máquina inferior"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "M?quina abajo",
+            "Maquina abajo"
+          ],
+          "distancia_maxima": 95,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Caracteristicas"
+        }
+      }
+    }
+  ]
+}

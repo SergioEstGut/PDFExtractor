@@ -1,0 +1,104 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "general",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Serie",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Serie",
+        "Serie pedido",
+        "Serie del pedido"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Serie"
+          ],
+          "hasta_aliases": [
+            "Pa?s Instalaci?n",
+            "Pais Instalacion"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Pais_instalacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Pais instalacion",
+        "País instalación",
+        "Pais de instalacion",
+        "País de instalación",
+        "Instalacion",
+        "Instalación"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Pa?s Instalaci?n",
+            "Pais Instalacion"
+          ],
+          "hasta_aliases": [
+            "Idioma Documentaci?n",
+            "Idioma Documentacion"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Idioma_documentacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Idioma documentacion",
+        "Idioma documentación",
+        "Idioma de documentacion",
+        "Idioma de documentación",
+        "Idioma"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Idioma Documentaci?n",
+            "Idioma Documentacion"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Especificacion_norte_africa",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Especificacion norte africa",
+        "Especificación norte África",
+        "Especificacion norte de africa",
+        "Especificación norte de África",
+        "Norte Africa",
+        "Norte África"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Especificaci?n Norte de ?frica",
+            "Especificacion Norte de Africa"
+          ],
+          "distancia_maxima": 60,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    }
+  ]
+}

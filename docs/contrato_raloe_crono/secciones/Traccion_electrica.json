@@ -1,0 +1,785 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Traccion_electrica",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Fabricante_motor",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Fabricante motor",
+        "Fabricante de motor",
+        "Motor fabricante"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Fabricante"
+          ],
+          "hasta_aliases": [
+            "Modelo motor"
+          ],
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "Modelo_motor",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Modelo motor",
+        "Modelo de motor",
+        "Motor modelo"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Modelo motor"
+          ],
+          "hasta_aliases": [
+            "Tipo"
+          ],
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_traccion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo traccion",
+        "Tipo tracción",
+        "Traccion",
+        "Tracción"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Tipo"
+          ],
+          "hasta_aliases": [
+            "Frec. Motor",
+            "Frec Motor"
+          ],
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "Frec_motor",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Frec motor",
+        "Frecuencia motor",
+        "Frecuencia de motor"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Frec. Motor",
+            "Frec Motor"
+          ],
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "PotenciaCV",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Potencia CV",
+        "CV",
+        "Potencia en CV"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Potencia"
+          ],
+          "indice_numero": 0,
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "PotenciaKW",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Potencia kW",
+        "Kw",
+        "kW",
+        "Potencia KW"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Potencia"
+          ],
+          "indice_numero": 1,
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "Tension_freno_apertura",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension freno apertura",
+        "Tensión freno apertura",
+        "Tension de freno apertura",
+        "Tensión de freno apertura",
+        "Freno apertura"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Tensi?n freno (apert/mant)",
+            "Tension freno (apert/mant)"
+          ],
+          "indice_numero": 0,
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "Tension_freno_mantenimiento",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension freno mantenimiento",
+        "Tensión freno mantenimiento",
+        "Tension de freno mantenimiento",
+        "Tensión de freno mantenimiento",
+        "Freno mantenimiento"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Tensi?n freno (apert/mant)",
+            "Tension freno (apert/mant)"
+          ],
+          "indice_numero": 1,
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "Pot",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Pot",
+        "Pot.",
+        "Potencia freno",
+        "Potencia freno W"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Pot"
+          ],
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "Freno_lento_apertura",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Freno lento apertura",
+        "Freno lento en apertura",
+        "Apertura freno lento"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Freno Lento(apert/mant)",
+            "Freno Lento"
+          ],
+          "indice_numero": 0,
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "Freno_lento_mantenimiento",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Freno lento mantenimiento",
+        "Freno lento en mantenimiento",
+        "Mantenimiento freno lento"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Freno Lento(apert/mant)",
+            "Freno Lento"
+          ],
+          "indice_numero": 1,
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "Variador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Variador",
+        "Fabricante variador",
+        "Variador fabricante"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Variador"
+          ],
+          "hasta_aliases": [
+            "Modelo"
+          ],
+          "despues_de": "Tracci?n El?ctrica"
+        }
+      }
+    },
+    {
+      "nombre": "Modelo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Modelo",
+        "Modelo variador",
+        "Variador modelo"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Modelo"
+          ],
+          "hasta_aliases": [
+            "Talla"
+          ],
+          "despues_de": "Variador"
+        }
+      }
+    },
+    {
+      "nombre": "Talla",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Talla",
+        "Talla variador",
+        "Tamaño variador",
+        "Tamano variador"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Talla"
+          ],
+          "hasta_aliases": [
+            "ED (%)",
+            "ED"
+          ],
+          "despues_de": "Variador"
+        }
+      }
+    },
+    {
+      "nombre": "ED",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "ED",
+        "E.D.",
+        "ED variador"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "ED (%)",
+            "ED"
+          ],
+          "despues_de": "Variador"
+        }
+      }
+    },
+    {
+      "nombre": "F_Conm",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "F Conm",
+        "F. Conm",
+        "Frecuencia conmutacion",
+        "Frecuencia conmutación",
+        "Frecuencia de conmutacion",
+        "Frecuencia de conmutación"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "F.Conm",
+            "F Conm"
+          ],
+          "despues_de": "Variador"
+        }
+      }
+    },
+    {
+      "nombre": "Consola_VF_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Consola VF",
+        "Consola variador",
+        "Consola variador frecuencia",
+        "Consola de variador",
+        "Consola VF valor",
+        "Consola VF texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Consola_VF",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Consola VF"
+          ],
+          "hasta_aliases": [
+            "Par?metro",
+            "Parametro"
+          ],
+          "despues_de": "Variador"
+        }
+      }
+    },
+    {
+      "nombre": "Consola_VF",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Consola VF",
+        "Consola variador",
+        "Consola variador frecuencia",
+        "Consola de variador"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Consola VF"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Variador"
+        }
+      }
+    },
+    {
+      "nombre": "Parametro",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Parametro",
+        "Parámetro",
+        "Parametro variador",
+        "Parámetro variador"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Par?metro",
+            "Parametro"
+          ],
+          "hasta_aliases": [
+            "Rpm"
+          ],
+          "despues_de": "Consola VF",
+          "tokens": 1
+        }
+      }
+    },
+    {
+      "nombre": "Rpm",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Rpm",
+        "RPM",
+        "Revoluciones",
+        "Revoluciones por minuto"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Rpm"
+          ],
+          "despues_de": "Consola VF"
+        }
+      }
+    },
+    {
+      "nombre": "Relacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Relacion",
+        "Relación",
+        "Relacion maquina",
+        "Relación máquina"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Relaci?n",
+            "Relacion"
+          ],
+          "hasta_aliases": [
+            "Polea"
+          ],
+          "despues_de": "Consola VF",
+          "tokens": 1
+        }
+      }
+    },
+    {
+      "nombre": "Polea",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Polea",
+        "Diametro polea",
+        "Diámetro polea",
+        "Polea diametro",
+        "Polea diámetro"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Polea"
+          ],
+          "despues_de": "Consola VF"
+        }
+      }
+    },
+    {
+      "nombre": "Encoder",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Encoder",
+        "Modelo encoder",
+        "Encoder modelo"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Encoder"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Consola VF"
+        }
+      }
+    },
+    {
+      "nombre": "Encoder_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Encoder",
+        "Modelo encoder",
+        "Encoder modelo",
+        "Encoder valor",
+        "Encoder texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Encoder",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Encoder"
+          ],
+          "hasta_aliases": [
+            "Protocolo"
+          ],
+          "despues_de": "Consola VF"
+        }
+      }
+    },
+    {
+      "nombre": "Protocolo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Protocolo",
+        "Protocolo encoder"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Protocolo"
+          ],
+          "hasta_aliases": [
+            "Fasado"
+          ],
+          "despues_de": "Encoder"
+        }
+      }
+    },
+    {
+      "nombre": "Fasado",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Fasado",
+        "Fasado encoder"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Fasado"
+          ],
+          "despues_de": "Encoder"
+        }
+      }
+    },
+    {
+      "nombre": "N_Polos",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "N Polos",
+        "Nº Polos",
+        "Numero polos",
+        "Número polos",
+        "Numero de polos",
+        "Número de polos"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "N? Polos",
+            "N Polos",
+            "Polos"
+          ],
+          "despues_de": "Encoder",
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "Autotrafo_240_400",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Autotrafo 240 400",
+        "Autotrafo 240/400",
+        "Autotransformador 240 400",
+        "Autotransformador 240/400"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Autotrafo 240/400",
+            "Autotrafo"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Encoder"
+        }
+      }
+    },
+    {
+      "nombre": "Cable_potencia",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Cable potencia",
+        "Cable de potencia",
+        "Cableado potencia"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Cable Potencia"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Encoder"
+        }
+      }
+    },
+    {
+      "nombre": "Longitud_cable_potencia",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Longitud cable potencia",
+        "Longitud cable de potencia",
+        "Longitud cableado potencia"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Longitud Cable Potencia"
+          ],
+          "despues_de": "Cable Potencia"
+        }
+      }
+    },
+    {
+      "nombre": "Micros",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Micros",
+        "Micros freno",
+        "Micros de freno",
+        "Microcontactos"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Micros"
+          ],
+          "despues_de": "Cable Potencia"
+        }
+      }
+    },
+    {
+      "nombre": "Cableado_accesorios",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Cableado accesorios",
+        "Cableado de accesorios",
+        "Cable accesorios",
+        "Cable de accesorios"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Cableado Accesorios"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Cable Potencia"
+        }
+      }
+    },
+    {
+      "nombre": "Longitud_cable_accesorios",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Longitud cable accesorios",
+        "Longitud cable de accesorios",
+        "Longitud cableado accesorios"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Longitud Cable Accesorios"
+          ],
+          "despues_de": "Cableado Accesorios"
+        }
+      }
+    },
+    {
+      "nombre": "Conectores",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Conectores",
+        "Conectores accesorios",
+        "Conectores en accesorios"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Conectores"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No",
+          "despues_de": "Cableado Accesorios"
+        }
+      }
+    }
+  ]
+}

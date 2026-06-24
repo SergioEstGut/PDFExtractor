@@ -1,0 +1,29 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Notas",
+  "descripcion": "Notas del cuadro inferior de pagina 2 del formulario Felesa CRONO.",
+  "campos": [
+    {
+      "nombre": "Nota",
+      "tipo": "texto_multilinea",
+      "valor_defecto": "",
+      "aliases": [
+        "Nota"
+      ],
+      "reglas": {
+        "opcional": true,
+        "normalizar_saltos_linea": true,
+        "fuentes": [
+          {
+            "pagina": 2,
+            "inicio_despues_de": "Nota:",
+            "fin_antes_de": [
+              "Plantilla-Bot.Rellano"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

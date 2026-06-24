@@ -1,0 +1,306 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Medidas_Premontada",
+  "descripcion": "Medidas de premontada del formulario Felesa CRONO.",
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Medidas_Premontada": {
+        "inicio": [
+          "MEDIDAS PREMONTADA",
+          "Medidas Premontada"
+        ],
+        "fin": [
+          "MEDIDAS ENTREPLANTAS",
+          "Medidas Entreplantas"
+        ],
+        "x_min": 410,
+        "x_max": 580
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Potencia_a_motor",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Potencia a Motor"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Potencia a Motor"],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Potencia_a_piso",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Potencia a Piso"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Potencia a Piso"],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Rescate_a_potencia",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Rescate a Potencia"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Rescate a Potencia"],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Rescate_a_hueco",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Rescate a Hueco"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Rescate a Hueco"],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Huida",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Huida"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Huida"],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Foso",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Foso"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Foso"],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Huida_reducida",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Huida Reducida"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Huida Reducida"],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Barandilla_plegable_techo_cabina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Barand. plegable en techo Cab",
+        "Barandilla plegable en techo Cabina"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": [
+            "Barand. plegable en techo Cab",
+            "Barandilla plegable en techo Cabina"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_barandillas_con_contacto",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Nº de barandillas con contacto",
+        "N de barandillas con contacto"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": [
+            "Nº de barandillas con contacto",
+            "N de barandillas con contacto"
+          ],
+          "entero": true,
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Foso_reducido",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Foso Reducido"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Foso Reducido"],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_faldon_1",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo de Faldón-1", "Tipo de Faldon-1"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Tipo de Faldón-1", "Tipo de Faldon-1"],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_faldon_2",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo de Faldón-2", "Tipo de Faldon-2"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Tipo de Faldón-2", "Tipo de Faldon-2"],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_faldon_3",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo de Faldón-3", "Tipo de Faldon-3"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Tipo de Faldón-3", "Tipo de Faldon-3"],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Iluminacion_hueco_rosario",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Iluminacion Hueco (Rosario)",
+        "Iluminación Hueco (Rosario)",
+        "Rosario"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": [
+            "Iluminación Hueco (Rosario)",
+            "Iluminacion Hueco (Rosario)"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_canales",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Suministrar canales",
+        "Canales"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": [
+            "Suministrar canales"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "n_hilos_libres",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Nº de hilos libres",
+        "N de hilos libres",
+        "Numero de hilos libres",
+        "Número de hilos libres"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": [
+            "Nº de hilos libres",
+            "N de hilos libres"
+          ],
+          "entero": true,
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

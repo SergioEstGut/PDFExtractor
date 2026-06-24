@@ -1,0 +1,5 @@
+POST /extract/data HTTP/1.1
+Host: 192.168.1.118:8001
+Content-Type: application/x-www-form-urlencoded
+
+profile_id=raloe_crono&pdf_path=D%3A%5CProyectos%20Python%5CExtractorPDF%5Cpdfs%5C654144.pdf

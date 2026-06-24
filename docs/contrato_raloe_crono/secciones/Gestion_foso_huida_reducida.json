@@ -1,0 +1,497 @@
+{
+  "cliente": "Raloe",
+  "producto": "CRONO",
+  "seccion": "Gestion_foso_huida_reducida",
+  "descripcion": "",
+  "campos": [
+    {
+      "nombre": "Foso_exencion_raloe",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Foso exención Raloe",
+        "Foso exencion Raloe",
+        "Exención Raloe foso",
+        "Exencion Raloe foso"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": ["Exencion Raloe"],
+          "despues_de_inicio_fila": "Foso:",
+          "distancia_maxima": 55,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Foso_EN81_21",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Foso EN81-21",
+        "Foso EN 81-21",
+        "EN81-21 foso",
+        "EN 81-21 foso"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": ["EN81-21", "EN 81-21"],
+          "despues_de_inicio_fila": "Foso:",
+          "distancia_maxima": 55,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Foso_faldon_con_contacto",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Foso faldón con contacto",
+        "Foso faldon con contacto",
+        "Faldón con contacto",
+        "Faldon con contacto"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": ["Faldon con contacto"],
+          "despues_de_inicio_fila": "Foso:",
+          "distancia_maxima": 55,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Foso_faldon_con_contacto_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Foso faldón con contacto",
+        "Foso faldon con contacto",
+        "Faldón con contacto",
+        "Faldon con contacto",
+        "Foso faldon con contacto valor",
+        "Foso faldon con contacto texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Foso_faldon_con_contacto",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": ["Faldon con contacto"],
+          "despues_de_inicio_fila": "Foso:",
+          "hasta_aliases": ["Faldon retractil", "Faldon retractil + leva"]
+        }
+      }
+    },
+    {
+      "nombre": "Foso_faldon_retractil_leva",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Foso faldón retráctil leva",
+        "Foso faldon retractil leva",
+        "Faldón retráctil + leva",
+        "Faldon retractil + leva",
+        "Faldón retráctil leva",
+        "Faldon retractil leva"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": ["Faldon retractil + leva", "Faldon retractil leva"],
+          "despues_de_inicio_fila": "Foso:",
+          "distancia_maxima": 55,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Foso_faldon_retractil_leva_txt",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Foso faldón retráctil leva",
+        "Foso faldon retractil leva",
+        "Faldón retráctil + leva",
+        "Faldon retractil + leva",
+        "Faldón retráctil leva",
+        "Faldon retractil leva",
+        "Foso faldon retractil leva valor",
+        "Foso faldon retractil leva texto"
+      ],
+      "reglas": {
+        "infiere_check_marcado": "Foso_faldon_retractil_leva",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": ["Faldon retractil + leva", "Faldon retractil leva"],
+          "despues_de_inicio_fila": "Foso:"
+        }
+      }
+    },
+    {
+      "nombre": "Foso_tope_movil",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Foso tope móvil",
+        "Foso tope movil",
+        "Tope móvil foso",
+        "Tope movil foso"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": ["Tope Movil", "Tope movil"],
+          "despues_de_inicio_fila": "Foso:",
+          "distancia_maxima": 55,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Foso_tope_cant",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Foso tope cant",
+        "Foso tope cantidad",
+        "Cant foso tope",
+        "Cantidad tope móvil foso",
+        "Cantidad tope movil foso"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": ["Cant"],
+          "despues_de_inicio_fila": "Foso:",
+          "en_fila_con": "Tope Movil",
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "Foso_tope_contactos",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Foso tope contactos",
+        "Contactos foso tope",
+        "Contactos tope móvil foso",
+        "Contactos tope movil foso"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": ["Contactos"],
+          "despues_de_inicio_fila": "Foso:",
+          "en_fila_con": "Tope Movil",
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "Foso_rearme_mecanico_biestable",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Foso rearme mecánico biestable",
+        "Foso rearme mecanico biestable",
+        "Rearme mecánico biestable foso",
+        "Rearme mecanico biestable foso"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": ["Rearme mecanico biestable"],
+          "despues_de_inicio_fila": "Foso:",
+          "distancia_maxima": 55,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Foso_rearme_electrico_biestable",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Foso rearme eléctrico biestable",
+        "Foso rearme electrico biestable",
+        "Rearme eléctrico biestable foso",
+        "Rearme electrico biestable foso"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": ["Rearme electrico biestable"],
+          "despues_de_inicio_fila": "Foso:",
+          "distancia_maxima": 55,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Foso_rearme_electrico_biestable_txt",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Foso rearme eléctrico biestable",
+        "Foso rearme electrico biestable",
+        "Rearme eléctrico biestable foso",
+        "Rearme electrico biestable foso",
+        "Foso rearme electrico biestable valor",
+        "Foso rearme electrico biestable texto"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "infiere_check_marcado": "Foso_rearme_electrico_biestable",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": ["Rearme electrico biestable"],
+          "despues_de_inicio_fila": "Foso:"
+        }
+      }
+    },
+    {
+      "nombre": "Huida_exencion_raloe",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Huida exención Raloe",
+        "Huida exencion Raloe",
+        "Exención Raloe huida",
+        "Exencion Raloe huida"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": ["Exencion Raloe"],
+          "despues_de_inicio_fila": "Huida:",
+          "distancia_maxima": 55,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No"
+        }
+      }
+    },
+    {
+      "nombre": "Huida_EN81_21",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Huida EN81-21",
+        "Huida EN 81-21",
+        "EN81-21 huida",
+        "EN 81-21 huida"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "EN81-21",
+            "EN 81-21"
+          ],
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No",
+          "despues_de_inicio_fila": "Huida:"
+        }
+      }
+    },
+    {
+      "nombre": "Huida_barandilla_con_contacto",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Huida barandilla con contacto",
+        "Barandilla con contacto huida",
+        "Barandilla con contacto"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Barandilla con contacto"
+          ],
+          "distancia_maxima": 55,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No",
+          "despues_de_inicio_fila": "Huida:"
+        }
+      }
+    },
+    {
+      "nombre": "Huida_barandilla_cant",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Huida barandilla cant",
+        "Huida barandilla cantidad",
+        "Cant barandilla huida",
+        "Cantidad barandilla huida"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": ["Cant"],
+          "despues_de_inicio_fila": "Huida:",
+          "en_fila_con": "Barandilla con contacto",
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "Huida_tope_movil",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Huida tope móvil",
+        "Huida tope movil",
+        "Tope móvil huida",
+        "Tope movil huida"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Tope Movil",
+            "Tope Movil"
+          ],
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No",
+          "despues_de_inicio_fila": "Huida:"
+        }
+      }
+    },
+    {
+      "nombre": "Huida_tope_cant",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "Huida tope cant",
+        "Huida tope cantidad",
+        "Cant tope huida",
+        "Cantidad tope móvil huida",
+        "Cantidad tope movil huida"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": ["Cant"],
+          "despues_de_inicio_fila": "Huida:",
+          "en_fila_con": "Tope Movil",
+          "entero": true
+        }
+      }
+    },
+    {
+      "nombre": "Huida_tope_ubicacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Huida tope ubicación",
+        "Huida tope ubicacion",
+        "Ubicación tope huida",
+        "Ubicacion tope huida",
+        "Ubicación tope móvil huida",
+        "Ubicacion tope movil huida"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Ubicacion"
+          ],
+          "despues_de_inicio_fila": "Huida:",
+          "en_fila_con": "Tope Movil"
+        }
+      }
+    },
+    {
+      "nombre": "Huida_rearme_electrico_biestable",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": [
+        "Huida rearme eléctrico biestable",
+        "Huida rearme electrico biestable",
+        "Rearme eléctrico biestable huida",
+        "Rearme electrico biestable huida"
+      ],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Rearme el?ctrico biestable",
+            "Rearme electrico biestable"
+          ],
+          "distancia_maxima": 95,
+          "tolerancia_y": 18,
+          "si_no_hay_check": "No",
+          "despues_de_inicio_fila": "Huida:"
+        }
+      }
+    },
+    {
+      "nombre": "Huida_rearme_electrico_biestable_txt",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Huida rearme eléctrico biestable",
+        "Huida rearme electrico biestable",
+        "Rearme eléctrico biestable huida",
+        "Rearme electrico biestable huida",
+        "Huida rearme electrico biestable valor",
+        "Huida rearme electrico biestable texto"
+      ],
+      "reglas": {
+        "extraer_solo_numero": true,
+        "infiere_check_marcado": "Huida_rearme_electrico_biestable",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "aliases": [
+            "Rearme el?ctrico biestable",
+            "Rearme electrico biestable"
+          ],
+          "despues_de_inicio_fila": "Huida:"
+        }
+      }
+    }
+  ]
+}

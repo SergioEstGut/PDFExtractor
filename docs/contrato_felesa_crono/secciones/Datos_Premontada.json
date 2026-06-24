@@ -1,0 +1,322 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "seccion": "Datos_Premontada",
+  "descripcion": "Datos de premontada del formulario Felesa CRONO.",
+  "extraccion_pdf": {
+    "subsecciones": {
+      "Datos_Premontada": {
+        "inicio": [
+          "DATOS PREMONTADA",
+          "Datos Premontada"
+        ],
+        "fin": [
+          "CAJA INSPECCIÓN",
+          "Caja Inspeccion",
+          "CAJA INSPECCION"
+        ],
+        "x_min": 410,
+        "x_max": 580
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Ubicacion_maniobra",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Ubicacion Maniobra",
+        "Ubicación Maniobra"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Ubicación Maniobra",
+            "Ubicacion Maniobra"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Puertas_exteriores",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Puertas Exteriores"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Puertas Exteriores"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Indicar_pisos_con_semis",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Indicar Pisos Con Semis"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Indicar Pisos Con Semis"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Ptas_rell_pre_enchufable",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Ptas. Rell. Pre. Enchufable",
+        "Puertas Rellano Premontada Enchufable"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Ptas. Rell. Pre. Enchufable",
+            "Ptas Rell Pre Enchufable"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Limitador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Limitador"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Limitador"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Test_limitador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Test Limitador"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Test Limitador"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Voltaje_bobinas",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Voltaje Bobinas"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Voltaje Bobinas"
+          ],
+          "ocurrencia_alias": 0,
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Anclaje_cabina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Anclaje de Cabina"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Anclaje de Cabina"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Limitador_cpso",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Limitador Cpso"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Limitador Cpso"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Test_limitador_cpso",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Test Limitador Cpso"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Test Limitador Cpso"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Voltaje_bobinas_cpso",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Voltaje Bobinas Cpso"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Voltaje Bobinas"
+          ],
+          "ocurrencia_alias": 1,
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Stops_adicionales_foso",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Stops adicionales foso"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Stops adicionales foso"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Stop_en_maquina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Stop en maquina",
+        "Stop en máquina"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Stop en máquina",
+            "Stop en maquina"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Sistema_posicionado",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Sistema de posicionado"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Sistema de posicionado"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_soporteria",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo Soporteria",
+        "Tipo Soporter?a"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": [
+            "Tipo Soporter?a",
+            "Tipo Soporteria"
+          ],
+          "limite_x_derecha": 580,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}
