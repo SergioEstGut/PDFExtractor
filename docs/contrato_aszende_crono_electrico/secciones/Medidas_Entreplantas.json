@@ -1,0 +1,330 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Medidas_Entreplantas",
+  "descripcion": "Distancias entre plantas del formulario Aszende CRONO electrico, expuestas por planta P1..P18. La fila inferior de descarte se ignora.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Medidas_Entreplantas": {
+        "inicio": ["MEDIDA ENTREPLANTAS", "MEDIDAS ENTREPLANTAS", "Medida Entreplantas"],
+        "fin": ["OPCIONES CAJA DE INSPECCION", "Opciones Caja de Inspeccion"],
+        "x_min": 385,
+        "x_max": 555,
+        "y_max": 376
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "P1",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P1"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P1"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 440,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P2",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P2"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P2"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 440,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P3",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P3"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P3"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 440,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P4",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P4"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P4"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 440,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P5",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P5"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P5"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 440,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P6",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P6"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P6"],
+          "ocurrencia_alias": 0,
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 440,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P7",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P7"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P7"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 495,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P8",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P8"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P8"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 495,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P9",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P9"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P9"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 495,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P10",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P10"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P10"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 495,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P11",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P11"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P11"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 495,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P12",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P12"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P12"],
+          "ocurrencia_alias": 0,
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 495,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P13",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P13"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P13"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P14",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P14"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P14"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P15",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P15"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P15"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P16",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P16"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P16"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P17",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P17"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P17"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 10
+        }
+      }
+    },
+    {
+      "nombre": "P18",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["P18"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Entreplantas",
+          "aliases": ["P18"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 10
+        }
+      }
+    }
+  ]
+}

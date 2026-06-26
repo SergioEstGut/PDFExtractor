@@ -1,0 +1,171 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "template_id": "felesa_crono_hidraulico",
+  "form_version": "0",
+  "seccion": "Datos_Premontada",
+  "descripcion": "Datos de premontada del formulario Felesa CRONO hidraulico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Datos_Premontada": {
+        "inicio": ["DATOS PREMONTADA", "Datos Premontada"],
+        "fin": ["CAJA DE INSPECCION", "CAJA DE INSPECCIÓN", "Caja de Inspeccion", "Caja de Inspección"],
+        "x_min": 385,
+        "x_max": 590
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Ubicacion_maniobra",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Ubicacion Maniobra", "Ubicación Maniobra"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Ubicación Maniobra", "Ubicacion Maniobra"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Planta_maniobra",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Planta maniobra"],
+      "reglas": {
+        "derivado": {
+          "modo": "planta_desde_ubicacion_y_secuencia",
+          "campo_origen": "Ubicacion_maniobra",
+          "seccion_secuencia": "Datos_Generales",
+          "campo_secuencia": "Secuencia"
+        }
+      }
+    },
+    {
+      "nombre": "Puertas_exteriores",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Puertas Exteriores"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Puertas Exteriores"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Semiautomaticas_en_pisos",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Semiautomaticas en Pisos", "Semiautomáticas en Pisos"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Semiautomáticas en Pisos", "Semiautomaticas en Pisos"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Limitador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Limitador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Limitador"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Test_limitador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Test Limitador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Test Limitador"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Voltaje_bobinas",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Voltaje Bobinas"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Voltaje Bobinas"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Stops_adicionales_en_hueco",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Stops adicionales en hueco"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Stops adicionales en hueco"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Sistema_posicionado",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Sistema de posicionado"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Sistema de posicionado"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_soporteria",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Soporteria", "Tipo Soportería"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Tipo Soportería", "Tipo Soporteria"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

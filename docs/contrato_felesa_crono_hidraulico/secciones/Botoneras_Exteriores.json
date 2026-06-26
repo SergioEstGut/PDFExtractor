@@ -1,0 +1,177 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "template_id": "felesa_crono_hidraulico",
+  "form_version": "0",
+  "seccion": "Botoneras_Exteriores",
+  "descripcion": "Botoneras exteriores del formulario Felesa CRONO hidraulico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Botoneras_Exteriores": {
+        "inicio": ["BOTONERAS EXTERIORES", "Botoneras Exteriores"],
+        "fin": ["MEDIDAS PREMONTADA", "Medidas Premontada"],
+        "x_min": 195,
+        "x_max": 385
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Tipo_Display",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Display"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Tipo Display"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Ubicacion_Display",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Ubicacion Display", "Ubicación Display"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Ubicación Display", "Ubicacion Display"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_Botoneras",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Suministrar Botoneras", "Suministrar"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Suministrar Botoneras", "Suministrar"],
+          "hasta_aliases": ["Tipo Pulsador"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_Pulsador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Pulsador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Tipo Pulsador"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_Llavines_Ext",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Llavines Ext.", "Llavines Ext", "Nº Llavines Ext.", "N Llavines Ext."],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Llavines Ext.", "Llavines Ext", "Nº Llavines Ext.", "N Llavines Ext."],
+          "hasta_aliases": ["Tipo"],
+          "entero": true,
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_Llavin",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Llavin", "Tipo Llavín"],
+      "reglas": {
+        "vaciar_si_campo_vacio": "Num_Llavines_Ext",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Tipo"],
+          "en_fila_con": "Llavines Ext.",
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Flechas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Flechas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Flechas"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_FLD",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Suministrar FLD's", "Suministrar FLDs", "Suministrar FLD"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Suministrar FLD's", "Suministrar FLDs", "Suministrar FLD"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Luminoso",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Luminoso"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Luminoso"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Llamada_prioritaria",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Llamada prioritaria"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Llamada prioritaria"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

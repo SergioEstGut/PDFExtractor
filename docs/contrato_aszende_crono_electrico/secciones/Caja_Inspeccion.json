@@ -1,0 +1,201 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Caja_Inspeccion",
+  "descripcion": "Opciones de caja de inspeccion del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Caja_Inspeccion": {
+        "inicio": ["OPCIONES CAJA DE", "Opciones Caja de"],
+        "fin": ["PESACARGAS", "Pesacargas"],
+        "x_min": 195,
+        "x_max": 382,
+        "y_max": 438
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Tipo_enchufe",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo enchufe"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Tipo enchufe"],
+          "hasta_aliases": ["Luz cabina"],
+          "distancia_maxima_derecha": 60,
+          "limite_x_derecha": 305,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Luz_cabina",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Luz cabina"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Luz cabina"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Gong_llegada",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Gong de llegada"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Gong de llegada"],
+          "hasta_aliases": ["Flechas"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 305,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Flechas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Flechas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Flechas"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Iluminacion_en_caja_inspeccion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Iluminacion en caja de inspeccion", "Iluminación en caja de inspección"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Iluminacion en caja de inspeccion", "Iluminación en caja de inspección"],
+          "distancia_maxima_derecha": 50,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Ventilador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Ventilador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Ventilador"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Stops_adicionales",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Stops adicionales"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Stops adicionales"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 315,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Telefono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Telefono", "Teléfono"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Telefono", "Teléfono"],
+          "distancia_maxima_derecha": 150,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Idioma_sintesis",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Idioma Sintesis", "Idioma Síntesis"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Idioma Sintesis", "Idioma Síntesis"],
+          "distancia_maxima_derecha": 115,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Interfono_en_maniobra",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Interfono en maniobra"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Interfono en maniobra"],
+          "distancia_maxima_derecha": 90,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Bucle_inductivo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Bucle Inductivo"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Bucle Inductivo"],
+          "distancia_maxima_derecha": 115,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

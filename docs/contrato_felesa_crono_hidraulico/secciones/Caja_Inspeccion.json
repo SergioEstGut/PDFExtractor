@@ -1,0 +1,81 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "template_id": "felesa_crono_hidraulico",
+  "form_version": "0",
+  "seccion": "Caja_Inspeccion",
+  "descripcion": "Caja de inspeccion del formulario Felesa CRONO hidraulico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Caja_Inspeccion": {
+        "inicio": ["CAJA DE INSPECCION", "CAJA DE INSPECCIÓN", "Caja de Inspeccion", "Caja de Inspección"],
+        "fin": ["OPCIONES ESPECIALES", "Opciones Especiales"],
+        "x_min": 385,
+        "x_max": 590
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Tipo_base_enchufe",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo base de enchufe"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Tipo base de enchufe"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Iluminacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Iluminacion", "Iluminación"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Iluminación", "Iluminacion"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Stops_adicionales",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Stops adicionales"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Stops adicionales"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Barandilla_plegable_techo_cabina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Barandilla plegable techo Cabina", "Barandilla plegable en techo Cabina"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Caja_Inspeccion",
+          "aliases": ["Barandilla plegable techo Cabina", "Barandilla plegable en techo Cabina"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

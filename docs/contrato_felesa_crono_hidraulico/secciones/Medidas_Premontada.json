@@ -1,0 +1,194 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "template_id": "felesa_crono_hidraulico",
+  "form_version": "0",
+  "seccion": "Medidas_Premontada",
+  "descripcion": "Medidas de premontada del formulario Felesa CRONO hidraulico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Medidas_Premontada": {
+        "inicio": ["MEDIDAS PREMONTADA", "Medidas Premontada"],
+        "fin": ["MEDIDA ENTREPLANTAS", "Medida Entreplantas"],
+        "x_min": 385,
+        "x_max": 590
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Maniobra_a_central",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Maniobra a Central"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Maniobra a Central"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Maniobra_a_piso",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Maniobra a Piso"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Maniobra a Piso"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Huida",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Huida"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Huida"],
+          "hasta_aliases": ["Es Reducida"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Huida_reducida",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Es Reducida", "Huida Reducida"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Es Reducida"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Foso",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Foso"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Foso"],
+          "hasta_aliases": ["Es Reducido"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Foso_reducido",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Es Reducido", "Foso Reducido"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Es Reducido"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_faldon",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo de Faldon", "Tipo de Faldón"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Tipo de Faldón", "Tipo de Faldon"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Iluminacion_hueco_rosario",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Iluminacion Hueco (Rosario)", "Iluminación Hueco (Rosario)", "Rosario"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Iluminación Hueco (Rosario)", "Iluminacion Hueco (Rosario)"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Iluminacion_en_maquina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Iluminacion en Maquina", "Iluminación en Máquina"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Iluminación en Máquina", "Iluminacion en Maquina"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_canales",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Suministrar canales", "Canales"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Suministrar canales"],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "n_hilos_libres",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Nº de hilos libres", "N de hilos libres", "Numero de hilos libres", "Número de hilos libres"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Nº de hilos libres", "N de hilos libres"],
+          "entero": true,
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Botoneras_Exteriores",
+  "descripcion": "Datos de botoneras exteriores del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Botoneras_Exteriores": {
+        "inicio": ["BOTONERAS EXTERIORES", "Botoneras Exteriores"],
+        "x_min": 195,
+        "x_max": 382,
+        "y_max": 750
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Botoneras",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Botoneras"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Botoneras"],
+          "distancia_maxima_derecha": 140,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8,
+          "ocurrencia_alias": 1
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_pulsador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Pulsador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Tipo Pulsador"],
+          "distancia_maxima_derecha": 130,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_display",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Display"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Tipo Display"],
+          "distancia_maxima_derecha": 130,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Display_en_plantas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Display en plantas"],
+      "reglas": {
+        "normalizacion": {
+          "modo": "secuencia_o_texto",
+          "separador": ","
+        },
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Display en plantas"],
+          "distancia_maxima_derecha": 105,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Flechas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Flechas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Flechas"],
+          "distancia_maxima_derecha": 120,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Modulo_flechas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Modulo de flechas", "Módulo de flechas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Modulo de flechas", "Módulo de flechas"],
+          "distancia_maxima_derecha": 110,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Luminoso",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Luminoso"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Luminoso"],
+          "distancia_maxima_derecha": 130,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Aparcado_llamada_prioritaria",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Aparcado/Llamada prioritaria", "Llamada prioritaria"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["Aparcado/Llamada prioritaria", "Llamada prioritaria"],
+          "distancia_maxima_derecha": 55,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "No_touch",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["No-Touch", "No Touch"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["No-Touch", "No Touch"],
+          "hasta_aliases": ["EVOProx"],
+          "distancia_maxima_derecha": 50,
+          "limite_x_derecha": 294,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "EVOProx",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["EVOProx"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botoneras_Exteriores",
+          "aliases": ["EVOProx"],
+          "distancia_maxima_derecha": 50,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,495 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "template_id": "felesa_crono_hidraulico",
+  "form_version": "0",
+  "seccion": "Datos_Cabina",
+  "descripcion": "Datos de cabina del formulario Felesa CRONO hidraulico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Operadores": {
+        "inicio": ["DATOS CABINA", "Datos Cabina"],
+        "fin": ["Leva Electrica", "Leva Eléctrica"],
+        "x_min": 195,
+        "x_max": 385
+      },
+      "Leva_Cerrojos": {
+        "inicio": ["Leva Electrica", "Leva Eléctrica"],
+        "fin": ["Pesacargas"],
+        "x_min": 195,
+        "x_max": 385
+      },
+      "Extras_Cabina": {
+        "inicio": ["Pesacargas"],
+        "fin": ["BOTONERA CABINA", "Botonera Cabina"],
+        "x_min": 195,
+        "x_max": 385
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Operador_1",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Operador -1-", "Operador 1"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Operadores",
+          "aliases": ["Operador -1-", "Operador 1"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Abre_en_plantas_1",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Abre en Plantas"],
+      "reglas": {
+        "normalizacion": {
+          "modo": "secuencia_o_texto",
+          "separador": ",",
+          "valores_texto": ["Todas", "Todos", "Todo", "Todas las plantas"]
+        },
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Operadores",
+          "aliases": ["Abre en Plantas"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Operador_2",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Operador -2-", "Operador 2"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Operadores",
+          "aliases": ["Operador -2-", "Operador 2"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Abre_en_plantas_2",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Abre en Plantas"],
+      "reglas": {
+        "normalizacion": {
+          "modo": "secuencia_o_texto",
+          "separador": ",",
+          "valores_texto": ["Todas", "Todos", "Todo", "Todas las plantas"]
+        },
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Operadores",
+          "aliases": ["Abre en Plantas"],
+          "ocurrencia_alias": 1,
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Doble_embarque_selectivo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Doble Embarque Selectivo"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Operadores",
+          "aliases": ["Doble Embarque Selectivo"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Emergencia_en_puertas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Emergencia en Puertas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Operadores",
+          "aliases": ["Emergencia en Puertas"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Puertas_anticipadas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Puertas Anticipadas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Operadores",
+          "aliases": ["Puertas Anticipadas"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_celulas",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Tension de Celulas", "Tensión de Células"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Operadores",
+          "aliases": ["Tensión de Células", "Tension de Celulas"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_celulas_mono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension de Celulas mono", "Tensión de Células mono"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Operadores",
+          "aliases": ["Tensión de Células", "Tension de Celulas"],
+          "tokens": ["I", "mono", "monofasica", "monofásica"],
+          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_celulas_tri",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension de Celulas tri", "Tensión de Células tri"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Operadores",
+          "aliases": ["Tensión de Células", "Tension de Celulas"],
+          "tokens": ["III", "tri", "trifasica", "trifásica"],
+          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Leva_electrica",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Leva Electrica", "Leva Eléctrica"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Leva_Cerrojos",
+          "aliases": ["Leva Electrica", "Leva Eléctrica"],
+          "hasta_aliases": ["Tensión", "Tension"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Leva_electrica_tension",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Tension", "Tensión"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Leva_Cerrojos",
+          "aliases": ["Tensión", "Tension"],
+          "en_fila_con": "Leva Eléctrica",
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Leva_electrica_tension_mono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension mono", "Tensión mono"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Leva_Cerrojos",
+          "aliases": ["Tensión", "Tension"],
+          "en_fila_con": "Leva Eléctrica",
+          "tokens": ["I", "mono", "monofasica", "monofásica"],
+          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Leva_electrica_tension_tri",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension tri", "Tensión tri"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Leva_Cerrojos",
+          "aliases": ["Tensión", "Tension"],
+          "en_fila_con": "Leva Eléctrica",
+          "tokens": ["III", "tri", "trifasica", "trifásica"],
+          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Cerrojos_seguridad",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Cerrojos de Seguridad"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Leva_Cerrojos",
+          "aliases": ["Cerrojos de Seguridad"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_cerrojos_por_puerta",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Nº Cerrojos por puerta", "N Cerrojos por puerta"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Leva_Cerrojos",
+          "aliases": ["Nº Cerrojos por puerta", "N Cerrojos por puerta"],
+          "entero": true,
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Cerrojos_tension",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Tension", "Tensión"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Leva_Cerrojos",
+          "aliases": ["Tensión", "Tension"],
+          "hasta_aliases": ["Consumo"],
+          "ocurrencia_alias": 1,
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Cerrojos_tension_mono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension mono", "Tensión mono"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Leva_Cerrojos",
+          "aliases": ["Tensión", "Tension"],
+          "hasta_aliases": ["Consumo"],
+          "ocurrencia_alias": 1,
+          "tokens": ["I", "mono", "monofasica", "monofásica"],
+          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Cerrojos_tension_tri",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension tri", "Tensión tri"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Leva_Cerrojos",
+          "aliases": ["Tensión", "Tension"],
+          "hasta_aliases": ["Consumo"],
+          "ocurrencia_alias": 1,
+          "tokens": ["III", "tri", "trifasica", "trifásica"],
+          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Cerrojos_consumo",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Consumo"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Leva_Cerrojos",
+          "aliases": ["Consumo"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Pesacargas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Pesacargas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Extras_Cabina",
+          "aliases": ["Pesacargas"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Gong_llegada",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Gong Llegada"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Extras_Cabina",
+          "aliases": ["Gong Llegada"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Ventilador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Ventilador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Extras_Cabina",
+          "aliases": ["Ventilador"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Telefono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Telefono", "Teléfono"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Extras_Cabina",
+          "aliases": ["Telefono", "Teléfono"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Instalado_en",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Instalado en"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Extras_Cabina",
+          "aliases": ["Instalado en"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Idioma_sintesis",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Idioma Sintesis", "Idioma Síntesis"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Extras_Cabina",
+          "aliases": ["Idioma Sintesis", "Idioma Síntesis"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Bucle_inductivo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Bucle Inductivo"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Extras_Cabina",
+          "aliases": ["Bucle Inductivo"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

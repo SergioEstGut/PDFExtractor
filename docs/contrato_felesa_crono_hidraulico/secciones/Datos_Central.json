@@ -1,0 +1,495 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "template_id": "felesa_crono_hidraulico",
+  "form_version": "0",
+  "seccion": "Datos_Central",
+  "descripcion": "Datos de central hidraulica del formulario Felesa CRONO hidraulico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Central": {
+        "inicio": [
+          "DATOS CENTRAL",
+          "Datos Central"
+        ],
+        "fin": [
+          "*Motor Micronivelacion",
+          "*Motor Micronivelación",
+          "Motor Micronivelacion",
+          "Motor Micronivelación"
+        ],
+        "x_min": 0,
+        "x_max": 195
+      },
+      "Motor_Micronivelacion": {
+        "inicio": [
+          "*Motor Micronivelacion",
+          "*Motor Micronivelación",
+          "Motor Micronivelacion",
+          "Motor Micronivelación"
+        ],
+        "fin": [
+          "^Cabina con Cunas",
+          "^Cabina con Cuñas",
+          "Cabina con Cunas",
+          "Cabina con Cuñas"
+        ],
+        "x_min": 0,
+        "x_max": 195
+      },
+      "Cunas": {
+        "inicio": [
+          "^Cabina con Cunas",
+          "^Cabina con Cuñas",
+          "Cabina con Cunas",
+          "Cabina con Cuñas"
+        ],
+        "fin": [
+          "Rescate Automatico",
+          "Rescate Automático",
+          "DATOS CABINA"
+        ],
+        "x_min": 0,
+        "x_max": 195
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Tension_central",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Tension", "Tensión", "Tension central", "Tensión central"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Tensión", "Tension"],
+          "hasta_aliases": ["Consumo"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_central_mono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension central mono", "Tensión central mono", "Monofasica", "Monofásica"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Central",
+          "aliases": ["Tensión", "Tension"],
+          "hasta_aliases": ["Consumo"],
+          "tokens": ["I", "mono", "monofasica", "monofásica"],
+          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_central_tri",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension central tri", "Tensión central tri", "Trifasica", "Trifásica"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Central",
+          "aliases": ["Tensión", "Tension"],
+          "hasta_aliases": ["Consumo"],
+          "tokens": ["III", "tri", "trifasica", "trifásica"],
+          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Consumo",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Consumo"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Consumo"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Potencia_cv",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Potencia CV", "Potencia"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Potencia"],
+          "indice_numero": 0,
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Potencia_kw",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Potencia KW", "Potencia kW", "Potencia"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Potencia"],
+          "indice_numero": 1,
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_arranque",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo de Arranque", "Tipo Arranque"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Tipo de Arranque", "Tipo Arranque"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Grupo_valvulas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Grupo Valvulas", "Grupo Válvulas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Grupo Valvulas", "Grupo Válvulas"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_valvulas",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Tension Valvulas", "Tensión Válvulas", "Tension Valvulas", "Tensión Valvulas"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Tensión Válvulas", "Tension Valvulas"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Velocidad_cabina",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Velocidad Cabina", "Velocidad"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Velocidad Cabina"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_contactores",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Contactores", "Contactores"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Tipo Contactores"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Resistencia_caldeo_230Vac",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Resistencia de Caldeo 230Vac", "Resistencia Caldeo 230Vac"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Resistencia de Caldeo 230Vac", "Resistencia Caldeo 230Vac"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Refrigerador_aceite",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Refrigerador de Aceite", "Refrigerador Aceite"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Refrigerador de Aceite", "Refrigerador Aceite"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Doble_piston",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Doble Piston", "Doble Pistón"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Central",
+          "aliases": ["Doble Piston", "Doble Pistón"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Motor_micronivelacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Motor Micronivelacion", "Motor Micronivelación"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Motor_Micronivelacion",
+          "aliases": ["Motor Micronivelacion", "Motor Micronivelación"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Motor_micronivelacion_tension",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Tension", "Tensión"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Motor_Micronivelacion",
+          "aliases": ["Tensión", "Tension"],
+          "hasta_aliases": ["Consumo"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Motor_micronivelacion_tension_mono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension mono", "Tensión mono", "Monofasica", "Monofásica"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Motor_Micronivelacion",
+          "aliases": ["Tensión", "Tension"],
+          "hasta_aliases": ["Consumo"],
+          "tokens": ["I", "mono", "monofasica", "monofásica"],
+          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Motor_micronivelacion_tension_tri",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension tri", "Tensión tri", "Trifasica", "Trifásica"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Motor_Micronivelacion",
+          "aliases": ["Tensión", "Tension"],
+          "hasta_aliases": ["Consumo"],
+          "tokens": ["III", "tri", "trifasica", "trifásica"],
+          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Motor_micronivelacion_consumo",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Consumo"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Motor_Micronivelacion",
+          "aliases": ["Consumo"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Motor_micronivelacion_potencia_cv",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Potencia CV", "Potencia"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Motor_Micronivelacion",
+          "aliases": ["Potencia"],
+          "indice_numero": 0,
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Motor_micronivelacion_potencia_kw",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Potencia KW", "Potencia kW", "Potencia"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Motor_Micronivelacion",
+          "aliases": ["Potencia"],
+          "indice_numero": 1,
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Cabina_con_cunas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Cabina con Cunas", "Cabina con Cuñas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Cunas",
+          "aliases": ["Cabina con Cunas", "Cabina con Cuñas"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Cunas_tension",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Tension", "Tensión"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Cunas",
+          "aliases": ["Tensión", "Tension"],
+          "hasta_aliases": ["Consumo"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Cunas_consumo",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Consumo"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Cunas",
+          "aliases": ["Consumo"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_cunas",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Nº de Cunas", "N de Cunas", "Nº de Cuñas", "N de Cuñas"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Cunas",
+          "aliases": ["Nº de Cunas", "N de Cunas", "Nº de Cuñas", "N de Cuñas"],
+          "entero": true,
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Modelo_cunas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Modelo de Cunas", "Modelo de Cuñas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Cunas",
+          "aliases": ["Modelo de Cunas", "Modelo de Cuñas"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

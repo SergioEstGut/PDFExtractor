@@ -1,0 +1,103 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Rescates",
+  "descripcion": "Datos de rescate del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Rescates": {
+        "inicio": ["RESCATES", "Rescates"],
+        "fin": ["DATOS CABINA", "Datos Cabina"],
+        "x_min": 0,
+        "x_max": 190
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Tipo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo", "Tipo Rescate"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": ["Tipo"],
+          "distancia_maxima_derecha": 140,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Piso_rescate",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Piso de Rescate", "Piso Rescate"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": ["Piso de Rescate", "Piso Rescate"],
+          "distancia_maxima_derecha": 80,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Carga_util_cabina",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Carga Util Cabina", "Carga Útil Cabina", "Carga Util Cabina (Q)", "Carga Útil Cabina (Q)"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": ["Carga Útil Cabina (Q)", "Carga Util Cabina (Q)", "Carga Útil Cabina", "Carga Util Cabina"],
+          "distancia_maxima_derecha": 90,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Peso_cabina",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Peso Cabina", "Peso Cabina (P)"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": ["Peso Cabina (P)", "Peso Cabina"],
+          "distancia_maxima_derecha": 90,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Maniobra_electrica_socorro",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Maniobra electrica de Socorro", "Maniobra eléctrica de Socorro", "Maniobra de Socorro"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Rescates",
+          "aliases": ["Maniobra eléctrica de Socorro", "Maniobra electrica de Socorro"],
+          "distancia_maxima_derecha": 70,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

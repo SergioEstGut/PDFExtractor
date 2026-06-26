@@ -1,0 +1,263 @@
+﻿{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "template_id": "felesa_crono_hidraulico",
+  "form_version": "0",
+  "seccion": "Botonera_Cabina",
+  "descripcion": "Botonera de cabina del formulario Felesa CRONO hidraulico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Botonera_Cabina": {
+        "inicio": [
+          "BOTONERA CABINA",
+          "Botonera Cabina"
+        ],
+        "fin": [
+          "OPCIONES ESPECIALES",
+          "Opciones Especiales",
+          "BOTONERAS EXTERIORES",
+          "Botoneras Exteriores"
+        ],
+        "x_min": 195,
+        "x_max": 385
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Suministrar_display",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Suministrar display"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Suministrar display"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_display",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Display"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Tipo Display"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_pulsadores",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Suministrar Pulsadores"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Suministrar Pulsadores"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_pulsador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Pulsador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Tipo Pulsador"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Alarma",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": ["Alarma"],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Alarma"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8,
+          "hasta_aliases": ["Abrir P.", "Abrir P"]
+        }
+      }
+    },
+    {
+      "nombre": "Abrir_puertas",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": ["Abrir P.", "Abrir puertas"],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Abrir P."],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8,
+          "hasta_aliases": ["Cerrar P.", "Cerrar P"]
+        }
+      }
+    },
+    {
+      "nombre": "Cerrar_puertas",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": ["Cerrar P.", "Cerrar puertas"],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Cerrar P."],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Luminosos_tel",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": ["Luminosos Tel.", "Luminosos Tel"],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Luminosos Tel.", "Luminosos Tel"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8,
+          "hasta_aliases": ["Doble Botonera"]
+        }
+      }
+    },
+    {
+      "nombre": "Doble_botonera",
+      "tipo": "check_simple",
+      "valor_defecto": "No",
+      "aliases": ["Doble Botonera"],
+      "reglas": {
+        "valor_marcado": "Si",
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_x_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Doble Botonera"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Llavines_cabina",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Llavines Cab.", "Llavines Cabina"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Llavines Cab.", "Llavines Cab"],
+          "hasta_aliases": ["Tipo"],
+          "entero": true,
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_llavin_cabina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Llavin Cabina", "Tipo Llavín Cabina"],
+      "reglas": {
+        "vaciar_si_campo_vacio": "Llavines_cabina",
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Tipo"],
+          "en_fila_con": "Llavines Cab.",
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Flechas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Flechas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Flechas"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Plafon_emergencia",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Plafon Emergencia", "Plafón Emergencia"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Plafón Emergencia", "Plafon Emergencia"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Botonera_codificada",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Botonera Codificada"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Botonera Codificada"],
+          "limite_x_derecha": 385,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}
+

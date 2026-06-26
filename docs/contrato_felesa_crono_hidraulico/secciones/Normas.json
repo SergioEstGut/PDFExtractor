@@ -1,0 +1,244 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "template_id": "felesa_crono_hidraulico",
+  "form_version": "0",
+  "seccion": "Normas",
+  "descripcion": "Normas aplicables del formulario Felesa CRONO hidraulico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Normas": {
+        "inicio": [
+          "NORMAS",
+          "Normas"
+        ],
+        "fin": [
+          "DATOS GENERALES",
+          "Datos Generales"
+        ],
+        "x_min": 0,
+        "x_max": 190
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "EN81_20",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "EN81-20",
+        "EN 81-20",
+        "EN81 20"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Normas",
+          "aliases": [
+            "EN81-20",
+            "EN 81-20"
+          ],
+          "hasta_aliases": [
+            "EN81-72",
+            "EN 81-72"
+          ],
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "EN81_72",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "EN81-72",
+        "EN 81-72",
+        "EN81 72"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Normas",
+          "aliases": [
+            "EN81-72",
+            "EN 81-72"
+          ],
+          "hasta_aliases": [
+            "Anti UCM",
+            "Anti UCM (A3)"
+          ],
+          "tolerancia_y": 8,
+          "zona_relativa": {
+            "misma_linea_que": "EN81_20",
+            "posicion": "derecha"
+          },
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "Anti_UCM_A3",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Anti UCM (A3)",
+        "Anti UCM",
+        "A3"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Normas",
+          "aliases": [
+            "Anti UCM (A3)",
+            "Anti UCM"
+          ],
+          "hasta_aliases": [
+            "EN81-70",
+            "EN 81-70"
+          ],
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "EN81_70",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "EN81-70",
+        "EN 81-70",
+        "EN81 70"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Normas",
+          "aliases": [
+            "EN81-70",
+            "EN 81-70"
+          ],
+          "hasta_aliases": [
+            "EN81-71",
+            "EN 81-71"
+          ],
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "EN81_71",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "EN81-71",
+        "EN 81-71",
+        "EN81 71"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Normas",
+          "aliases": [
+            "EN81-71",
+            "EN 81-71"
+          ],
+          "hasta_aliases": [
+            "EN81-73",
+            "EN 81-73"
+          ],
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "EN81_73",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "EN81-73",
+        "EN 81-73",
+        "EN81 73"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Normas",
+          "aliases": [
+            "EN81-73",
+            "EN 81-73"
+          ],
+          "hasta_aliases": [
+            "EN81-77",
+            "EN 81-77",
+            "EN81-77 (Sismico)",
+            "EN81-77 (Sísmico)"
+          ],
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "EN81_77_sismico",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "EN81-77 (Sismico)",
+        "EN81-77 (Sísmico)",
+        "EN81-77",
+        "EN 81-77",
+        "Sismico",
+        "Sísmico"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Normas",
+          "aliases": [
+            "EN81-77 (Sismico)",
+            "EN81-77 (Sísmico)",
+            "EN81-77",
+            "EN 81-77"
+          ],
+          "hasta_aliases": [
+            "Operativa Shabbat",
+            "Shabbat"
+          ],
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "Operativa_Shabbat",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Operativa Shabbat",
+        "Shabbat"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Normas",
+          "aliases": [
+            "Operativa Shabbat"
+          ],
+          "hasta_aliases": [
+            "Datos Generales",
+            "DATOS GENERALES"
+          ],
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    }
+  ]
+}

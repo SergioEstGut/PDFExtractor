@@ -1,0 +1,323 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "template_id": "felesa_crono_hidraulico",
+  "form_version": "0",
+  "seccion": "Cabecera",
+  "descripcion": "Cabecera del formulario Felesa CRONO hidraulico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Cabecera": {
+        "inicio": [
+          "Cliente:"
+        ],
+        "fin": [
+          "FORMULARIO MANIOBRA CRONO",
+          "NORMAS"
+        ],
+        "x_min": 0,
+        "x_max": 590
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Cliente",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Cliente"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "Cliente"
+          ],
+          "hasta_aliases": [
+            "Persona de contacto",
+            "Pais destino",
+            "País destino"
+          ],
+          "distancia_maxima_derecha": 100,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "Referencia",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Referencia",
+        "Ref."
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "Referencia"
+          ],
+          "hasta_aliases": [
+            "Telf.",
+            "Telefono",
+            "Teléfono",
+            "Idioma Documentacion",
+            "Idioma Documentación"
+          ],
+          "distancia_maxima_derecha": 100,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "Num_pedido",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Nº pedido",
+        "N pedido",
+        "No pedido",
+        "Numero pedido",
+        "Número pedido"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "Nº pedido",
+            "N pedido",
+            "No pedido",
+            "Numero pedido",
+            "Número pedido"
+          ],
+          "hasta_aliases": [
+            "Movil",
+            "Móvil",
+            "Cliente final"
+          ],
+          "distancia_maxima_derecha": 100,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "Fecha_pedido",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Fecha pedido"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "Fecha pedido"
+          ],
+          "hasta_aliases": [
+            "e-mail",
+            "email"
+          ],
+          "distancia_maxima_derecha": 95,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "Fecha_entrega",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Fecha entrega"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "Fecha entrega"
+          ],
+          "distancia_maxima_derecha": 95,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 205
+        }
+      }
+    },
+    {
+      "nombre": "Persona_contacto",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Persona de contacto",
+        "Persona contacto"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "Persona de contacto",
+            "Persona contacto"
+          ],
+          "hasta_aliases": [
+            "Pais destino",
+            "País destino"
+          ],
+          "distancia_maxima_derecha": 80,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 390
+        }
+      }
+    },
+    {
+      "nombre": "Telefono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Telf.",
+        "Telf",
+        "Telefono",
+        "Teléfono"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "Telf.",
+            "Telf",
+            "Telefono",
+            "Teléfono"
+          ],
+          "hasta_aliases": [
+            "Idioma Documentacion",
+            "Idioma Documentación"
+          ],
+          "distancia_maxima_derecha": 130,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 390
+        }
+      }
+    },
+    {
+      "nombre": "Movil",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Móvil",
+        "Movil"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "Móvil",
+            "Movil"
+          ],
+          "hasta_aliases": [
+            "Cliente final"
+          ],
+          "distancia_maxima_derecha": 90,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 390
+        }
+      }
+    },
+    {
+      "nombre": "Email",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "e-mail",
+        "email"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "e-mail",
+            "email"
+          ],
+          "distancia_maxima_derecha": 90,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 390
+        }
+      }
+    },
+    {
+      "nombre": "Pais_destino",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Pais destino",
+        "País destino"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "Pais destino",
+            "País destino"
+          ],
+          "distancia_maxima_derecha": 130,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 590
+        }
+      }
+    },
+    {
+      "nombre": "Idioma_documentacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Idioma Documentacion",
+        "Idioma Documentación"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "Idioma Documentacion",
+            "Idioma Documentación"
+          ],
+          "distancia_maxima_derecha": 130,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 590
+        }
+      }
+    },
+    {
+      "nombre": "Cliente_final",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Cliente final"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Cabecera",
+          "aliases": [
+            "Cliente final"
+          ],
+          "distancia_maxima_derecha": 130,
+          "tolerancia_y": 8,
+          "limite_x_derecha": 590
+        }
+      }
+    }
+  ]
+}

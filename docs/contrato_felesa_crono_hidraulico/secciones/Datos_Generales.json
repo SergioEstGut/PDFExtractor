@@ -1,0 +1,369 @@
+﻿{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "template_id": "felesa_crono_hidraulico",
+  "form_version": "0",
+  "seccion": "Datos_Generales",
+  "descripcion": "Datos generales del formulario Felesa CRONO hidraulico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Datos_Generales": {
+        "inicio": [
+          "DATOS GENERALES",
+          "Datos Generales"
+        ],
+        "fin": [
+          "DATOS CENTRAL",
+          "Datos Central"
+        ],
+        "x_min": 0,
+        "x_max": 195
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Tipo_maniobra",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo de Maniobra",
+        "Tipo Maniobra"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_debajo_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "Tipo de Maniobra"
+          ],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8,
+          "filas_debajo": 2
+        }
+      }
+    },
+    {
+      "nombre": "Acabado_armario",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Acabado de Armario",
+        "Acabado Armario"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "Acabado de Armario",
+            "Acabado Armario"
+          ],
+          "hasta_aliases": [
+            "NÂº Plantas",
+            "N Plantas"
+          ],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_plantas",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NÂº Plantas",
+        "N Plantas",
+        "Numero Plantas",
+        "NÃºmero Plantas"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "NÂº Plantas",
+            "N Plantas"
+          ],
+          "hasta_aliases": [
+            "Planta Acceso"
+          ],
+          "entero": true,
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Planta_acceso",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Planta Acceso",
+        "Planta de Acceso"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "Planta Acceso"
+          ],
+          "hasta_aliases": [
+            "Secuencia"
+          ],
+          "tolerancia_y": 8,
+          "limite_x_derecha": 195
+        }
+      }
+    },
+    {
+      "nombre": "Secuencia",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Secuencia",
+        "Secuencia de pisos",
+        "Pisos"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "Secuencia"
+          ],
+          "hasta_aliases": [
+            "NÂº de Cabinas",
+            "N de Cabinas"
+          ],
+          "separador_tokens": ",",
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_cabinas",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": [
+        "NÂº de Cabinas",
+        "N de Cabinas",
+        "Numero de Cabinas",
+        "NÃºmero de Cabinas"
+      ],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "NÂº de Cabinas",
+            "N de Cabinas"
+          ],
+          "entero": true,
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_recogida",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tipo Recogida",
+        "Recogida"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "Tipo Recogida"
+          ],
+          "distancia_maxima_derecha": 120,
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_entrada",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension de Entrada",
+        "TensiÃ³n de Entrada",
+        "Tension Entrada",
+        "TensiÃ³n Entrada"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "TensiÃ³n de Entrada",
+            "Tension de Entrada"
+          ],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_entrada_mono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension de Entrada mono",
+        "TensiÃ³n de Entrada mono",
+        "Monofasica",
+        "MonofÃ¡sica"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "TensiÃ³n de Entrada",
+            "Tension de Entrada"
+          ],
+          "tokens": [
+            "I",
+            "mono",
+            "monofasica",
+            "monofásica"
+          ],
+          "tokens_grupo": [
+            "I",
+            "III",
+            "mono",
+            "tri",
+            "monofasica",
+            "monofásica",
+            "trifasica",
+            "trifásica"
+          ],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_entrada_tri",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Tension de Entrada tri",
+        "TensiÃ³n de Entrada tri",
+        "Trifasica",
+        "TrifÃ¡sica"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha_cercana",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "TensiÃ³n de Entrada",
+            "Tension de Entrada"
+          ],
+          "tokens": [
+            "III",
+            "tri",
+            "trifasica",
+            "trifásica"
+          ],
+          "tokens_grupo": [
+            "I",
+            "III",
+            "mono",
+            "tri",
+            "monofasica",
+            "monofásica",
+            "trifasica",
+            "trifásica"
+          ],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Instalacion_con_neutro",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Instalacion con Neutro",
+        "InstalaciÃ³n con Neutro"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "InstalaciÃ³n con Neutro",
+            "Instalacion con Neutro"
+          ],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Instalacion_por_encima_1000m",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Instalacion por encima de 1000m",
+        "InstalaciÃ³n por encima de 1000m",
+        "Por encima de 1000m"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "InstalaciÃ³n por encima de 1000m",
+            "Instalacion por encima de 1000m"
+          ],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Altura_sobre_nivel_mar",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": [
+        "Altura sobre el nivel del mar",
+        "Altura nivel mar"
+      ],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": [
+            "Altura sobre el nivel del mar"
+          ],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}
+

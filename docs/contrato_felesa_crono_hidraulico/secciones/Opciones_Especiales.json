@@ -1,0 +1,68 @@
+{
+  "cliente": "Felesa",
+  "producto": "CRONO",
+  "template_id": "felesa_crono_hidraulico",
+  "form_version": "0",
+  "seccion": "Opciones_Especiales",
+  "descripcion": "Opciones especiales del formulario Felesa CRONO hidraulico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Opciones_Especiales": {
+        "inicio": ["OPCIONES ESPECIALES", "Opciones Especiales"],
+        "fin": ["OBSERVACIONES", "Observaciones", "FELESA", "NS"],
+        "x_min": 385,
+        "x_max": 590
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Telemetria_remota_M2CS_ARM",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Telemetria Remota M2CS ARM",
+        "Telemetría Remota M2CS ARM",
+        "Telemetria Remota M2CS \"ARM\"",
+        "Telemetría Remota M2CS \"ARM\""
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Opciones_Especiales",
+          "aliases": [
+            "Telemetría Remota M2CS \"ARM\"",
+            "Telemetria Remota M2CS \"ARM\"",
+            "Telemetría Remota M2CS ARM",
+            "Telemetria Remota M2CS ARM"
+          ],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Pasarela_datos_track_GSM",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Pasarela de datos Track GSM",
+        "Pasalera de datos Track GSM",
+        "Track GSM"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Opciones_Especiales",
+          "aliases": [
+            "Pasarela de datos Track GSM",
+            "Pasalera de datos Track GSM"
+          ],
+          "limite_x_derecha": 590,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

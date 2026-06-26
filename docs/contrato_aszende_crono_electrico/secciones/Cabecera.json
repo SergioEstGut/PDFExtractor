@@ -1,0 +1,63 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "seccion": "Cabecera",
+  "descripcion": "Campos de cabecera relevantes para el contrato Aszende CRONO electrico.",
+  "campos": [
+    {
+      "nombre": "Pais_destino",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Pais destino",
+        "Pais de destino",
+        "País destino",
+        "País de destino",
+        "Destino"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "País destino",
+            "Pais destino"
+          ],
+          "hasta_aliases": [
+            "Idioma documentación",
+            "Idioma documentacion"
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Idioma_documentacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": [
+        "Idioma documentacion",
+        "Idioma documentación",
+        "Idioma de documentacion",
+        "Idioma de documentación",
+        "Idioma"
+      ],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "aliases": [
+            "Idioma documentación",
+            "Idioma documentacion"
+          ],
+          "hasta_aliases": [
+            "Cliente Final",
+            "Especific. Cliente"
+          ]
+        }
+      }
+    }
+  ],
+  "extraccion_pdf": {
+    "pagina_rol": "principal"
+  },
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0"
+}

@@ -1,0 +1,31 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Observaciones",
+  "descripcion": "Observaciones multilinea del formulario Aszende CRONO electrico. Se leen en la pagina principal dentro del area OBSERVACIONES (1).",
+  "extraccion_pdf": {
+    "pagina_rol": "principal"
+  },
+  "campos": [
+    {
+      "nombre": "Observaciones",
+      "tipo": "texto_multilinea",
+      "valor_defecto": "",
+      "aliases": ["Observaciones", "OBSERVACIONES"],
+      "reglas": {
+        "opcional": true,
+        "normalizar_saltos_linea": true,
+        "unir_fragmentos_con": "\n",
+        "fuentes": [
+          {
+            "pagina_rol": "principal",
+            "inicio_despues_de": "OBSERVACIONES",
+            "fin_antes_de": ["Plantilla-EM"]
+          }
+        ]
+      }
+    }
+  ]
+}

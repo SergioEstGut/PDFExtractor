@@ -1,0 +1,141 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Pesacargas",
+  "descripcion": "Datos de pesacargas del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Pesacargas": {
+        "inicio": ["PESACARGAS", "Pesacargas"],
+        "fin": ["BOTONERA CABINA", "Botonera Cabina"],
+        "x_min": 195,
+        "x_max": 382
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Tipo_pesacargas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo", "Tipo Pesacargas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": ["Tipo"],
+          "distancia_maxima_derecha": 155,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_pesacargas",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Tension", "Tensión", "Tension Pesacargas", "Tensión Pesacargas"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": ["Tension", "Tensión"],
+          "hasta_aliases": ["Suministrar"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 282,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_pesacargas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Suministrar"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": ["Suministrar"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_cables",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Nº Cables", "N Cables", "Numero Cables", "Número Cables"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": ["Nº Cables", "N Cables"],
+          "hasta_aliases": ["Diametro", "Diámetro", "Diimetro"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 282,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Diametro",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Diametro", "Diámetro", "Diimetro"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": ["Diametro", "Diámetro", "Diimetro"],
+          "distancia_maxima_derecha": 55,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_celulas",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Nº Células", "Nº Celulas", "N Celulas", "Numero Celulas", "Número Células"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": ["Nº Células", "Nº Celulas", "N Celulas"],
+          "hasta_aliases": ["Nº Dumies", "Nº Dummies", "N Dumies", "N Dummies"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 282,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_dummies",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Nº Dumies", "Nº Dummies", "N Dumies", "N Dummies", "Numero Dummies"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Pesacargas",
+          "aliases": ["Nº Dumies", "Nº Dummies", "N Dumies", "N Dummies"],
+          "distancia_maxima_derecha": 55,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

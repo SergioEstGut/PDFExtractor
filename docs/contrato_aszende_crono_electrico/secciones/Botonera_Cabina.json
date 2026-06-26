@@ -1,0 +1,204 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Botonera_Cabina",
+  "descripcion": "Datos de botonera de cabina del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Botonera_Cabina": {
+        "inicio": ["Botonera"],
+        "fin": ["BOTONERAS EXTERIORES", "Botoneras Exteriores"],
+        "x_min": 195,
+        "x_max": 382,
+        "y_max": 625
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Botonera",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Botonera"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Botonera"],
+          "en_fila_con": "Nº",
+          "hasta_aliases": ["Nº", "N"],
+          "distancia_maxima_derecha": 110,
+          "limite_x_derecha": 338,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_botoneras",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Nº Botoneras", "N Botoneras", "Numero Botoneras"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Nº", "N"],
+          "en_fila_con": "Botonera",
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_pulsador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Pulsador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Tipo Pulsador"],
+          "distancia_maxima_derecha": 130,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_display",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Display"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Tipo Display"],
+          "distancia_maxima_derecha": 130,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Luminosos_telefono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Luminosos Telefono", "Luminosos Teléfono"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Luminosos Telefono", "Luminosos Teléfono"],
+          "distancia_maxima_derecha": 100,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Plafon_emergencia",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Plafon Emergencia", "Plafón Emergencia"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Plafon Emergencia", "Plafón Emergencia"],
+          "distancia_maxima_derecha": 105,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "VIP",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["VIP"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["VIP"],
+          "hasta_aliases": ["Cerrar puertas", "Cerrar"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 266,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Cerrar_puertas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Cerrar puertas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Cerrar puertas"],
+          "distancia_maxima_derecha": 55,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Botonera_codificada",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Botonera Codificada"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["Botonera Codificada"],
+          "distancia_maxima_derecha": 55,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "No_touch",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["No-Touch", "No Touch"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["No-Touch", "No Touch"],
+          "hasta_aliases": ["EVOProx"],
+          "distancia_maxima_derecha": 50,
+          "limite_x_derecha": 294,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "EVOProx",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["EVOProx"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Botonera_Cabina",
+          "aliases": ["EVOProx"],
+          "distancia_maxima_derecha": 50,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

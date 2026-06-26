@@ -1,0 +1,259 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Datos_Generales",
+  "descripcion": "Datos generales del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Datos_Generales": {
+        "inicio": ["DATOS GENERALES", "Datos Generales"],
+        "fin": ["DATOS MOTOR", "Datos Motor"],
+        "x_min": 0,
+        "x_max": 190
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Tipo_maniobra",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo de Maniobra", "Tipo Maniobra"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Tipo de Maniobra", "Tipo Maniobra"],
+          "hasta_aliases": ["Nº Plantas", "N Plantas"],
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_plantas",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Nº Plantas", "N Plantas", "Numero Plantas", "Número Plantas"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Nº Plantas", "N Plantas"],
+          "hasta_aliases": ["Planta Acceso"],
+          "entero": true,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Planta_acceso",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Planta Acceso", "Planta de Acceso"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Planta Acceso"],
+          "hasta_aliases": ["Secuencia"],
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Secuencia",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Secuencia", "Secuencia de pisos", "Pisos"],
+      "reglas": {
+        "normalizacion": {
+          "modo": "secuencia_o_texto",
+          "separador": ",",
+          "valores_texto": ["Todas", "TODAS"]
+        },
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Secuencia"],
+          "separador_tokens": ",",
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_cabinas",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Nº de Cabinas", "N de Cabinas", "Numero de Cabinas", "Número de Cabinas"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Nº de Cabinas", "N de Cabinas"],
+          "entero": true,
+          "distancia_maxima_derecha": 80,
+          "limite_x_derecha": 115,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tipo_recogida",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tipo Recogida", "Recogida"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Tipo Recogida"],
+          "distancia_maxima_derecha": 120,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Velocidad_cabina",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Velocidad Cabina", "Velocidad"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Velocidad Cabina"],
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_entrada",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Tension de Entrada", "Tensión de Entrada", "Tension Entrada", "Tensión Entrada"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Tensión de Entrada", "Tension de Entrada"],
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_entrada_mono",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension de Entrada mono", "Tensión de Entrada mono", "Monofasica", "Monofásica"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Tensión de Entrada", "Tension de Entrada"],
+          "tokens": ["I", "1Ph", "1P", "mono", "monofasica", "monofásica"],
+          "tokens_grupo": ["I", "III", "1Ph", "3Ph", "1P", "3P", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Tension_entrada_tri",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Tension de Entrada tri", "Tensión de Entrada tri", "Trifasica", "Trifásica"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "valor_por_token_en_texto_derecha",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Tensión de Entrada", "Tension de Entrada"],
+          "tokens": ["III", "3Ph", "3P", "tri", "trifasica", "trifásica"],
+          "tokens_grupo": ["I", "III", "1Ph", "3Ph", "1P", "3P", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "valor_si_presente": "Si",
+          "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Instalacion_con_neutro",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Instalacion con Neutro", "Instalación con Neutro"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Instalación con Neutro", "Instalacion con Neutro"],
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_autotransformador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Suministrar Autotransformador", "Autotransformador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Suministrar Autotransformador"],
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Instalacion_por_encima_1000m",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Instalacion por encima de 1000m", "Instalación por encima de 1000m", "Por encima de 1000m"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Instalación por encima de 1000m", "Instalacion por encima de 1000m"],
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Altura_sobre_nivel_mar",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Altitud sobre el nivel del mar", "Altura sobre el nivel del mar", "Altura nivel mar"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_alias",
+          "subseccion_pdf": "Datos_Generales",
+          "aliases": ["Altitud sobre el nivel del mar", "Altura sobre el nivel del mar"],
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

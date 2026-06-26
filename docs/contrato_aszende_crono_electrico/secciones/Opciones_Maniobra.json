@@ -1,0 +1,133 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Opciones_Maniobra",
+  "descripcion": "Opciones de maniobra del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Opciones_Maniobra": {
+        "inicio": ["OPCIONES DE MANIOBRA", "Opciones de Maniobra"],
+        "fin": ["RESCATES", "Rescates"],
+        "x_min": 0,
+        "x_max": 190
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Modelo_variador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Modelo Variador", "Variador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Opciones_Maniobra",
+          "aliases": ["Modelo Variador"],
+          "distancia_maxima_derecha": 120,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Consola_programacion_variador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Consola Programacion Variador", "Consola Programación Variador", "Consola Variador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Opciones_Maniobra",
+          "aliases": ["Consola Programación Variador", "Consola Programacion Variador"],
+          "distancia_maxima_derecha": 90,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Consola_maniobra",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Consola de Maniobra", "Consola Maniobra"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Opciones_Maniobra",
+          "aliases": ["Consola de Maniobra", "Consola Maniobra"],
+          "distancia_maxima_derecha": 90,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Acabado_armario",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Acabado de Armario", "Acabado del Armario", "Acabado Armario"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Opciones_Maniobra",
+          "aliases": ["Acabado de Armario", "Acabado del Armario", "Acabado Armario"],
+          "distancia_maxima_derecha": 100,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Iluminacion_zona_rescate",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Iluminacion en zona Rescate", "Iluminación en zona Rescate"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Opciones_Maniobra",
+          "aliases": ["Iluminación en zona Rescate", "Iluminacion en zona Rescate"],
+          "distancia_maxima_derecha": 80,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Ubicacion_maniobra",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Ubicacion Maniobra", "Ubicación Maniobra"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Opciones_Maniobra",
+          "aliases": ["Ubicación Maniobra", "Ubicacion Maniobra"],
+          "distancia_maxima_derecha": 105,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_protecciones_electricas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Suministrar Protecciones Electricas", "Suministrar Protecciones Eléctricas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Opciones_Maniobra",
+          "aliases": ["Suministrar Protecciones Eléctricas", "Suministrar Protecciones Electricas"],
+          "distancia_maxima_derecha": 70,
+          "limite_x_derecha": 190,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Datos_Premontada",
+  "descripcion": "Datos de premontada del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Datos_Premontada": {
+        "inicio": ["DATOS PREMONTADA", "Datos Premontada"],
+        "fin": ["OPCIONES ESPECIALES", "Opciones Especiales"],
+        "x_min": 385,
+        "x_max": 555
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Puertas_exteriores",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Puertas Exteriores"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Puertas Exteriores"],
+          "distancia_maxima_derecha": 100,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Semiautomaticas_en_pisos",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Semiautomaticas en Pisos", "Semiautomáticas en Pisos", "Semiautomiticas en Pisos"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Semiautomaticas en Pisos", "Semiautomáticas en Pisos", "Semiautomiticas en Pisos"],
+          "distancia_maxima_derecha": 65,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Limitador_cabina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Limitador de Cabina", "Limitador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Limitador de Cabina", "Limitador"],
+          "distancia_maxima_derecha": 120,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Bobinas_limitador",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Bobinas Limitador"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Bobinas Limitador"],
+          "distancia_maxima_derecha": 100,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Voltaje_bobinas",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Voltaje Bobinas"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Voltaje Bobinas"],
+          "distancia_maxima_derecha": 100,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Limitador_contrapeso",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Limitador del contrapeso"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Limitador del contrapeso"],
+          "distancia_maxima_derecha": 65,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Num_hilos_libres",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Nº de hilos libres", "Nş de hilos libres", "N de hilos libres", "Numero de hilos libres"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Nº de hilos libres", "Nş de hilos libres", "N de hilos libres"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 495,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Cab",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Cab"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Cab"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8,
+          "saltar_tokens": 1
+        }
+      }
+    },
+    {
+      "nombre": "Ext",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Ext"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Ext"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8,
+          "saltar_tokens": 1
+        }
+      }
+    },
+    {
+      "nombre": "Anclaje_cabina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Anclaje de Cabina"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Anclaje de Cabina"],
+          "distancia_maxima_derecha": 90,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Barandilla_plegable_techo_cabina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Barandilla plegable techo Cabina"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Barandilla plegable techo Cabina"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Iluminacion_hueco_rosario",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Iluminacion Hueco Rosario", "Iluminación Hueco Rosario", "Iluminacion Hueco (Rosario)", "Iluminación Hueco (Rosario)"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Iluminacion Hueco (Rosario)", "Iluminación Hueco (Rosario)", "Iluminacion Hueco Rosario", "Iluminación Hueco Rosario"],
+          "distancia_maxima_derecha": 55,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Suministrar_canales",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Suministrar canales"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Suministrar canales"],
+          "distancia_maxima_derecha": 85,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Stops_adicionales_hueco",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Stops adicionales en hueco"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Stops adicionales en hueco"],
+          "distancia_maxima_derecha": 60,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Stop_emergencia_maquina",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Stop emergencia en maquina", "Stop emergencia en máquina", "Stop emergencia en miquina"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Stop emergencia en maquina", "Stop emergencia en máquina", "Stop emergencia en miquina"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Sistema_posicionado",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Sistema de posicionado"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Sistema de posicionado"],
+          "distancia_maxima_derecha": 70,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Escalera_contacto_foso",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Escalera con contacto en foso"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Premontada",
+          "aliases": ["Escalera con contacto en foso"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 555,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Parametros_Variador",
+  "descripcion": "Parametros del variador del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Parametros_Variador": {
+        "inicio": ["PARAMETROS DEL VARIADOR", "Parámetros del Variador", "Parametros del Variador"],
+        "x_min": 385,
+        "x_max": 560,
+        "y_max": 748
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Encoder_fasado_a_0",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Encoder Fasado a 0"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Parametros_Variador",
+          "aliases": ["Encoder Fasado a 0"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 505,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Interfaz_incremental_encoder",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Interfaz Incremental Encoder"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Parametros_Variador",
+          "aliases": ["Interfaz Incremental Encoder"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 545,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Relacion",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Relacion", "Relación", "Tiro"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Parametros_Variador",
+          "aliases": ["Relacion", "Relación", "Tiro"],
+          "hasta_aliases": ["Polea"],
+          "distancia_maxima_derecha": 65,
+          "limite_x_derecha": 478,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Polea",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Polea"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Parametros_Variador",
+          "aliases": ["Polea"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 545,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Numero_polos",
+      "tipo": "int",
+      "valor_defecto": "",
+      "aliases": ["Numero de Polos", "Número de Polos"],
+      "reglas": {
+        "tipo_valor": "int",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Parametros_Variador",
+          "aliases": ["Numero de Polos", "Número de Polos"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 492,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Velocidad_motor",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Velocidad Motor"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Parametros_Variador",
+          "aliases": ["Velocidad Motor"],
+          "distancia_maxima_derecha": 40,
+          "limite_x_derecha": 492,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Frecuencia_motor",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Frecuencia Motor"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Parametros_Variador",
+          "aliases": ["Frecuencia Motor"],
+          "distancia_maxima_derecha": 35,
+          "limite_x_derecha": 492,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

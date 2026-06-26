@@ -1,0 +1,159 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Medidas_Premontada",
+  "descripcion": "Medidas de premontada del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Medidas_Premontada": {
+        "inicio": ["MEDIDAS PREMONTADA", "Medidas Premontada"],
+        "fin": ["MEDIDA ENTREPLANTAS", "Medida Entreplantas"],
+        "x_min": 385,
+        "x_max": 555
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Potencia_a_motor",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Potencia a Motor"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Potencia a Motor"],
+          "distancia_maxima_derecha": 85,
+          "limite_x_derecha": 540,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Potencia_a_piso",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Potencia a Piso"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Potencia a Piso"],
+          "distancia_maxima_derecha": 90,
+          "limite_x_derecha": 540,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Rescate_a_potencia",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Rescate a Potencia"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Rescate a Potencia"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 510,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Rescate_a_hueco",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Rescate a Hueco"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Rescate a Hueco"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 505,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Huida",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Huida"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Huida"],
+          "hasta_aliases": ["Es Reducida"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 462,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Huida_reducida",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Huida Reducida", "Es Reducida"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Es Reducida"],
+          "en_fila_con": "Huida",
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 548,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Foso",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Foso"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Foso"],
+          "hasta_aliases": ["Es Reducido"],
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 462,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Foso_reducido",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Foso Reducido", "Es Reducido"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Medidas_Premontada",
+          "aliases": ["Es Reducido"],
+          "en_fila_con": "Foso",
+          "distancia_maxima_derecha": 45,
+          "limite_x_derecha": 548,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

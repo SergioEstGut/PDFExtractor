@@ -1,0 +1,53 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Opciones_Especiales",
+  "descripcion": "Opciones especiales del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Opciones_Especiales": {
+        "inicio": ["OPCIONES ESPECIALES", "Opciones Especiales"],
+        "fin": ["PARAMETROS DEL VARIADOR", "Parámetros del Variador", "Parametros del Variador"],
+        "x_min": 385,
+        "x_max": 560
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Telemetria_remota_M2CS",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Telemetria Remota M2CS", "Telemetría Remota M2CS"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Opciones_Especiales",
+          "aliases": ["Telemetria Remota M2CS", "Telemetría Remota M2CS"],
+          "distancia_maxima_derecha": 70,
+          "limite_x_derecha": 560,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Pasarela_datos_track_GSM",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Pasarela de datos Track GSM", "Pasalera de datos Track GSM"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Opciones_Especiales",
+          "aliases": ["Pasarela de datos Track GSM", "Pasalera de datos Track GSM"],
+          "distancia_maxima_derecha": 50,
+          "limite_x_derecha": 560,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}

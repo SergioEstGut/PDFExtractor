@@ -1,0 +1,212 @@
+{
+  "cliente": "Aszende",
+  "producto": "CRONO",
+  "template_id": "aszende_crono_electrico",
+  "form_version": "0",
+  "seccion": "Datos_Cabina",
+  "descripcion": "Datos de cabina del formulario Aszende CRONO electrico.",
+  "extraccion_pdf": {
+    "pagina_rol": "principal",
+    "subsecciones": {
+      "Datos_Cabina": {
+        "inicio": ["DATOS CABINA", "Datos Cabina"],
+        "fin": ["OPCIONES CAJA DE INSPECCION", "Opciones Caja de Inspeccion"],
+        "x_min": 195,
+        "x_max": 382
+      }
+    }
+  },
+  "campos": [
+    {
+      "nombre": "Operador_1",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Operador -1-", "Operador 1"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": ["Operador -1-", "Operador 1"],
+          "distancia_maxima_derecha": 115,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Operador_1_abre_en_plantas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Abre en Plantas Operador 1", "Abre en Plantas"],
+      "reglas": {
+        "normalizacion": {
+          "modo": "secuencia_o_texto",
+          "separador": ",",
+          "valores_texto": ["Todas", "TODAS"]
+        },
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": ["Abre en Plantas"],
+          "ocurrencia_alias": 0,
+          "distancia_maxima_derecha": 105,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Operador_2",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Operador -2-", "Operador 2"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": ["Operador -2-", "Operador 2"],
+          "distancia_maxima_derecha": 115,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Operador_2_abre_en_plantas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Abre en Plantas Operador 2", "Abre en Plantas"],
+      "reglas": {
+        "normalizacion": {
+          "modo": "secuencia_o_texto",
+          "separador": ",",
+          "valores_texto": ["Todas", "TODAS"]
+        },
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": ["Abre en Plantas"],
+          "ocurrencia_alias": 1,
+          "distancia_maxima_derecha": 105,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Doble_embarque_selectivo",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Doble Embarque Selectivo"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": ["Doble Embarque Selectivo"],
+          "distancia_maxima_derecha": 90,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Barreras",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Barreras"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": ["Barreras"],
+          "distancia_maxima_derecha": 90,
+          "limite_x_derecha": 272,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Puertas_anticipadas",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Puertas Anticipadas"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": ["Puertas Anticipadas"],
+          "distancia_maxima_derecha": 70,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Renivelacion_con_puerta_abierta",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Renivelacion con Puerta abierta"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": ["Renivelacion con Puerta abierta"],
+          "distancia_maxima_derecha": 80,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Leva_electrica",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Leva Electrica"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": ["Leva Electrica"],
+          "hasta_aliases": ["Tension"],
+          "distancia_maxima_derecha": 75,
+          "limite_x_derecha": 307,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Leva_electrica_tension",
+      "tipo": "double",
+      "valor_defecto": "",
+      "aliases": ["Tension Leva Electrica"],
+      "reglas": {
+        "tipo_valor": "double",
+        "extraccion_pdf": {
+          "modo": "numero_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": ["Tension"],
+          "en_fila_con": "Leva Electrica",
+          "distancia_maxima_derecha": 70,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Abertura_puertas_emergencia",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Abertura Puertas en Emergencia", "Apertura Puertas en Emergencia"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Datos_Cabina",
+          "aliases": ["Abertura Puertas en Emergencia", "Apertura Puertas en Emergencia"],
+          "distancia_maxima_derecha": 80,
+          "limite_x_derecha": 382,
+          "tolerancia_y": 8
+        }
+      }
+    }
+  ]
+}
