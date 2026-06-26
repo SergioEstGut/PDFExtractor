@@ -29,13 +29,13 @@ class ExtractorPaginaTecnicaRaloeCrono:
         intensidad_sobredim = self._valores_de_bloque(
             pagina, y_min=366, y_max=386, x_min=120, x_max=140
         )
-        valores_motor = self._valores_de_bloque(pagina, y_min=405, y_max=426, x_min=75, x_max=90)
+        valores_motor = _motor_electrico_desde_fila(pagina)
         valores_potencia = _valores_numericos_en_fila(pagina, y_min=428, y_max=448, x_min=70, x_max=395)
         freno_lento_apertura = _primer_texto_en_zona(pagina, 428, 448, 525, 545)
         freno_lento_mantenimiento = _primer_texto_en_zona(pagina, 428, 448, 550, 570)
-        valores_variador = self._valores_de_bloque(pagina, y_min=450, y_max=471, x_min=70, x_max=80)
+        valores_variador = _variador_desde_fila(pagina)
         valores_parametros = self._valores_de_bloque(pagina, y_min=471, y_max=491, x_min=25, x_max=40)
-        valores_encoder = self._valores_de_bloque(pagina, y_min=491, y_max=511, x_min=25, x_max=40)
+        valores_encoder = _encoder_desde_fila(pagina)
         cable_valores_potencia = self._valores_de_bloque(pagina, y_min=511, y_max=531, x_min=25, x_max=40)
         valores_cable_accesorios = self._valores_de_bloque(
             pagina, y_min=531, y_max=550, x_min=25, x_max=40
@@ -46,11 +46,7 @@ class ExtractorPaginaTecnicaRaloeCrono:
         circuitos_puerta = self._valores_de_rangos(pagina, 697, 717, [(85, 100), (405, 420)])
         tensiones_puerta = self._valores_de_rangos(pagina, 720, 740, [(85, 100), (405, 420)])
         barreras_puerta = self._valores_de_bloque(pagina, y_min=742, y_max=762, x_min=25, x_max=40)
-        hidraulica_fabricante = _primer_texto_en_zona(pagina, 572, 592, 80, 155)
-        hidraulica_grupo_valvulas = _primer_texto_en_zona(pagina, 572, 592, 230, 320)
-        hidraulica_tension_valvulas = _primer_texto_en_zona(pagina, 572, 592, 405, 432)
-        hidraulica_potencia = _primer_texto_en_zona(pagina, 592, 612, 75, 100)
-        hidraulica_tipo_arranque = _primer_texto_en_zona(pagina, 592, 612, 225, 330)
+        valores_hidraulica = _hidraulica_desde_filas(pagina)
 
         consola_vf_marcada = _check_en(pagina, 25, 45, 471, 491)
         tiene_consola_vf_txt = len(valores_parametros) >= 6
@@ -65,9 +61,9 @@ class ExtractorPaginaTecnicaRaloeCrono:
             "general": _seccion_con_fallback(
                 extraer_por_reglas_pdf(pagina, "general"),
                 {
-                    "Serie": valores_generales[3],
-                    "Pais_instalacion": valores_generales[2],
-                    "Idioma_documentacion": valores_generales[1],
+                    "Serie": _valor_en(valores_generales, 3),
+                    "Pais_instalacion": _valor_en(valores_generales, 2),
+                    "Idioma_documentacion": _valor_en(valores_generales, 1),
                     "Especificacion_norte_africa": _si_no(_check_en(pagina, 25, 45, 220, 236)),
                 },
             ),
@@ -91,21 +87,21 @@ class ExtractorPaginaTecnicaRaloeCrono:
             "Caracteristicas": _seccion_con_fallback(
                 extraer_por_reglas_pdf(pagina, "Caracteristicas"),
                 {
-                    "Maniobra": caracteristicas_principales[0],
-                    "Tipo": caracteristicas_principales[1],
-                    "Arq": caracteristicas_principales[2],
+                    "Maniobra": _valor_en(caracteristicas_principales, 0),
+                    "Tipo": _valor_en(caracteristicas_principales, 1),
+                    "Arq": _valor_en(caracteristicas_principales, 2),
                     "Consola_maniobra": _si_no(_check_en(pagina, 470, 500, 305, 326)),
-                    "Tension_linea": caracteristicas_tension[1],
-                    "Tension_motor": caracteristicas_tension[2],
+                    "Tension_linea": _valor_en(caracteristicas_tension, 1),
+                    "Tension_motor": _valor_en(caracteristicas_tension, 2),
                     "Mono": _si_no(_check_en(pagina, 210, 235, 328, 346)),
                     "Tri": _si_no(_check_en(pagina, 270, 295, 328, 346)),
-                    "Velocidad": caracteristicas_tension[3],
-                    "Paradas": caracteristicas_tension[0],
-                    "Intensidad_motor": intensidad_motor[0],
+                    "Velocidad": _valor_en(caracteristicas_tension, 3),
+                    "Paradas": _valor_en(caracteristicas_tension, 0),
+                    "Intensidad_motor": _valor_en(intensidad_motor, 0),
                     "Frecuencia_50_Hz": _si_no(_check_en(pagina, 210, 235, 345, 365)),
                     "Frecuencia_60_Hz": _si_no(_check_en(pagina, 270, 295, 345, 365)),
                     "Neutro": _si_no(_check_en(pagina, 355, 380, 345, 365)),
-                    "Intensidad_sobredim": intensidad_sobredim[0],
+                    "Intensidad_sobredim": _valor_en(intensidad_sobredim, 0),
                     "Sin_cuarto_de_maquinas": _si_no(_check_en(pagina, 210, 235, 365, 386)),
                     "Maquina_arriba": _si_no(_check_en(pagina, 355, 380, 365, 386)),
                     "Maquina_abajo": _si_no(_check_en(pagina, 470, 500, 365, 386)),
@@ -114,33 +110,33 @@ class ExtractorPaginaTecnicaRaloeCrono:
             "Traccion_electrica": _seccion_con_fallback(
                 extraer_por_reglas_pdf(pagina, "Traccion_electrica"),
                 {
-                    "Fabricante_motor": valores_motor[2],
-                    "Modelo_motor": valores_motor[3],
-                    "Tipo_traccion": valores_motor[1],
-                    "Frec_motor": valores_motor[0],
-                    "PotenciaCV": valores_potencia[0],
-                    "PotenciaKW": valores_potencia[1],
-                    "Tension_freno_apertura": valores_potencia[2],
-                    "Tension_freno_mantenimiento": valores_potencia[3],
-                    "Pot": valores_potencia[4],
+                    "Fabricante_motor": valores_motor["Fabricante_motor"],
+                    "Modelo_motor": valores_motor["Modelo_motor"],
+                    "Tipo_traccion": valores_motor["Tipo_traccion"],
+                    "Frec_motor": valores_motor["Frec_motor"],
+                    "PotenciaCV": _valor_en(valores_potencia, 0),
+                    "PotenciaKW": _valor_en(valores_potencia, 1),
+                    "Tension_freno_apertura": _valor_en(valores_potencia, 2),
+                    "Tension_freno_mantenimiento": _valor_en(valores_potencia, 3),
+                    "Pot": _valor_en(valores_potencia, 4),
                     "Freno_lento_apertura": freno_lento_apertura,
                     "Freno_lento_mantenimiento": freno_lento_mantenimiento,
-                    "Variador": valores_variador[0],
-                    "Modelo": valores_variador[1],
-                    "Talla": valores_variador[2],
-                    "ED": valores_variador[3],
-                    "F_Conm": valores_variador[4],
+                    "Variador": valores_variador["Variador"],
+                    "Modelo": valores_variador["Modelo"],
+                    "Talla": valores_variador["Talla"],
+                    "ED": valores_variador["ED"],
+                    "F_Conm": valores_variador["F_Conm"],
                     "Consola_VF": _si_no(consola_vf_marcada),
                     "Consola_VF_txt": parametros_traccion["Consola_VF_txt"],
                     "Parametro": parametros_traccion["Parametro"],
                     "Rpm": parametros_traccion["Rpm"],
                     "Relacion": parametros_traccion["Relacion"],
                     "Polea": parametros_traccion["Polea"],
-                    "Encoder": "Si" if _valor_en(valores_encoder, 3) else "",
-                    "Encoder_txt": _valor_en(valores_encoder, 3),
-                    "Protocolo": _valor_en(valores_encoder, 0),
-                    "Fasado": _valor_en(valores_encoder, 1),
-                    "N_Polos": _valor_en(valores_encoder, 2),
+                    "Encoder": "Si" if valores_encoder["Encoder_txt"] else "",
+                    "Encoder_txt": valores_encoder["Encoder_txt"],
+                    "Protocolo": valores_encoder["Protocolo"],
+                    "Fasado": valores_encoder["Fasado"],
+                    "N_Polos": valores_encoder["N_Polos"],
                     "Autotrafo_240_400": _si_no(_check_en(pagina, 470, 500, 492, 510)),
                     "Cable_potencia": _si_no(_check_en(pagina, 25, 45, 512, 530)),
                     "Longitud_cable_potencia": longitud_cable_potencia,
@@ -153,22 +149,22 @@ class ExtractorPaginaTecnicaRaloeCrono:
             "Traccion_hidraulica": _seccion_con_fallback(
                 extraer_por_reglas_pdf(pagina, "Traccion_hidraulica"),
                 {
-                    "Fabricante_oleo": hidraulica_fabricante,
-                    "Grupo_valvulas": hidraulica_grupo_valvulas,
-                    "Tension_valvulas": hidraulica_tension_valvulas,
-                    "Potencia_oleo": hidraulica_potencia,
-                    "Tipo_arranque": hidraulica_tipo_arranque,
+                    "Fabricante_oleo": valores_hidraulica["Fabricante_oleo"],
+                    "Grupo_valvulas": valores_hidraulica["Grupo_valvulas"],
+                    "Tension_valvulas": valores_hidraulica["Tension_valvulas"],
+                    "Potencia_oleo": valores_hidraulica["Potencia_oleo"],
+                    "Tipo_arranque": valores_hidraulica["Tipo_arranque"],
                     "Suministrar_softstarter": _si_no(_check_en(pagina, 405, 425, 594, 612)),
                 },
             ),
             "Puertas_cabina_embarque_1": _seccion_con_fallback(
                 extraer_por_reglas_pdf(pagina, "Puertas_cabina_embarque_1"),
                 {
-                    "Fabricante_op1": fabricantes_puerta[0],
-                    "Tipo_op1": tipos_puerta[0],
-                    "Mano_op1": manos_puerta[0],
-                    "Circuito_op1": circuitos_puerta[0],
-                    "Tension_op1": tensiones_puerta[0],
+                    "Fabricante_op1": _valor_en(fabricantes_puerta, 0),
+                    "Tipo_op1": _valor_en(tipos_puerta, 0),
+                    "Mano_op1": _valor_en(manos_puerta, 0),
+                    "Circuito_op1": _valor_en(circuitos_puerta, 0),
+                    "Tension_op1": _valor_en(tensiones_puerta, 0),
                     "Barreras_Op1": "Si" if _valor_en(barreras_puerta, 0) else "",
                     "Barreras_Op1_txt": _valor_en(barreras_puerta, 0),
                     "Apertura_emergencia_op1": _si_no(_check_en(pagina, 25, 45, 760, 780)),
@@ -268,12 +264,123 @@ def _valores_numericos_en_fila(
         for palabra in sorted(pagina.palabras, key=lambda palabra: palabra.x0)
         if y_min <= palabra.y0 <= y_max
         and x_min <= palabra.x0 <= x_max
+        and not _es_palabra_nota(palabra)
         and re.fullmatch(r"\d+(?:[.,]\d+)?", palabra.texto)
     ]
 
 
 def _valor_en(valores: list[str], indice: int) -> str:
     return valores[indice] if 0 <= indice < len(valores) else ""
+
+
+def _numero_en_texto(valor: str, entero: bool, indice: int) -> str:
+    patron = r"\d+" if entero else r"\d+(?:[.,]\d+)?"
+    numeros = re.findall(patron, valor)
+    return numeros[indice] if 0 <= indice < len(numeros) else ""
+
+
+def _motor_electrico_desde_fila(pagina: PaginaPdf) -> dict[str, str]:
+    palabras = _palabras_fila(pagina, 405, 426)
+    return {
+        "Fabricante_motor": _texto_entre_secuencias(palabras, ["Fabricante"], ["Modelo", "motor"]),
+        "Modelo_motor": _texto_entre_secuencias(palabras, ["Modelo", "motor"], ["Tipo"]),
+        "Tipo_traccion": _texto_entre_secuencias(palabras, ["Tipo"], ["Frec.", "Motor"]),
+        "Frec_motor": _numero_en_texto(
+            _texto_entre_secuencias(palabras, ["Frec.", "Motor"], None),
+            entero=False,
+            indice=0,
+        ),
+    }
+
+
+def _variador_desde_fila(pagina: PaginaPdf) -> dict[str, str]:
+    palabras = _palabras_fila(pagina, 450, 471)
+    return {
+        "Variador": _texto_entre_secuencias(palabras, ["Variador"], ["Modelo"]),
+        "Modelo": _texto_entre_secuencias(palabras, ["Modelo"], ["Talla"]),
+        "Talla": _texto_entre_secuencias(palabras, ["Talla"], ["ED"]),
+        "ED": _numero_en_texto(
+            _texto_entre_secuencias(palabras, ["ED"], ["F.Conm"]),
+            entero=False,
+            indice=0,
+        ),
+        "F_Conm": _numero_en_texto(
+            _texto_entre_secuencias(palabras, ["F.Conm"], None),
+            entero=False,
+            indice=0,
+        ),
+    }
+
+
+def _encoder_desde_fila(pagina: PaginaPdf) -> dict[str, str]:
+    palabras = _palabras_fila(pagina, 491, 511)
+    return {
+        "Encoder_txt": _texto_entre_secuencias(palabras, ["Encoder"], ["Protocolo"]),
+        "Protocolo": _texto_entre_secuencias(palabras, ["Protocolo"], ["Fasado"]),
+        "Fasado": _numero_en_texto(
+            _texto_entre_secuencias(palabras, ["Fasado"], ["Nº", "Polos"]),
+            entero=False,
+            indice=0,
+        ),
+        "N_Polos": _numero_en_texto(
+            _texto_entre_secuencias(palabras, ["Nº", "Polos"], ["Autotrafo"]),
+            entero=True,
+            indice=0,
+        ),
+    }
+
+
+def _hidraulica_desde_filas(pagina: PaginaPdf) -> dict[str, str]:
+    fila_superior = _palabras_fila(pagina, 572, 592)
+    fila_inferior = _palabras_fila(pagina, 592, 612)
+    tension = _texto_entre_secuencias(fila_superior, ["Tensión", "Válvulas"], None)
+    return {
+        "Fabricante_oleo": _texto_entre_secuencias(fila_superior, ["Fabricante"], ["Grupo", "Válvulas"]),
+        "Grupo_valvulas": _texto_entre_secuencias(fila_superior, ["Grupo", "Válvulas"], ["Tensión", "Válvulas"]),
+        "Tension_valvulas": _normalizar_tension_compuesta(tension),
+        "Potencia_oleo": _numero_en_texto(
+            _texto_entre_secuencias(fila_inferior, ["Potencia"], ["Tipo", "Arranque"]),
+            entero=False,
+            indice=0,
+        ),
+        "Tipo_arranque": _texto_entre_secuencias(fila_inferior, ["Tipo", "Arranque"], ["Suministrar", "softstarter"]),
+    }
+
+
+def _normalizar_tension_compuesta(valor: str) -> str:
+    valor = re.sub(r"(\d)\s+V$", r"\1V", valor.strip(), flags=re.IGNORECASE)
+    return valor if re.search(r"\d", valor) else ""
+
+
+def _palabras_fila(pagina: PaginaPdf, y_min: float, y_max: float) -> list[PalabraTexto]:
+    return [
+        palabra
+        for palabra in sorted(pagina.palabras, key=lambda palabra: palabra.x0)
+        if y_min <= palabra.y0 <= y_max and 20 <= palabra.x0 <= 570 and not _es_palabra_nota(palabra)
+    ]
+
+
+def _texto_entre_secuencias(
+    palabras: list[PalabraTexto],
+    inicio: list[str],
+    fin: list[str] | None,
+) -> str:
+    x_min = _fin_secuencia(palabras, inicio)
+    if x_min is None:
+        return ""
+    x_max = _inicio_secuencia(palabras, fin) if fin else None
+    return _texto_entre(palabras, x_min, x_max or 10_000)
+
+
+def _inicio_secuencia(palabras: list[PalabraTexto], secuencia: list[str] | None) -> float | None:
+    if not secuencia:
+        return None
+    normalizada = [_normalizar_etiqueta(palabra.texto.rstrip(":")) for palabra in palabras]
+    objetivo = [_normalizar_etiqueta(token.rstrip(":")) for token in secuencia]
+    for indice in range(0, len(normalizada) - len(objetivo) + 1):
+        if normalizada[indice : indice + len(objetivo)] == objetivo:
+            return palabras[indice].x0
+    return None
 
 
 def _seccion_con_fallback(declarativa: dict[str, str], fallback: dict[str, str]) -> dict[str, str]:
@@ -321,8 +428,8 @@ def _parametros_traccion_desde_fila(
 
 
 def _fin_secuencia(palabras: list[PalabraTexto], secuencia: list[str]) -> float | None:
-    normalizada = [_normalizar_etiqueta(palabra.texto) for palabra in palabras]
-    objetivo = [_normalizar_etiqueta(token) for token in secuencia]
+    normalizada = [_normalizar_etiqueta(palabra.texto.rstrip(":")) for palabra in palabras]
+    objetivo = [_normalizar_etiqueta(token.rstrip(":")) for token in secuencia]
     for indice in range(0, len(normalizada) - len(objetivo) + 1):
         if normalizada[indice : indice + len(objetivo)] == objetivo:
             return palabras[indice + len(objetivo) - 1].x1
@@ -340,7 +447,7 @@ def _palabra_con_prefijo(palabras: list[PalabraTexto], prefijos: tuple[str, ...]
 
 def _normalizar_etiqueta(texto: str) -> str:
     reemplazos = str.maketrans("áéíóúÁÉÍÓÚ", "aeiouAEIOU")
-    return texto.translate(reemplazos).strip().lower()
+    return re.sub(r"[^a-z0-9]+", "", texto.translate(reemplazos).strip().lower())
 
 
 def _texto_entre(palabras: list[PalabraTexto], x_min: float | None, x_max: float | None) -> str:
@@ -395,6 +502,7 @@ def _primer_texto_en_zona(
         for palabra in sorted(pagina.palabras, key=lambda palabra: (palabra.y0, palabra.x0))
         if y_min <= palabra.y0 <= y_max
         and x_min <= palabra.x0 <= x_max
+        and not _es_palabra_nota(palabra)
         and palabra.texto not in ignorar
     ]
     return valores[0] if valores else ""
@@ -408,9 +516,41 @@ def _check_en(
     y_max: float,
 ) -> bool:
     return any(
-        x_min <= marca.x0 <= x_max and y_min <= marca.y0 <= y_max
+        _solapa_zona(marca, x_min, x_max, y_min, y_max)
         for marca in pagina.marcas_check
+    ) or any(
+        _es_marca_check_textual(palabra.texto)
+        and x_min <= palabra.x0 <= x_max
+        and y_min <= palabra.y0 <= y_max
+        for palabra in pagina.palabras
     )
+
+
+def _solapa_zona(
+    palabra: PalabraTexto,
+    x_min: float,
+    x_max: float,
+    y_min: float,
+    y_max: float,
+) -> bool:
+    return palabra.x1 >= x_min and palabra.x0 <= x_max and palabra.y1 >= y_min and palabra.y0 <= y_max
+
+
+def _es_marca_check_textual(texto: str) -> bool:
+    return texto.strip().upper() in {"X", "\u2713", "\u2714", "\u2611", "\u2612"}
+
+
+def _es_palabra_nota(palabra: PalabraTexto) -> bool:
+    return _es_rojo(palabra.color)
+
+
+def _es_rojo(color: int | None) -> bool:
+    if color is None:
+        return False
+    rojo = (color >> 16) & 255
+    verde = (color >> 8) & 255
+    azul = color & 255
+    return rojo >= 150 and rojo > verde + 50 and rojo > azul + 50
 
 
 def _debug_pdf_pagina_tecnica(data: dict[str, dict[str, str]]) -> dict[str, dict[str, dict[str, str]]]:
@@ -425,6 +565,8 @@ def _debug_pdf_pagina_tecnica(data: dict[str, dict[str, str]]) -> dict[str, dict
     }
     debug: dict[str, dict[str, dict[str, str]]] = {}
     for seccion, campos in data.items():
+        if not isinstance(campos, dict):
+            continue
         debug[seccion] = {}
         for campo, valor in campos.items():
             clave = (seccion, campo)

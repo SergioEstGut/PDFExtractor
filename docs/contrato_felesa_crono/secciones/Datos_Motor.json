@@ -52,9 +52,25 @@
           "hasta_aliases": [
             "Consumo"
           ],
-          "token": "I",
+          "tokens": [
+            "I",
+            "mono",
+            "monofasica",
+            "monofásica"
+          ],
+          "tokens_grupo": [
+            "I",
+            "III",
+            "mono",
+            "tri",
+            "monofasica",
+            "monofásica",
+            "trifasica",
+            "trifásica"
+          ],
           "valor_si_presente": "Si",
           "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
           "limite_x_derecha": 205,
           "tolerancia_y": 8
         }
@@ -81,9 +97,25 @@
           "hasta_aliases": [
             "Consumo"
           ],
-          "token": "III",
+          "tokens": [
+            "III",
+            "tri",
+            "trifasica",
+            "trifásica"
+          ],
+          "tokens_grupo": [
+            "I",
+            "III",
+            "mono",
+            "tri",
+            "monofasica",
+            "monofásica",
+            "trifasica",
+            "trifásica"
+          ],
           "valor_si_presente": "Si",
           "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
           "limite_x_derecha": 205,
           "tolerancia_y": 8
         }
@@ -302,6 +334,7 @@
           "Control Motor"
         ]
       }
-    }
+    },
+    "pagina_rol": "principal"
   }
 }

@@ -18,12 +18,21 @@ class PalabraTexto(BaseModel):
     color: int | None = None
 
 
+class MarcaVisual(BaseModel):
+    tipo: str
+    x0: float
+    y0: float
+    x1: float
+    y1: float
+
+
 class PaginaPdf(BaseModel):
     numero: int
     texto: str
     bloques: list[BloqueTexto] = Field(default_factory=list)
     palabras: list[PalabraTexto] = Field(default_factory=list)
     marcas_check: list[PalabraTexto] = Field(default_factory=list)
+    marcas_visuales: list[MarcaVisual] = Field(default_factory=list)
     metodo_extraccion: str
 
 

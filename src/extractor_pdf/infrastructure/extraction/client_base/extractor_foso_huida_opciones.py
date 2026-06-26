@@ -385,9 +385,19 @@ def _check_en(
     y_max: float,
 ) -> bool:
     return any(
-        x_min <= marca.x0 <= x_max and y_min <= marca.y0 <= y_max
+        _solapa_zona(marca, x_min, x_max, y_min, y_max)
         for marca in pagina.marcas_check
     )
+
+
+def _solapa_zona(
+    palabra: PalabraTexto,
+    x_min: float,
+    x_max: float,
+    y_min: float,
+    y_max: float,
+) -> bool:
+    return palabra.x1 >= x_min and palabra.x0 <= x_max and palabra.y1 >= y_min and palabra.y0 <= y_max
 
 
 def _si_no(valor: bool) -> str:
@@ -442,6 +452,8 @@ def _debug_pdf_foso_opciones(data: dict[str, dict[str, str]]) -> dict[str, dict[
     }
     debug: dict[str, dict[str, dict[str, str]]] = {}
     for seccion, campos in data.items():
+        if not isinstance(campos, dict):
+            continue
         debug[seccion] = {}
         for campo, valor in campos.items():
             clave = (seccion, campo)

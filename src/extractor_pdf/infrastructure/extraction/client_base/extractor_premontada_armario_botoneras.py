@@ -179,7 +179,7 @@ def _extraer_tabla_premontada(pagina: PaginaPdf) -> dict[str, list[str]]:
         for palabra in sorted(pagina.palabras, key=lambda palabra: (palabra.y0, palabra.x0))
         if 180 <= palabra.y0 <= y_fin_tabla
         and 200 <= palabra.x0 <= 255
-        and re.fullmatch(r"\d+\.\d{3}", palabra.texto)
+        and re.fullmatch(r"\d{3}|\d+\.\d{3}", palabra.texto)
     ]
 
     resultado = {clave: [fila[clave] for fila in filas] for clave in columnas}
@@ -282,6 +282,8 @@ def _debug_pdf_premontada_armario_botoneras(
     }
     debug: dict[str, dict[str, dict[str, str]]] = {}
     for seccion, campos in data.items():
+        if not isinstance(campos, dict):
+            continue
         debug[seccion] = {}
         for campo, valor in campos.items():
             if valor in {"Si", "No"}:
@@ -301,9 +303,11 @@ def _datos_display(pagina: PaginaPdf) -> dict[str, str | list[str]]:
     linea_display_2 = _lineas_bloque_en_zona(pagina, 754, 765, 20, 180)
     secuencia = (_texto_en_fila_despues_de_etiqueta(pagina, ["Secuencia"]) or (linea_display[0] if linea_display else "")).split(",")
     texto_display = _texto_en_fila_despues_de_etiqueta(pagina, ["Texto"]) or (linea_display[1] if len(linea_display) > 1 else "")
+    display_ext_fila = _texto_entre_etiquetas_en_fila_o_none(pagina, ["Display", "Ext", "1"], ["Cant"])
     display_ext = _normalizar_display(
-        _texto_entre_etiquetas_en_fila(pagina, ["Display", "Ext", "1"], ["Cant"])
-        or (linea_display[2] if len(linea_display) > 2 else "")
+        display_ext_fila
+        if display_ext_fila is not None
+        else (linea_display[2] if len(linea_display) > 2 else "")
     )
     display_ext_cant = _numero_en_fila_despues_de_etiqueta(pagina, ["Display", "Ext", "1"], ["Cant"]) or (
         linea_display[3] if len(linea_display) > 3 else ""
@@ -418,9 +422,18 @@ def _texto_entre_etiquetas_en_fila(
     etiqueta_inicio: list[str],
     etiqueta_fin: list[str],
 ) -> str:
+    valor = _texto_entre_etiquetas_en_fila_o_none(pagina, etiqueta_inicio, etiqueta_fin)
+    return valor or ""
+
+
+def _texto_entre_etiquetas_en_fila_o_none(
+    pagina: PaginaPdf,
+    etiqueta_inicio: list[str],
+    etiqueta_fin: list[str],
+) -> str | None:
     fila, x_fin = _fila_y_fin_etiqueta(pagina, etiqueta_inicio)
     if not fila or x_fin is None:
-        return ""
+        return None
     x_stop = _inicio_etiqueta_en_fila(fila, etiqueta_fin)
     return _texto_entre_x(fila, x_fin, x_stop)
 
@@ -556,9 +569,19 @@ def _check_en(
     y_max: float,
 ) -> bool:
     return any(
-        x_min <= marca.x0 <= x_max and y_min <= marca.y0 <= y_max
+        _solapa_zona(marca, x_min, x_max, y_min, y_max)
         for marca in pagina.marcas_check
     )
+
+
+def _solapa_zona(
+    palabra: PalabraTexto,
+    x_min: float,
+    x_max: float,
+    y_min: float,
+    y_max: float,
+) -> bool:
+    return palabra.x1 >= x_min and palabra.x0 <= x_max and palabra.y1 >= y_min and palabra.y0 <= y_max
 
 
 def _lista(valores: list[str]) -> str:

@@ -15,7 +15,8 @@
           "Datos Cabina"
         ]
       }
-    }
+    },
+    "pagina_rol": "principal"
   },
   "campos": [
     {

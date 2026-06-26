@@ -3,6 +3,7 @@ from extractor_pdf.infrastructure.extraction.client_base.contrato_campos import 
     check_asociado_a_txt,
     normalizar_checks_con_texto_asociado,
     normalizar_valor_campo,
+    warnings_checks_con_texto_asociado,
 )
 
 
@@ -17,6 +18,24 @@ def test_normaliza_int_desde_especificacion_de_campo() -> None:
 
 def test_respeta_texto_desde_especificacion_de_campo() -> None:
     assert normalizar_valor_campo("Traccion_electrica", "Modelo", "FRN0018LM2A-7") == "FRN0018LM2A-7"
+
+
+def test_guion_es_vacio_en_campo_escalar() -> None:
+    assert normalizar_valor_campo("Puertas_cabina_embarque_1", "Tipo_op1", "-") == ""
+
+
+def test_guion_se_preserva_en_tablas_y_secuencias() -> None:
+    salida = aplicar_contrato_salida(
+        {
+            "Premontada": {
+                "Acceso_E1": "-3,-2,-,0",
+                "Piso_E1": "A,A,-,A",
+            }
+        }
+    )
+
+    assert salida["Premontada"]["Acceso_E1"] == "-3,-2,-,0"
+    assert salida["Premontada"]["Piso_E1"] == "A,A,-,A"
 
 
 def test_preserva_no_en_check_simple_con_valor_no_marcado() -> None:
@@ -35,6 +54,15 @@ def test_valor_asociado_infiere_check_marcado() -> None:
 
     assert salida["Puertas_cabina_embarque_1"]["Leva_electrica_op1"] == "Si"
     assert salida["Puertas_cabina_embarque_1"]["Leva_electrica_op1_txt"] == "120"
+    assert salida["warning"] == [
+        {
+            "tipo": "check_no_marcado_con_valor_asociado",
+            "campo_check": "Puertas_cabina_embarque_1.Leva_electrica_op1",
+            "campo_valor": "Puertas_cabina_embarque_1.Leva_electrica_op1_txt",
+            "valor_check": "No",
+            "valor_asociado": "120",
+        }
+    ]
 
 
 def test_valor_asociado_vacio_no_infiere_check_marcado() -> None:
@@ -104,3 +132,45 @@ def test_normaliza_check_con_texto_asociado_no_crea_txt_si_no_viene_leido() -> N
 
 def test_contrato_expone_check_asociado_a_txt() -> None:
     assert check_asociado_a_txt("Opciones", "Interfono_suministro_txt") == "Interfono_suministro"
+
+
+def test_warning_si_check_no_marcado_tiene_valor_asociado() -> None:
+    warnings = warnings_checks_con_texto_asociado(
+        {
+            "Puertas_cabina_embarque_1": {
+                "Barreras_Op1": "No",
+                "Barreras_Op1_txt": "N",
+            }
+        }
+    )
+
+    assert warnings == [
+        {
+            "tipo": "check_no_marcado_con_valor_asociado",
+            "campo_check": "Puertas_cabina_embarque_1.Barreras_Op1",
+            "campo_valor": "Puertas_cabina_embarque_1.Barreras_Op1_txt",
+            "valor_check": "No",
+            "valor_asociado": "N",
+        }
+    ]
+
+
+def test_warning_si_check_marcado_no_tiene_valor_asociado() -> None:
+    warnings = warnings_checks_con_texto_asociado(
+        {
+            "Puertas_cabina_embarque_1": {
+                "Barreras_Op1": "Si",
+                "Barreras_Op1_txt": "",
+            }
+        }
+    )
+
+    assert warnings == [
+        {
+            "tipo": "check_marcado_sin_valor_asociado",
+            "campo_check": "Puertas_cabina_embarque_1.Barreras_Op1",
+            "campo_valor": "Puertas_cabina_embarque_1.Barreras_Op1_txt",
+            "valor_check": "Si",
+            "valor_asociado": "",
+        }
+    ]

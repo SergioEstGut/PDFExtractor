@@ -289,7 +289,8 @@
           "hasta_aliases": [
             "Talla"
           ],
-          "despues_de": "Variador"
+          "en_fila_con": "Variador",
+          "despues_de": "Traccion Electrica"
         }
       }
     },
@@ -313,7 +314,8 @@
             "ED (%)",
             "ED"
           ],
-          "despues_de": "Variador"
+          "en_fila_con": "Variador",
+          "despues_de": "Traccion Electrica"
         }
       }
     },
@@ -456,6 +458,10 @@
           "aliases": [
             "Rpm"
           ],
+          "hasta_aliases": [
+            "Relaci?n",
+            "Relacion"
+          ],
           "despues_de": "Consola VF"
         }
       }
@@ -592,6 +598,11 @@
           "aliases": [
             "Fasado"
           ],
+          "hasta_aliases": [
+            "N? Polos",
+            "N Polos",
+            "Polos"
+          ],
           "despues_de": "Encoder"
         }
       }
@@ -616,6 +627,10 @@
             "N? Polos",
             "N Polos",
             "Polos"
+          ],
+          "hasta_aliases": [
+            "Autotrafo 240/400",
+            "Autotrafo"
           ],
           "despues_de": "Encoder",
           "entero": true

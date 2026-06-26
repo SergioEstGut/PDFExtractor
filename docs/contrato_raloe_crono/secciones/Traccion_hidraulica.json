@@ -59,7 +59,7 @@
     },
     {
       "nombre": "Tension_valvulas",
-      "tipo": "double",
+      "tipo": "texto",
       "valor_defecto": "",
       "aliases": [
         "Tension valvulas",
@@ -70,9 +70,8 @@
         "Tensión grupo válvulas"
       ],
       "reglas": {
-        "extraer_solo_numero": true,
         "extraccion_pdf": {
-          "modo": "numero_derecha_alias",
+          "modo": "texto_derecha_alias",
           "aliases": [
             "Tensi?n V?lvulas",
             "Tension Valvulas"

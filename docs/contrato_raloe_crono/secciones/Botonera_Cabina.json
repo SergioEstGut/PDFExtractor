@@ -55,7 +55,18 @@
       ],
       "reglas": {
         "valor_marcado": "Si",
-        "valor_no_marcado": "No"
+        "valor_no_marcado": "No",
+        "extraccion_pdf": {
+          "modo": "check_antes_de_alias",
+          "aliases": [
+            "Pulsador de stop en cabina",
+            "Pulsador stop cabina"
+          ],
+          "subseccion_pdf": "Botonera_Cabina",
+          "distancia_maxima": 35,
+          "tolerancia_y": 8,
+          "si_no_hay_check": "No"
+        }
       }
     },
     {

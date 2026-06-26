@@ -35,5 +35,8 @@
         ]
       }
     }
-  ]
+  ],
+  "extraccion_pdf": {
+    "pagina_rol": "principal"
+  }
 }

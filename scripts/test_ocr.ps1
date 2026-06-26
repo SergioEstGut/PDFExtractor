@@ -1,6 +1,10 @@
-$env:PYTHONPATH = "E:\ProyectosPython\ExtractorPDF\.venv\Lib\site-packages;E:\ProyectosPython\ExtractorPDF\src"
+$ProjectRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
+$Python = Join-Path $ProjectRoot ".venv\Scripts\python.exe"
 
-& "C:\Users\Sergio Esteban\AppData\Local\Programs\Python\Python310\python.exe" `
-  -m pytest `
-  -m "ocr" `
-  -q
+if (-not (Test-Path $Python)) {
+  $Python = "python"
+}
+
+$env:PYTHONPATH = Join-Path $ProjectRoot "src"
+
+& $Python -m pytest -m "ocr" -q

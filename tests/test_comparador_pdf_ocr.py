@@ -44,6 +44,25 @@ def test_comparador_no_aplica_default_a_campos_no_leidos() -> None:
     assert comparacion["vacios_en_ambos"]["Caracteristicas"] == ["Mono"]
 
 
+def test_comparador_ignora_bloques_auxiliares_no_comparables() -> None:
+    comparacion = comparar_extracciones(
+        {
+            "Caracteristicas": {"Maniobra": "SELECTIVA BAJADA"},
+            "warning": [{"campo": "Caracteristicas.Maniobra"}],
+            "Notas_extra": [{"texto": "nota"}],
+        },
+        {
+            "Caracteristicas": {"Maniobra": "SELECTIVA BAJADA"},
+            "warning": [],
+            "Campos_extra": {"Campo": "valor"},
+        },
+    )
+
+    assert comparacion["resumen"]["coincidencias"] == 1
+    assert comparacion["resumen"]["diferencias"] == 0
+    assert comparacion["coincidencias"]["Caracteristicas"]["Maniobra"] == "SELECTIVA BAJADA"
+
+
 @pytest.mark.ocr
 def test_compara_pdf_y_ocr_de_pagina_5_654391() -> None:
     bytes_pdf = (ROOT / "pdfs" / "Raloe" / "654391.pdf").read_bytes()
@@ -65,11 +84,8 @@ def test_compara_pdf_y_ocr_de_pagina_5_654391() -> None:
         "pdf": "FRN0018LM2A-7",
         "ocr": "FRNOO18LM2A-7",
     }
-    assert comparacion["diferencias"]["Normas"]["Norma_81_73"] == {
-        "pdf": "No",
-        "ocr": "Si",
-    }
-    assert comparacion["solo_pdf"]["Normas"]["Norma_81_20_50"] == "Si"
+    assert comparacion["solo_pdf"]["Normas"]["Norma_81_73"] == "No"
+    assert comparacion["coincidencias"]["Normas"]["Norma_81_20_50"] == "Si"
     assert "Freno_lento_apertura" in comparacion["vacios_en_ambos"]["Traccion_electrica"]
 
 
@@ -92,4 +108,4 @@ def test_compara_pdf_y_ocr_de_pagina_foso_opciones_654391() -> None:
     assert comparacion["coincidencias"]["Opciones"]["Pesacargas_fabricante"] == "EMESA"
     assert comparacion["coincidencias"]["Opciones"]["Accionamiento_a_dist_limitador"] == "Si"
     assert comparacion["coincidencias"]["Opciones"]["Completo"] == "Si"
-    assert comparacion["solo_pdf"]["Opciones"]["Modulo_ARM"] == "Si"
+    assert comparacion["coincidencias"]["Opciones"]["Modulo_ARM"] == "Si"

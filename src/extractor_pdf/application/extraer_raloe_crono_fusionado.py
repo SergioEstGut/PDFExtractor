@@ -5,9 +5,13 @@ from typing import Any
 from extractor_pdf.application.campos_extra import SECCION_CAMPOS_EXTRA, detectar_campos_extra
 from extractor_pdf.application.contrato_vacio import datos_vacios_raloe_crono
 from extractor_pdf.application.notas_extra import SECCION_NOTAS_EXTRA, detectar_notas_extra
+from extractor_pdf.application.paginas_anuladas import filtrar_paginas_anuladas_raloe
 from extractor_pdf.domain.puertos import ExtractorVisualPagina, LectorTextoPdf, RenderizadorPaginaPdf
 from extractor_pdf.infrastructure.comparison.comparador_extracciones import comparar_extracciones
-from extractor_pdf.infrastructure.extraction.client_base.contrato_campos import aplicar_contrato_salida
+from extractor_pdf.infrastructure.extraction.client_base.contrato_campos import (
+    aplicar_contrato_salida,
+    warnings_checks_con_texto_asociado,
+)
 from extractor_pdf.infrastructure.extraction.client_base.extractor_foso_huida_opciones import (
     ExtractorFosoHuidaOpcionesRaloeCrono,
 )
@@ -75,7 +79,10 @@ class CasoUsoExtraerRaloeCronoFusionado:
         ]
 
     def ejecutar(self, bytes_pdf: bytes) -> dict[str, Any]:
-        paginas = self.lector_pdf.leer_paginas(bytes_pdf)
+        paginas = filtrar_paginas_anuladas_raloe(
+            self.lector_pdf.leer_paginas(bytes_pdf),
+            bytes_pdf=bytes_pdf,
+        )
         datos = datos_vacios_raloe_crono()
         avisos: list[str] = []
         paginas_detectadas: dict[str, int | None] = {
@@ -137,13 +144,19 @@ class CasoUsoExtraerRaloeCronoFusionado:
 
         secciones_por_pagina = _secciones_por_pagina(paginas_detectadas)
         paginas_con_datos = _paginas_detectadas(paginas, paginas_detectadas)
+        paginas_para_campos_extra = _paginas_para_campos_extra(paginas, paginas_detectadas, secciones_por_pagina)
         campos_extra = detectar_campos_extra(
-            paginas_con_datos,
+            paginas_para_campos_extra,
             datos,
             secciones_por_pagina,
         )
         datos[SECCION_CAMPOS_EXTRA] = campos_extra
         datos[SECCION_NOTAS_EXTRA] = detectar_notas_extra(paginas_con_datos, secciones_por_pagina)
+        warnings_inferencia = datos.get("warning", [])
+        datos["warning"] = [
+            *(warnings_inferencia if isinstance(warnings_inferencia, list) else []),
+            *warnings_checks_con_texto_asociado(datos),
+        ]
         if campos_extra:
             avisos.append("Se detectaron campos extra no contemplados en el contrato.")
 
@@ -220,6 +233,18 @@ def _paginas_detectadas(paginas: list, paginas_detectadas: dict[str, int | None]
     }
     seleccionadas = [pagina for pagina in paginas if pagina.numero in numeros_pagina]
     return seleccionadas or paginas
+
+
+def _paginas_para_campos_extra(
+    paginas: list,
+    paginas_detectadas: dict[str, int | None],
+    secciones_por_pagina: dict[int, list[str]],
+) -> list:
+    numeros_pagina = set(secciones_por_pagina)
+    resumen = paginas_detectadas.get("summary_page")
+    if isinstance(resumen, int):
+        numeros_pagina.discard(resumen)
+    return [pagina for pagina in paginas if pagina.numero in numeros_pagina]
 
 
 def _secciones_por_pagina(paginas_detectadas: dict[str, int | None]) -> dict[int, list[str]]:

@@ -4,6 +4,7 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
+from extractor_pdf.interfaces.api import main as api_main
 from extractor_pdf.interfaces.api.main import app
 
 
@@ -162,6 +163,102 @@ def test_endpoint_extraer_data_devuelve_404_si_pdf_path_no_existe() -> None:
     )
 
     assert respuesta.status_code == 404
+
+
+@pytest.mark.parametrize(
+    ("endpoint", "profile_id"),
+    [
+        ("/admin/pruebas/raloe/extraer-array2d", "raloe_crono"),
+        ("/admin/pruebas/felesa/electrico/extraer-array2d", "felesa_crono"),
+        ("/admin/pruebas/felesa/hidraulico/extraer-array2d", "felesa_crono"),
+        ("/admin/pruebas/aszende/electrico/extraer-array2d", "aszende_crono"),
+    ],
+)
+def test_endpoint_batch_guarda_array2d_en_txt(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    endpoint: str,
+    profile_id: str,
+) -> None:
+    (tmp_path / "uno.pdf").write_bytes(b"uno")
+    (tmp_path / "dos.pdf").write_bytes(b"dos")
+    perfiles_usados: list[str] = []
+    modos_fusionados: list[bool] = []
+
+    def extraer_fake(bytes_pdf: bytes, profile_id: str, fusionado: bool) -> dict:
+        perfiles_usados.append(profile_id)
+        modos_fusionados.append(fusionado)
+        return {"texto": bytes_pdf.decode("utf-8"), "profile_id": profile_id}
+
+    monkeypatch.setattr(api_main, "_detectar_version_formulario", lambda bytes_pdf, profile_id: "0")
+    monkeypatch.setattr(
+        api_main,
+        "_extraer_por_perfil",
+        extraer_fake,
+    )
+    monkeypatch.setattr(
+        api_main,
+        "construir_data_plana_con_observaciones",
+        lambda resultado: {
+            "Campo": resultado["texto"],
+            "Perfil": resultado["profile_id"],
+            "Observaciones": "A\u00f1adir",
+        },
+    )
+
+    respuesta = TestClient(app).post(
+        endpoint,
+        data={
+            "base_path": str(tmp_path),
+            "resultados_dir": "Resultados",
+            "batch_size": "2",
+            "max_workers": "2",
+            "overwrite": "true",
+        },
+    )
+
+    assert respuesta.status_code == 200
+    cuerpo = respuesta.json()
+    assert cuerpo["resumen"] == {"pdfs": 2, "procesados": 2, "omitidos": 0, "errores": 0, "lotes": 1}
+    assert json.loads((tmp_path / "Resultados" / "uno.txt").read_text(encoding="utf-8")) == [
+        ["Campo", "uno"],
+        ["Perfil", profile_id],
+        ["Observaciones", "A\u00f1adir"],
+    ]
+    assert json.loads((tmp_path / "Resultados" / "dos.txt").read_text(encoding="utf-8")) == [
+        ["Campo", "dos"],
+        ["Perfil", profile_id],
+        ["Observaciones", "A\u00f1adir"],
+    ]
+    assert perfiles_usados == [profile_id, profile_id]
+    assert modos_fusionados == [False, False]
+
+
+def test_endpoint_formatea_txt_resultados_sin_tocar_raloe_por_defecto(tmp_path: Path) -> None:
+    for carpeta in ["Raloe", "Felesa Electrico", "Felesa Hidraulico", "Aszende Electrico"]:
+        resultados = tmp_path / carpeta / "Resultados"
+        resultados.mkdir(parents=True)
+        (resultados / "pedido.txt").write_text(
+            json.dumps([["Campo", "Valor"], ["Observaciones", "Linea 1\nLinea 2"]]),
+            encoding="utf-8",
+        )
+
+    respuesta = TestClient(app).post(
+        "/admin/pruebas/resultados/formatear-txt",
+        data={
+            "base_path": str(tmp_path),
+            "resultados_dir": "Resultados",
+            "incluir_raloe": "false",
+        },
+    )
+
+    assert respuesta.status_code == 200
+    cuerpo = respuesta.json()
+    assert cuerpo["resumen"] == {"procesados": 3, "omitidos": 0, "errores": 0}
+    assert (tmp_path / "Raloe" / "Resultados" / "pedido.txt").read_text(encoding="utf-8").startswith("[[")
+    assert (tmp_path / "Felesa Electrico" / "Resultados" / "pedido.txt").read_text(encoding="utf-8") == (
+        "Campo: Valor\nObservaciones: Linea 1\\nLinea 2\n"
+    )
 
 
 def _post_pdf(nombre_archivo: str):

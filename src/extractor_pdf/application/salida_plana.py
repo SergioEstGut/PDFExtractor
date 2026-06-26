@@ -14,11 +14,13 @@ def construir_salida_plana(
     data = resultado.get("data", {})
     campos_extra = data.get("Campos_extra", {})
     notas_extra = data.get("Notas_extra", [])
+    warnings = data.get("warning", [])
 
     return {
         "data": _aplanar_data(data),
         "campos_extra": campos_extra,
         "Notas_extra": notas_extra,
+        "warning": warnings,
         "metadata": _construir_metadata(resultado, paginas, filename, profile_id, form_version),
     }
 
@@ -26,6 +28,9 @@ def construir_salida_plana(
 def construir_data_plana_con_observaciones(resultado: dict[str, Any]) -> dict[str, str]:
     data = resultado.get("data", {})
     plano = _aplanar_data(data)
+    warnings = _formatear_warnings(data.get("warning", []))
+    if warnings:
+        plano["warning"] = "\n".join(warnings)
     observaciones = str(plano.get("Observaciones", "") or "")
     extras = [
         *_formatear_campos_extra(data.get("Campos_extra", {})),
@@ -68,7 +73,7 @@ def extraer_num_pedido(paginas: list[PaginaPdf]) -> str:
 def _aplanar_data(data: dict[str, Any]) -> dict[str, str]:
     plano: dict[str, str] = {}
     for seccion, valor in data.items():
-        if seccion in {"Campos_extra", "Notas_extra"}:
+        if seccion in {"Campos_extra", "Notas_extra", "warning"}:
             continue
         if isinstance(valor, dict):
             for campo, campo_valor in valor.items():
@@ -104,6 +109,23 @@ def _formatear_notas_extra(notas_extra: list[Any]) -> list[str]:
             registros.append(f"Nota extra: {texto} (pagina {pagina}, seccion {seccion})")
         else:
             registros.append(f"Nota extra: {nota}")
+    return registros
+
+
+def _formatear_warnings(warnings: list[Any]) -> list[str]:
+    registros: list[str] = []
+    for warning in warnings:
+        if isinstance(warning, dict):
+            tipo = warning.get("tipo", "")
+            campo_check = warning.get("campo_check", "")
+            campo_valor = warning.get("campo_valor", "")
+            valor_check = warning.get("valor_check", "")
+            valor_asociado = warning.get("valor_asociado", "")
+            registros.append(
+                f"Warning: {tipo} | {campo_check}={valor_check} | {campo_valor}={valor_asociado}"
+            )
+        else:
+            registros.append(f"Warning: {warning}")
     return registros
 
 

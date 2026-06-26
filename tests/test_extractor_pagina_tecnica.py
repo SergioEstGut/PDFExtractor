@@ -1,6 +1,7 @@
 ﻿import json
 from pathlib import Path
 
+from extractor_pdf.domain.entidades import PaginaPdf
 from extractor_pdf.infrastructure.extraction.client_base.extractor_pagina_tecnica import (
     ExtractorPaginaTecnicaRaloeCrono,
 )
@@ -70,6 +71,22 @@ def test_debug_pdf_pagina_tecnica_marca_campos_pendientes_como_zona_vacia() -> N
     assert debug["Traccion_hidraulica"]["Fabricante_oleo"]["fuente"] == "zona_vacia"
     assert debug["Caracteristicas"]["Velocidad"]["fuente"] == "valor_leido"
     assert debug["Caracteristicas"]["Mono"]["fuente"] == "check_zona"
+
+
+def test_pagina_tecnica_no_falla_si_fila_de_potencia_esta_incompleta() -> None:
+    pagina = PaginaPdf(
+        numero=4,
+        texto="DETALLE DE MATERIAL MANIOBRA CARLOS SILVA Serie: CRONO",
+        bloques=[],
+        palabras=[],
+        marcas_check=[],
+        metodo_extraccion="test",
+    )
+
+    resultado = ExtractorPaginaTecnicaRaloeCrono().extraer(pagina)
+
+    assert resultado["Traccion_electrica"]["PotenciaCV"] == ""
+    assert resultado["Traccion_electrica"]["Tension_freno_mantenimiento"] == ""
 
 
 

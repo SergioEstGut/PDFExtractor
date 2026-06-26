@@ -1,8 +1,9 @@
+import shutil
 from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from extractor_pdf.interfaces.api.main import app
+from extractor_pdf.interfaces.api.main import app, _clasificar_texto_normalizado, _normalizar_texto
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -10,6 +11,8 @@ PDF_FELESA = ROOT / "pdfs" / "Felesa" / "654277.pdf"
 PDF_FELESA_654883 = ROOT / "pdfs" / "Felesa" / "654883.pdf"
 PDF_FELESA_654884 = ROOT / "pdfs" / "Felesa" / "654884.pdf"
 PDF_FELESA_HIDRAULICO = ROOT / "pdfs" / "Felesa" / "654938.pdf"
+PDF_RALOE = ROOT / "pdfs" / "Raloe" / "654107.pdf"
+PDF_ASZENDE = ROOT / "pdfs" / "Aszende" / "655073.pdf"
 
 
 def test_endpoint_extraer_felesa_crono_devuelve_datos_del_contrato() -> None:
@@ -86,16 +89,99 @@ def test_extractor_felesa_crono_separa_maquina_y_peso_654883() -> None:
     assert data["Datos_Generales"]["Peso_maquina"] == "1000"
 
 
-def test_endpoint_extraer_felesa_crono_rechaza_hidraulico_no_soportado() -> None:
+def test_endpoint_extraer_felesa_crono_detecta_hidraulico_desde_profile_generico() -> None:
     with PDF_FELESA_HIDRAULICO.open("rb") as pdf_file:
         respuesta = TestClient(app).post(
-            "/extract/flat",
+            "/extract",
             data={"profile_id": "felesa_crono"},
             files={"file": ("654938.pdf", pdf_file, "application/pdf")},
         )
 
-    assert respuesta.status_code == 422
-    detail = respuesta.json()["detail"]
-    assert detail["status"] == "unsupported_template"
-    assert detail["profile_id"] == "felesa_crono"
-    assert detail["template_id"] == "felesa_crono_hidraulico"
+    assert respuesta.status_code == 200
+    cuerpo = respuesta.json()
+    assert cuerpo["metadata"]["profile_id"] == "felesa_crono"
+    assert cuerpo["metadata"]["template_id"] == "felesa_crono_hidraulico"
+    assert "Datos_Central" in cuerpo["data"]
+    assert "Datos_Motor" not in cuerpo["data"]
+    assert cuerpo["data"]["Campos_extra"] == {}
+    assert cuerpo["data"]["Notas_extra"] == []
+
+
+def test_endpoint_extraer_aszende_crono_carga_contrato_y_campos_extra() -> None:
+    with (ROOT / "pdfs" / "Aszende" / "655073.pdf").open("rb") as pdf_file:
+        respuesta = TestClient(app).post(
+            "/extract",
+            data={"profile_id": "aszende_crono"},
+            files={"file": ("655073.pdf", pdf_file, "application/pdf")},
+        )
+
+    assert respuesta.status_code == 200
+    cuerpo = respuesta.json()
+    assert cuerpo["metadata"]["profile_id"] == "aszende_crono"
+    assert cuerpo["metadata"]["template_id"] == "aszende_crono_electrico"
+    assert "Parametros_Variador" in cuerpo["data"]
+    assert cuerpo["data"]["Campos_extra"] == {}
+    assert cuerpo["data"]["Notas_extra"] == [
+        {
+            "valor": "Linea coloreada en pagina 1",
+            "pagina": 1,
+            "seccion": "Botoneras_Exteriores",
+        },
+        {
+            "valor": "Fondo coloreado en pagina 1",
+            "pagina": 1,
+            "seccion": "Datos_Generales",
+        },
+    ]
+
+
+def test_endpoint_clasifica_y_mueve_pedidos_de_prueba(tmp_path: Path) -> None:
+    muestras = {
+        "654107.pdf": PDF_RALOE,
+        "654884.pdf": PDF_FELESA_654884,
+        "654938.pdf": PDF_FELESA_HIDRAULICO,
+        "655073.pdf": PDF_ASZENDE,
+    }
+    for nombre, origen in muestras.items():
+        shutil.copyfile(origen, tmp_path / nombre)
+
+    respuesta = TestClient(app).post(
+        "/admin/pruebas/clasificar-pedidos",
+        data={
+            "base_path": str(tmp_path),
+            "dry_run": "false",
+        },
+    )
+
+    assert respuesta.status_code == 200
+    cuerpo = respuesta.json()
+    assert cuerpo["resumen"] == {
+        "clasificados": 4,
+        "movidos": 4,
+        "desconocidos": 0,
+        "omitidos": 0,
+        "errores": 0,
+    }
+    assert (tmp_path / "Raloe" / "654107.pdf").is_file()
+    assert (tmp_path / "Felesa Electrico" / "654884.pdf").is_file()
+    assert (tmp_path / "Felesa Hidraulico" / "654938.pdf").is_file()
+    assert (tmp_path / "Aszende Electrico" / "655073.pdf").is_file()
+
+
+def test_clasificador_no_marca_portecnic_evo_como_raloe_crono() -> None:
+    texto = _normalizar_texto(
+        "Pedido de maniobra electrica Portecnic Formulari Sirius EVO Electric ESP "
+        "Maniobra Carlos Silva Premontada Botonera Cabina"
+    )
+
+    assert _clasificar_texto_normalizado(texto) is None
+
+
+def test_clasificador_no_marca_hidraulico_compartido_sin_cliente_felesa() -> None:
+    texto = _normalizar_texto(
+        "Cliente INELSA Formulario maniobras crono hidraulicas "
+        "Grupo valvulas Tension valvulas doble piston micronivelacion "
+        "Suministrar protecciones electricas"
+    )
+
+    assert _clasificar_texto_normalizado(texto) is None

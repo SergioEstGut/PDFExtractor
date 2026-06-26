@@ -19,7 +19,8 @@
         "x_min": 0,
         "x_max": 205
       }
-    }
+    },
+    "pagina_rol": "principal"
   },
   "campos": [
     {
@@ -228,9 +229,25 @@
             "Tensión de Entrada",
             "Tension de Entrada"
           ],
-          "token": "I",
+          "tokens": [
+            "I",
+            "mono",
+            "monofasica",
+            "monofásica"
+          ],
+          "tokens_grupo": [
+            "I",
+            "III",
+            "mono",
+            "tri",
+            "monofasica",
+            "monofásica",
+            "trifasica",
+            "trifásica"
+          ],
           "valor_si_presente": "Si",
           "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
           "limite_x_derecha": 205,
           "tolerancia_y": 8
         }
@@ -254,9 +271,25 @@
             "Tensión de Entrada",
             "Tension de Entrada"
           ],
-          "token": "III",
+          "tokens": [
+            "III",
+            "tri",
+            "trifasica",
+            "trifásica"
+          ],
+          "tokens_grupo": [
+            "I",
+            "III",
+            "mono",
+            "tri",
+            "monofasica",
+            "monofásica",
+            "trifasica",
+            "trifásica"
+          ],
           "valor_si_presente": "Si",
           "valor_si_ausente": "No",
+          "valor_si_sin_tokens_grupo": "",
           "limite_x_derecha": 205,
           "tolerancia_y": 8
         }

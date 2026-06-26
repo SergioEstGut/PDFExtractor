@@ -372,8 +372,9 @@
       ],
       "reglas": {
         "infiere_check_marcado": "Sistema_antideriva_CBL",
+        "extraer_solo_numero": true,
         "extraccion_pdf": {
-          "modo": "texto_derecha_alias",
+          "modo": "numero_derecha_alias",
           "aliases": [
             "Sistema antideriva CBL",
             "Sistema antideriva",

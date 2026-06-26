@@ -96,7 +96,7 @@ def test_devuelve_contrato_parcial_si_falta_una_seccion() -> None:
     assert resultado["data"]["Campos_extra"] == {}
 
 
-def test_devuelve_campos_extra_para_pares_clave_valor_no_esperados() -> None:
+def test_no_devuelve_campos_extra_en_pagina_resumen() -> None:
     resultado = CasoUsoExtraerRaloeCronoActual(
         lector_pdf=StaticPdfReader(
             [
@@ -117,15 +117,7 @@ def test_devuelve_campos_extra_para_pares_clave_valor_no_esperados() -> None:
 
     assert resultado["metadata"]["is_raloe_crono"] is True
     assert resultado["metadata"]["status"] == "partial"
-    assert resultado["data"]["Campos_extra"] == {
-        "Campo_nuevo_especial": {
-            "nombre_campo": "Campo_nuevo_especial",
-            "valor": "Valor de prueba",
-            "pagina": 1,
-            "seccion": "general",
-        }
-    }
-    assert "Serie" not in resultado["data"]["Campos_extra"]
+    assert resultado["data"]["Campos_extra"] == {}
 
 
 def test_reporta_checks_contractuales_encontrados_fuera_de_su_seccion() -> None:

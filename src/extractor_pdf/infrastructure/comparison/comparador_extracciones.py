@@ -5,9 +5,12 @@ from typing import Any
 from extractor_pdf.infrastructure.extraction.client_base.contrato_campos import normalizar_valor_campo
 
 
+SECCIONES_NO_COMPARABLES = {"Campos_extra", "Notas_extra", "warning"}
+
+
 def comparar_extracciones(
-    pdf_data: dict[str, dict[str, str]],
-    ocr_data: dict[str, dict[str, str]],
+    pdf_data: dict[str, Any],
+    ocr_data: dict[str, Any],
 ) -> dict[str, Any]:
     coincidencias: dict[str, dict[str, str]] = {}
     diferencias: dict[str, dict[str, dict[str, str]]] = {}
@@ -15,9 +18,12 @@ def comparar_extracciones(
     solo_ocr: dict[str, dict[str, str]] = {}
     vacios_en_ambos: dict[str, list[str]] = {}
 
-    for seccion in sorted(set(pdf_data) | set(ocr_data)):
-        campos_pdf = pdf_data.get(seccion, {})
-        campos_ocr = ocr_data.get(seccion, {})
+    secciones_pdf = _secciones_comparables(pdf_data)
+    secciones_ocr = _secciones_comparables(ocr_data)
+
+    for seccion in sorted(set(secciones_pdf) | set(secciones_ocr)):
+        campos_pdf = secciones_pdf.get(seccion, {})
+        campos_ocr = secciones_ocr.get(seccion, {})
         for campo in sorted(set(campos_pdf) | set(campos_ocr)):
             valor_pdf = _normalizar_para_comparar(seccion, campo, campos_pdf.get(campo, ""))
             valor_ocr = _normalizar_para_comparar(seccion, campo, campos_ocr.get(campo, ""))
@@ -46,6 +52,14 @@ def comparar_extracciones(
         "solo_pdf": solo_pdf,
         "solo_ocr": solo_ocr,
         "vacios_en_ambos": vacios_en_ambos,
+    }
+
+
+def _secciones_comparables(data: dict[str, Any]) -> dict[str, dict[str, str]]:
+    return {
+        seccion: campos
+        for seccion, campos in data.items()
+        if seccion not in SECCIONES_NO_COMPARABLES and isinstance(campos, dict)
     }
 
 

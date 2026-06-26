@@ -167,8 +167,12 @@ def _aplicar_regla(
         return _leer_check_antes_de_alias(pagina, coincidencia, regla)
     if modo == "check_x_derecha_alias":
         return _leer_check_x_derecha(coincidencia, regla)
+    if modo == "check_x_derecha_cercana_alias":
+        return _leer_check_x_derecha_cercana(pagina, coincidencia, regla)
     if modo == "texto_derecha_alias":
         return _texto_derecha(coincidencia, regla)
+    if modo == "texto_derecha_cercana_alias":
+        return _texto_derecha_cercana(pagina, coincidencia, regla)
     if modo == "texto_debajo_alias":
         return _texto_debajo(coincidencia, filas, regla)
     if modo == "numero_debajo_alias":
@@ -187,8 +191,18 @@ def _aplicar_regla(
             entero=regla.get("entero", False),
             indice=int(regla.get("indice_numero", 0)),
         )
+    if modo == "numero_derecha_cercana_alias":
+        return _numero_en_texto(
+            _texto_derecha_cercana(pagina, coincidencia, regla),
+            entero=regla.get("entero", False),
+            indice=int(regla.get("indice_numero", 0)),
+        )
     if modo == "valor_por_token_en_texto_derecha":
         return _valor_por_token_en_texto(_texto_derecha(coincidencia, regla), regla)
+    if modo == "valor_por_token_en_texto_derecha_cercana":
+        return _valor_por_token_en_texto(
+            _texto_derecha_cercana(pagina, coincidencia, regla), regla
+        )
     if modo == "texto_entre_aliases":
         return _texto_derecha(coincidencia, regla)
     return ""
@@ -257,6 +271,13 @@ def _leer_check_antes_de_alias(
         if marca.x1 <= palabra_alias.x0
         and palabra_alias.x0 - marca.x1 <= distancia_maxima
         and abs(marca.y0 - palabra_alias.y0) <= tolerancia_y
+    ] + [
+        palabra
+        for palabra in pagina.palabras
+        if _es_marca_check_textual(palabra.texto)
+        and palabra.x1 <= palabra_alias.x0
+        and palabra_alias.x0 - palabra.x1 <= distancia_maxima
+        and abs(palabra.y0 - palabra_alias.y0) <= tolerancia_y
     ]
     if candidatos:
         return regla.get("valor_marcado", "Si")
@@ -271,7 +292,7 @@ def _leer_check_x_derecha(coincidencia: CoincidenciaAlias, regla: dict[str, Any]
     distancia_maxima = regla.get("distancia_maxima_derecha", 60)
     limite_x_derecha = regla.get("limite_x_derecha")
     marcado = any(
-        palabra.texto.upper() == "X"
+        _es_marca_check_textual(palabra.texto)
         and palabra.x0 > x_fin
         and (x_stop is None or palabra.x0 < x_stop)
         and palabra.x0 - x_fin <= float(distancia_maxima)
@@ -283,11 +304,42 @@ def _leer_check_x_derecha(coincidencia: CoincidenciaAlias, regla: dict[str, Any]
     return regla.get("valor_no_marcado", "No")
 
 
-def _leer_check_x_en_zona(pagina: PaginaPdf, regla: dict[str, Any]) -> str:
-    marcado = any(palabra.texto.upper() == "X" for palabra in _palabras_en_zona(pagina, regla))
+def _leer_check_x_derecha_cercana(
+    pagina: PaginaPdf,
+    coincidencia: CoincidenciaAlias,
+    regla: dict[str, Any],
+) -> str:
+    x_fin = coincidencia.fin_x
+    x_stop = _x_stop(coincidencia.fila, regla.get("hasta_aliases", []), x_fin)
+    distancia_maxima = regla.get("distancia_maxima_derecha", 60)
+    limite_x_derecha = regla.get("limite_x_derecha")
+    tolerancia_y = float(regla.get("tolerancia_y", 8))
+    y_ref = coincidencia.fila[coincidencia.indice].y0
+    marcado = any(
+        _es_marca_check_textual(palabra.texto)
+        and palabra.x0 > x_fin
+        and abs(palabra.y0 - y_ref) <= tolerancia_y
+        and (x_stop is None or palabra.x0 < x_stop)
+        and palabra.x0 - x_fin <= float(distancia_maxima)
+        and (limite_x_derecha is None or palabra.x0 < float(limite_x_derecha))
+        for palabra in pagina.palabras
+    )
     if marcado:
         return regla.get("valor_marcado", "Si")
     return regla.get("valor_no_marcado", "No")
+
+
+def _leer_check_x_en_zona(pagina: PaginaPdf, regla: dict[str, Any]) -> str:
+    marcado = any(_es_marca_check_textual(palabra.texto) for palabra in _palabras_en_zona(pagina, regla))
+    if marcado:
+        return regla.get("valor_marcado", "Si")
+    return regla.get("valor_no_marcado", "No")
+
+
+def _es_marca_check_textual(texto: str) -> bool:
+    if texto.strip().upper() in {"X", "\u2713", "\u2714", "\u2611", "\u2612"}:
+        return True
+    return texto.strip().upper() in {"X", "✔", "✓", "☑", "☒"}
 
 
 def _texto_en_zona(pagina: PaginaPdf, regla: dict[str, Any]) -> str:
@@ -311,6 +363,7 @@ def _palabras_en_zona(pagina: PaginaPdf, regla: dict[str, Any]) -> list[PalabraT
         and (x_max is None or palabra.x1 <= float(x_max))
         and (y_min is None or palabra.y0 >= float(y_min))
         and (y_max is None or palabra.y1 <= float(y_max))
+        and not _es_palabra_nota(palabra)
     ]
 
 
@@ -329,11 +382,43 @@ def _texto_derecha(coincidencia: CoincidenciaAlias, regla: dict[str, Any]) -> st
         and not _es_ruido_valor(palabra.texto)
     ]
     saltar = int(regla.get("saltar_tokens", 0))
-    tomar = regla.get("tokens")
+    tomar = _tokens_a_tomar(regla)
     if saltar:
         valores = valores[saltar:]
     if tomar is not None:
-        valores = valores[: int(tomar)]
+        valores = valores[:tomar]
+    separador = regla.get("separador_tokens", " ")
+    return str(separador).join(valores).strip()
+
+
+def _texto_derecha_cercana(
+    pagina: PaginaPdf,
+    coincidencia: CoincidenciaAlias,
+    regla: dict[str, Any],
+) -> str:
+    x_fin = coincidencia.fin_x
+    x_stop = _x_stop(coincidencia.fila, regla.get("hasta_aliases", []), x_fin)
+    distancia_maxima = regla.get("distancia_maxima_derecha")
+    limite_x_derecha = regla.get("limite_x_derecha")
+    tolerancia_y = float(regla.get("tolerancia_y", 8))
+    y_ref = coincidencia.fila[coincidencia.indice].y0
+    valores = [
+        palabra.texto
+        for palabra in sorted(pagina.palabras, key=lambda item: (item.x0, item.y0))
+        if palabra.x0 > x_fin
+        and abs(palabra.y0 - y_ref) <= tolerancia_y
+        and (x_stop is None or palabra.x0 < x_stop)
+        and (distancia_maxima is None or palabra.x0 - x_fin <= float(distancia_maxima))
+        and (limite_x_derecha is None or palabra.x0 < float(limite_x_derecha))
+        and not _es_palabra_nota(palabra)
+        and not _es_ruido_valor(palabra.texto)
+    ]
+    saltar = int(regla.get("saltar_tokens", 0))
+    tomar = _tokens_a_tomar(regla)
+    if saltar:
+        valores = valores[saltar:]
+    if tomar is not None:
+        valores = valores[:tomar]
     separador = regla.get("separador_tokens", " ")
     return str(separador).join(valores).strip()
 
@@ -352,31 +437,68 @@ def _texto_debajo(
 
     filas_debajo = int(regla.get("filas_debajo", 1))
     limite_x_derecha = regla.get("limite_x_derecha")
+    limite_x_izquierda = float(regla.get("x_min", coincidencia.fila[coincidencia.indice].x0))
+    lineas: list[str] = []
     valores: list[str] = []
     for fila in filas[indice_fila + 1 : indice_fila + 1 + filas_debajo]:
-        valores.extend(
+        palabras_fila = [
             palabra.texto
             for palabra in fila
-            if palabra.x0 >= coincidencia.fila[coincidencia.indice].x0
+            if palabra.x0 >= limite_x_izquierda
             and (limite_x_derecha is None or palabra.x0 < float(limite_x_derecha))
             and not _es_ruido_valor(palabra.texto)
-        )
+        ]
+        if palabras_fila:
+            lineas.append(" ".join(palabras_fila))
+            valores.extend(palabras_fila)
     separador = regla.get("separador_tokens", " ")
     saltar = int(regla.get("saltar_tokens", 0))
-    tomar = regla.get("tokens")
+    tomar = _tokens_a_tomar(regla)
+    separador_filas = regla.get("separador_filas")
+    if separador_filas is not None and not saltar and tomar is None:
+        return str(separador_filas).join(lineas).strip()
     if saltar:
         valores = valores[saltar:]
     if tomar is not None:
-        valores = valores[: int(tomar)]
+        valores = valores[:tomar]
     return str(separador).join(valores).strip()
 
 
 def _valor_por_token_en_texto(valor: str, regla: dict[str, Any]) -> str:
-    token_buscado = _normalizar(str(regla.get("token", "")))
-    tokens = {_normalizar(token) for token in _tokens(valor)}
-    if token_buscado and token_buscado in tokens:
+    tokens_buscados = regla.get("tokens") or [regla.get("token", "")]
+    if isinstance(tokens_buscados, str):
+        tokens_buscados = [tokens_buscados]
+    if not isinstance(tokens_buscados, list):
+        tokens_buscados = [tokens_buscados]
+    tokens_normalizados = {_normalizar(token) for token in _tokens(valor)}
+    buscados_normalizados = {
+        _normalizar(str(token))
+        for token in tokens_buscados
+        if str(token).strip()
+    }
+    if buscados_normalizados & tokens_normalizados:
         return regla.get("valor_si_presente", "Si")
+    tokens_grupo = regla.get("tokens_grupo")
+    if tokens_grupo is not None:
+        if isinstance(tokens_grupo, str):
+            tokens_grupo = [tokens_grupo]
+        grupo_normalizado = {
+            _normalizar(str(token))
+            for token in tokens_grupo
+            if str(token).strip()
+        }
+        if not (grupo_normalizado & tokens_normalizados):
+            return regla.get("valor_si_sin_tokens_grupo", "")
     return regla.get("valor_si_ausente", "No")
+
+
+def _tokens_a_tomar(regla: dict[str, Any]) -> int | None:
+    tokens = regla.get("tokens")
+    if isinstance(tokens, int):
+        return tokens
+    if isinstance(tokens, str) and tokens.isdigit():
+        return int(tokens)
+    return None
 
 
 def _texto_sin_tokens_con_unidad(valor: str, regla: dict[str, Any]) -> str:
@@ -422,12 +544,21 @@ def _es_ruido_valor(texto: str) -> bool:
     normalizado = texto.strip()
     if not normalizado:
         return True
-    return bool(re.fullmatch(r"[.\u2026:_\-·]+", normalizado))
+    if normalizado == "-":
+        return False
+    caracteres_ruido = ".\u2026:_-\u00c2\u00b7\u00ab\u0164\u0e0b\u043b"
+    if re.fullmatch(r"([A-Z])\1{3,}", normalizado):
+        return True
+    return bool(re.fullmatch(f"[{re.escape(caracteres_ruido)}]+", normalizado))
 
 
 def _filas(pagina: PaginaPdf) -> list[list[PalabraTexto]]:
     filas: list[list[PalabraTexto]] = []
-    palabras = [palabra for palabra in pagina.palabras if palabra.texto != MARCA_CHECK]
+    palabras = [
+        palabra
+        for palabra in pagina.palabras
+        if palabra.texto != MARCA_CHECK and not _es_palabra_nota(palabra)
+    ]
     for palabra in sorted(palabras, key=lambda item: (item.y0, item.x0)):
         if not filas or abs(filas[-1][0].y0 - palabra.y0) > 6:
             filas.append([palabra])
@@ -468,6 +599,19 @@ def _normalizar(texto: str) -> str:
     )
     texto = re.sub(r"[^a-zA-Z0-9]+", "", texto)
     return texto.casefold()
+
+
+def _es_palabra_nota(palabra: PalabraTexto) -> bool:
+    return _es_rojo(palabra.color)
+
+
+def _es_rojo(color: int | None) -> bool:
+    if color is None:
+        return False
+    rojo = (color >> 16) & 255
+    verde = (color >> 8) & 255
+    azul = color & 255
+    return rojo >= 150 and rojo > verde + 50 and rojo > azul + 50
 
 def _reparar_mojibake(texto: str) -> str:
     try:

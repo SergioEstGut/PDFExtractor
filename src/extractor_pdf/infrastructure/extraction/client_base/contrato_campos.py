@@ -9,12 +9,16 @@ from typing import Any
 
 def aplicar_contrato_salida(secciones: dict[str, Any]) -> dict[str, Any]:
     especificaciones = _especificaciones_por_seccion()
-    return {
+    normalizadas = {
         seccion: _normalizar_seccion(seccion, valores, especificaciones)
         if isinstance(valores, dict)
         else valores
         for seccion, valores in secciones.items()
     }
+    warnings = _warnings_checks_durante_normalizacion(secciones, normalizadas, especificaciones)
+    if warnings:
+        normalizadas["warning"] = [*normalizadas.get("warning", []), *warnings]
+    return normalizadas
 
 
 def normalizar_valor_campo(seccion: str, campo: str, valor: str) -> str:
@@ -58,6 +62,103 @@ def normalizar_checks_con_texto_asociado(secciones: dict[str, Any]) -> dict[str,
     return normalizadas
 
 
+def warnings_checks_con_texto_asociado(secciones: dict[str, Any]) -> list[dict[str, str]]:
+    especificaciones = _especificaciones_por_seccion()
+    warnings: list[dict[str, str]] = []
+    for seccion, valores in secciones.items():
+        if not isinstance(valores, dict):
+            continue
+        campos = especificaciones.get(seccion, {})
+        for campo_txt, especificacion_txt in campos.items():
+            check_asociado = especificacion_txt.get("reglas", {}).get("infiere_check_marcado")
+            if not check_asociado:
+                continue
+            if campo_txt not in valores and check_asociado not in valores:
+                continue
+
+            valor_txt = str(valores.get(campo_txt, "") or "").strip()
+            valor_check = str(valores.get(check_asociado, "") or "").strip()
+            ruta_check = f"{seccion}.{check_asociado}"
+            ruta_txt = f"{seccion}.{campo_txt}"
+
+            if valor_txt and valor_check == "No":
+                warnings.append(
+                    _warning_check_txt(
+                        "check_no_marcado_con_valor_asociado",
+                        seccion,
+                        check_asociado,
+                        campo_txt,
+                        valor_check,
+                        valor_txt,
+                    )
+                )
+            elif not valor_txt and valor_check == "Si":
+                warnings.append(
+                    _warning_check_txt(
+                        "check_marcado_sin_valor_asociado",
+                        seccion,
+                        check_asociado,
+                        campo_txt,
+                        valor_check,
+                        "",
+                    )
+                )
+    return warnings
+
+
+def _warnings_checks_durante_normalizacion(
+    originales: dict[str, Any],
+    normalizadas: dict[str, Any],
+    especificaciones: dict[str, dict[str, dict[str, Any]]],
+) -> list[dict[str, str]]:
+    warnings: list[dict[str, str]] = []
+    for seccion, valores_originales in originales.items():
+        if not isinstance(valores_originales, dict):
+            continue
+        valores_normalizados = normalizadas.get(seccion, {})
+        if not isinstance(valores_normalizados, dict):
+            continue
+        campos = especificaciones.get(seccion, {})
+        for campo_txt, especificacion_txt in campos.items():
+            check_asociado = especificacion_txt.get("reglas", {}).get("infiere_check_marcado")
+            if not check_asociado:
+                continue
+
+            valor_txt = str(valores_normalizados.get(campo_txt, "") or "").strip()
+            valor_check_original = str(valores_originales.get(check_asociado, "") or "").strip()
+            valor_check_final = str(valores_normalizados.get(check_asociado, "") or "").strip()
+
+            if valor_txt and valor_check_original == "No" and valor_check_final == "Si":
+                warnings.append(
+                    _warning_check_txt(
+                        "check_no_marcado_con_valor_asociado",
+                        seccion,
+                        check_asociado,
+                        campo_txt,
+                        valor_check_original,
+                        valor_txt,
+                    )
+                )
+    return warnings
+
+
+def _warning_check_txt(
+    tipo: str,
+    seccion: str,
+    check_asociado: str,
+    campo_txt: str,
+    valor_check: str,
+    valor_txt: str,
+) -> dict[str, str]:
+    return {
+        "tipo": tipo,
+        "campo_check": f"{seccion}.{check_asociado}",
+        "campo_valor": f"{seccion}.{campo_txt}",
+        "valor_check": valor_check,
+        "valor_asociado": valor_txt,
+    }
+
+
 def _normalizar_seccion(
     seccion: str,
     valores: dict[str, str],
@@ -99,6 +200,17 @@ def _normalizar_valor(valor: str, especificacion: dict[str, Any] | None) -> str:
 
     tipo = especificacion.get("tipo", "")
     reglas = especificacion.get("reglas", {})
+    normalizacion = reglas.get("normalizacion", {})
+
+    if _es_guion_vacio(valor, tipo, reglas, normalizacion):
+        return ""
+
+    if tipo == "texto" and _es_texto_sin_contenido(valor):
+        return ""
+
+    if normalizacion.get("modo") == "secuencia_o_texto":
+        return _normalizar_secuencia_o_texto(valor, normalizacion)
+
     tipo_valor = reglas.get("tipo_valor", tipo)
 
     if tipo in {"check_simple", "check_con_valor"} and valor in {"Si", "No"}:
@@ -123,10 +235,60 @@ def _normalizar_valor(valor: str, especificacion: dict[str, Any] | None) -> str:
     return valor
 
 
+def _es_texto_sin_contenido(valor: str) -> bool:
+    limpio = valor.strip()
+    if not limpio:
+        return True
+    return not bool(re.search(r"[A-Za-z0-9ÁÉÍÓÚÜÑáéíóúüñ]", limpio))
+
+
+def _es_guion_vacio(
+    valor: str,
+    tipo: str,
+    reglas: dict[str, Any],
+    normalizacion: dict[str, Any],
+) -> bool:
+    if valor.strip() != "-":
+        return False
+    if reglas.get("preservar_guion"):
+        return False
+    if tipo == "tabla_columna":
+        return False
+    if normalizacion.get("modo") in {"secuencia_o_texto"}:
+        return False
+    return True
+
+
 def _normalizar_check_simple(valor: str, reglas: dict[str, Any]) -> str:
     if valor in {"Si", "No"}:
         return valor
     return reglas.get("valor_marcado", "Si") if valor else reglas.get("valor_no_marcado", "No")
+
+
+def _normalizar_secuencia_o_texto(valor: str, reglas: dict[str, Any]) -> str:
+    valor_limpio = " ".join(valor.replace(",", " ").split())
+    if not valor_limpio:
+        return ""
+
+    valores_texto = {
+        _normalizar_texto(valor_texto)
+        for valor_texto in reglas.get("valores_texto", [])
+    }
+    if _normalizar_texto(valor_limpio) in valores_texto:
+        return valor_limpio
+
+    tokens = valor_limpio.split()
+    if tokens and all(_es_codigo_planta(token) for token in tokens):
+        return str(reglas.get("separador", ",")).join(tokens)
+    return valor_limpio
+
+
+def _normalizar_texto(valor: str) -> str:
+    return re.sub(r"[^a-zA-Z0-9]+", "", valor).casefold()
+
+
+def _es_codigo_planta(token: str) -> bool:
+    return bool(re.fullmatch(r"-?\d+|[A-Za-z]{1,3}\d?", token))
 
 
 def _aplicar_inferencias_desde_valores(

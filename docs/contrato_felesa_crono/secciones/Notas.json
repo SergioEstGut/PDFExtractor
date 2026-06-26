@@ -25,5 +25,8 @@
         ]
       }
     }
-  ]
+  ],
+  "extraccion_pdf": {
+    "pagina_rol": "botoneras_rellano"
+  }
 }

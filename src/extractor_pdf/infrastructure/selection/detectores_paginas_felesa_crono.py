@@ -33,6 +33,8 @@ PUNTUACION_MINIMA = {
 
 def detectar_plantilla_felesa_crono(paginas: list[PaginaPdf]) -> str:
     texto = _normalizar("\n".join(pagina.texto for pagina in paginas[:2]))
+    if "formulari crono" in texto:
+        return "aszende_crono_electrico"
     if (
         "formulario maniobra crono hidraulicas" in texto
         or "datos central" in texto
