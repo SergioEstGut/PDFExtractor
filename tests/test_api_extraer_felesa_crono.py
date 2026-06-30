@@ -3,6 +3,10 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
+from extractor_pdf.domain.entidades import PaginaPdf
+from extractor_pdf.infrastructure.selection.detectores_paginas_felesa_crono import (
+    detectar_plantilla_felesa_crono,
+)
 from extractor_pdf.interfaces.api.main import app, _clasificar_texto_normalizado, _normalizar_texto
 
 
@@ -120,6 +124,7 @@ def test_endpoint_extraer_aszende_crono_carga_contrato_y_campos_extra() -> None:
     assert cuerpo["metadata"]["profile_id"] == "aszende_crono"
     assert cuerpo["metadata"]["template_id"] == "aszende_crono_electrico"
     assert "Parametros_Variador" in cuerpo["data"]
+    assert "Notas" not in cuerpo["data"]
     assert cuerpo["data"]["Campos_extra"] == {}
     assert cuerpo["data"]["Notas_extra"] == [
         {
@@ -185,3 +190,17 @@ def test_clasificador_no_marca_hidraulico_compartido_sin_cliente_felesa() -> Non
     )
 
     assert _clasificar_texto_normalizado(texto) is None
+
+
+def test_detector_plantilla_aszende_electrico_busca_en_paginas_posteriores() -> None:
+    paginas = [
+        PaginaPdf(numero=1, texto="Pedido Especial Cliente ASZENDE", metodo_extraccion="pdf"),
+        PaginaPdf(numero=2, texto="Documento de compra", metodo_extraccion="pdf"),
+        PaginaPdf(
+            numero=3,
+            texto="FORMULARIO MANIOBRAS ASZENDE ELECTRICAS Cliente ASZENDE Datos Motor",
+            metodo_extraccion="pdf",
+        ),
+    ]
+
+    assert detectar_plantilla_felesa_crono(paginas) == "aszende_crono_electrico"

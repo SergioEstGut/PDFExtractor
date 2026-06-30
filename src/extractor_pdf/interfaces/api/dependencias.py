@@ -1,3 +1,6 @@
+from extractor_pdf.application.extraer_aszende_crono_actual import (
+    CasoUsoExtraerAszendeCronoActual,
+)
 from extractor_pdf.application.extraer_felesa_crono_actual import (
     CasoUsoExtraerFelesaCronoActual,
 )
@@ -29,5 +32,11 @@ def crear_caso_uso_extraer_raloe_crono_fusionado() -> CasoUsoExtraerRaloeCronoFu
 
 def crear_caso_uso_extraer_felesa_crono() -> CasoUsoExtraerFelesaCronoActual:
     return CasoUsoExtraerFelesaCronoActual(
+        lector_pdf=LectorTextoPyMuPdf(lector_ocr=LectorOcrNulo()),
+    )
+
+
+def crear_caso_uso_extraer_aszende_crono() -> CasoUsoExtraerAszendeCronoActual:
+    return CasoUsoExtraerAszendeCronoActual(
         lector_pdf=LectorTextoPyMuPdf(lector_ocr=LectorOcrNulo()),
     )

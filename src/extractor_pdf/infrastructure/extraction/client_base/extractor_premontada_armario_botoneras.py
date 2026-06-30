@@ -1,4 +1,5 @@
 import re
+import unicodedata
 from typing import Any
 
 from extractor_pdf.domain.entidades import PaginaPdf, PalabraTexto
@@ -15,6 +16,7 @@ class ExtractorPremontadaArmarioBotonerasRaloeCrono:
     def extraer(self, pagina: PaginaPdf) -> dict[str, Any]:
         tabla = _extraer_tabla_premontada(pagina)
         valores = _valores_pagina(pagina, tabla)
+        medidas_cabina = _medidas_cabina(pagina)
 
         resultado = {
             "general": {},
@@ -32,8 +34,8 @@ class ExtractorPremontadaArmarioBotonerasRaloeCrono:
                 "Doble_acceso_alternado": _si_no(_check_en(pagina, 345, 370, 162, 178)),
                 "Doble_acceso_simultaneo": _si_no(_check_en(pagina, 410, 440, 162, 178)),
                 "Doble_acceso_simultaneo_selectivo": _si_no(_check_en(pagina, 470, 490, 162, 178)),
-                "Planta_acceso_bomberos": "",
-                "Planta_acceso_bomberos_2": "",
+                "Planta_acceso_bomberos": valores["Planta_acceso_bomberos"],
+                "Planta_acceso_bomberos_2": valores["Planta_acceso_bomberos_2"],
                 "Planta_principal": valores["Planta_principal"],
                 "Recorrido": valores["Recorrido"],
                 "Foso": valores["Foso"],
@@ -46,8 +48,8 @@ class ExtractorPremontadaArmarioBotonerasRaloeCrono:
                 "Carga_nominal": valores["Carga_nominal"],
                 "Cableado_LSF": _si_no(_check_en(pagina, 25, 45, 330, 348)),
                 "Premontada_mas_larga": _si_no(_check_en(pagina, 205, 225, 330, 348)),
-                "Medidas_cabina_ancho": "",
-                "Medidas_cabina_profundo": "",
+                "Medidas_cabina_ancho": medidas_cabina["Medidas_cabina_ancho"],
+                "Medidas_cabina_profundo": medidas_cabina["Medidas_cabina_profundo"],
             },
             "Armario": {
                 "Planta_ubicacion_armario": valores["Planta_ubicacion_armario"],
@@ -101,7 +103,7 @@ class ExtractorPremontadaArmarioBotonerasRaloeCrono:
                 "Display_ext_E1_cant": valores["Display_ext_E1_cant"],
                 "Display_ext_E2": _si_no(bool(valores["Display_ext_E2"])),
                 "Display_ext_E2_txt": valores["Display_ext_E2"],
-                "Display_ext_E2_cant": "",
+                "Display_ext_E2_cant": valores["Display_ext_E2_cant"],
                 "Reg_acustico_pisos_RAP": _si_no(_check_en(pagina, 20, 35, 765, 780)),
             },
             "Botonera_Cabina": {
@@ -122,7 +124,9 @@ class ExtractorPremontadaArmarioBotonerasRaloeCrono:
                 if _check_en(pagina, 270, 285, 628, 640)
                 else "",
                 "Llavin_extra_cab": _si_no(_check_en(pagina, 270, 285, 642, 655)),
-                "Llavin_extra_cab_Funcion": "",
+                "Llavin_extra_cab_Funcion": _texto_en_fila_despues_de_etiqueta_en_zona(
+                    pagina, ["Funcion"], y_min=640, y_max=662, x_min=340
+                ),
                 "Pulsador_de_stop_en_cabina": _si_no(_check_en(pagina, 270, 285, 658, 670)),
                 "Pulsador_alarma": _si_no(bool(valores["Pulsador_alarma"])),
                 "Pulsador_alarma_txt": valores["Pulsador_alarma"],
@@ -139,7 +143,7 @@ class ExtractorPremontadaArmarioBotonerasRaloeCrono:
         for seccion in ("Premontada", "Armario", "Botonera_Exterior", "Botonera_Cabina"):
             declarativos = extraer_por_reglas_pdf(pagina, seccion)
             if declarativos:
-                resultado.setdefault(seccion, {}).update(declarativos)
+                _actualizar_sin_degradar_checks(resultado.setdefault(seccion, {}), declarativos)
         return resultado
 
 
@@ -219,6 +223,7 @@ def _valores_pagina(pagina: PaginaPdf, tabla: dict[str, list[str]]) -> dict[str,
     botonera_cabina = _datos_botonera_cabina(pagina)
     botonera_exterior = _datos_botonera_exterior(pagina)
     datos_display = _datos_display(pagina)
+    plantas_bomberos = _plantas_acceso_bomberos(pagina)
     manguera_extra = _lineas_bloque_en_zona(pagina, 300, 315, 345, 490)
     peso_carga = _lineas_bloque_en_zona(pagina, 317, 333, 280, 500)
 
@@ -233,6 +238,7 @@ def _valores_pagina(pagina: PaginaPdf, tabla: dict[str, list[str]]) -> dict[str,
         "Extra": _valor_con_unidad(pagina, 300, 318, 480, 492, 545, 567),
         "P": _valor_con_unidad(pagina, 318, 335, 280, 305, 318, 335),
         "Carga_nominal": _valor_con_unidad(pagina, 318, 335, 420, 445, 442, 457),
+        **plantas_bomberos,
         "Planta_ubicacion_armario": planta_armario,
         "Acabado": acabado,
         **armario,
@@ -263,7 +269,9 @@ def _datos_botonera_cabina(pagina: PaginaPdf) -> dict[str, str]:
 def _datos_botonera_exterior(pagina: PaginaPdf) -> dict[str, str]:
     return {
         "Prohibido_paso_cant": _primera_linea_numerica_en_zona(pagina, 674, 689, 153, 190),
-        "Llavin_pulsador_ext_cant": _primera_linea_numerica_en_zona(pagina, 690, 705, 153, 190),
+        "Llavin_pulsador_ext_cant": _numero_en_fila_despues_de_etiqueta(
+            pagina, ["LlavÃ­n", "Pulsador"], ["Cant"]
+        ),
         "Llavin_extra_ext_cant": _numero_en_fila_despues_de_etiqueta(pagina, ["Llavín", "Extra"], ["Cant"]),
         "Llavin_extra_ext_funcion": _texto_despues_de_etiqueta(pagina, 721, 736, 65, 220),
     }
@@ -309,9 +317,9 @@ def _datos_display(pagina: PaginaPdf) -> dict[str, str | list[str]]:
         if display_ext_fila is not None
         else (linea_display[2] if len(linea_display) > 2 else "")
     )
-    display_ext_cant = _numero_en_fila_despues_de_etiqueta(pagina, ["Display", "Ext", "1"], ["Cant"]) or (
-        linea_display[3] if len(linea_display) > 3 else ""
-    )
+    display_ext_cant = _numero_en_fila_despues_de_etiqueta(pagina, ["Display", "Ext", "1"], ["Cant"])
+    if not display_ext_cant and len(linea_display) > 3 and re.fullmatch(r"\d+", linea_display[3]):
+        display_ext_cant = linea_display[3]
     orientacion = _buscar_orientacion(linea_display) or _primer_linea_bloque_en_zona(
         pagina, 750, 768, 20, 35
     )
@@ -326,11 +334,28 @@ def _datos_display(pagina: PaginaPdf) -> dict[str, str | list[str]]:
         "Display_ext_E1": display_ext,
         "Display_ext_E1_cant": display_ext_cant,
         "Display_ext_E2": _normalizar_display(linea_display_2[0]) if linea_display_2 else "",
+        "Display_ext_E2_cant": _numero_en_fila_despues_de_etiqueta(pagina, ["Display", "Ext", "2"], ["Cant"]),
         "Orientacion": orientacion,
         "Display_cabina": display_cabina,
         "Reg_ext": reg_ext,
         "Llavin_pulsador_cab_cant": llavin_cab_cant,
         "Pulsador_alarma": _texto_despues_de_etiqueta(pagina, 674, 686, 360, 500),
+    }
+
+
+def _medidas_cabina(pagina: PaginaPdf) -> dict[str, str]:
+    fila, x_fin = _fila_y_fin_etiqueta(pagina, ["Medidas", "Cabina"])
+    if not fila or x_fin is None:
+        return {"Medidas_cabina_ancho": "", "Medidas_cabina_profundo": ""}
+
+    numeros = [
+        palabra.texto
+        for palabra in fila
+        if palabra.x0 > x_fin and re.fullmatch(r"\d+(?:[.,]\d+)?", palabra.texto)
+    ]
+    return {
+        "Medidas_cabina_ancho": numeros[0] if len(numeros) > 0 else "",
+        "Medidas_cabina_profundo": numeros[1] if len(numeros) > 1 else "",
     }
 
 
@@ -340,12 +365,30 @@ def _datos_armario(pagina: PaginaPdf) -> dict[str, str]:
             pagina, ["Longitud", "cables", "interconexión", "armarios"]
         ),
         "Longitud_cables_potencia_modulo_de_piso": _numero_en_fila_despues_de_etiqueta(
-            pagina, ["Longitud", "cables", "potencia"]
+            pagina, ["Longitud", "cables", "potencia-módulo"]
         ),
         "Control_en_marco_puerta_txt": _texto_en_fila_despues_de_etiqueta(
             pagina, ["Control", "en", "marco", "puerta"]
         ),
         "Apertura_marco": _texto_en_fila_despues_de_etiqueta(pagina, ["Apertura", "marco"]),
+    }
+
+
+def _plantas_acceso_bomberos(pagina: PaginaPdf) -> dict[str, str]:
+    fila, x_fin = _fila_y_fin_etiqueta(pagina, ["Planta", "acceso", "bomberos"])
+    if not fila or x_fin is None:
+        return {"Planta_acceso_bomberos": "", "Planta_acceso_bomberos_2": ""}
+
+    x_segunda = _inicio_etiqueta_en_fila(fila, ["Planta", "acceso", "bomberos", "2"])
+    valor_1 = _texto_entre_x(fila, x_fin, x_segunda)
+    valor_2 = ""
+    if x_segunda is not None:
+        fin_segunda = _fin_etiqueta_en_fila(fila, ["Planta", "acceso", "bomberos", "2"])
+        if fin_segunda is not None:
+            valor_2 = _texto_entre_x(fila, fin_segunda, None)
+    return {
+        "Planta_acceso_bomberos": valor_1.strip("_").strip(),
+        "Planta_acceso_bomberos_2": valor_2.strip("_").strip(),
     }
 
 
@@ -417,6 +460,29 @@ def _texto_en_fila_despues_de_etiqueta(
     return _texto_entre_x(fila, x_fin, x_stop)
 
 
+def _texto_en_fila_despues_de_etiqueta_en_zona(
+    pagina: PaginaPdf,
+    etiqueta: list[str],
+    y_min: float,
+    y_max: float,
+    x_min: float = 0,
+    x_max: float = 10_000,
+    stop: list[str] | None = None,
+) -> str:
+    palabras = [
+        palabra
+        for palabra in pagina.palabras
+        if y_min <= palabra.y0 <= y_max and x_min <= palabra.x0 <= x_max and palabra.texto != MARCA_CHECK
+    ]
+    for fila in _agrupar_por_fila(palabras):
+        x_fin = _fin_etiqueta_en_fila(fila, etiqueta)
+        if x_fin is None:
+            continue
+        x_stop = _inicio_etiqueta_en_fila(fila, stop) if stop else None
+        return _texto_entre_x(fila, x_fin, x_stop)
+    return ""
+
+
 def _texto_entre_etiquetas_en_fila(
     pagina: PaginaPdf,
     etiqueta_inicio: list[str],
@@ -449,7 +515,7 @@ def _numero_en_fila_despues_de_etiqueta(
         return ""
     for palabra in fila:
         if palabra.x0 > x_fin and re.fullmatch(r"\d+(?:[.,]\d+)?", palabra.texto):
-            return palabra.texto
+            return palabra.texto.replace(",", ".")
     return ""
 
 
@@ -493,7 +559,24 @@ def _indice_etiqueta_en_fila(fila: list[PalabraTexto], etiqueta: list[str] | Non
 
 def _normalizar_token(texto: str) -> str:
     texto = texto.rstrip(":")
-    texto = texto.translate(str.maketrans("áéíóúÁÉÍÓÚ", "aeiouAEIOU"))
+    for origen, destino in {
+        "\u00c3\u00a1": "a",
+        "\u00c3\u00a9": "e",
+        "\u00c3\u00ad": "i",
+        "\u00c3\u00b3": "o",
+        "\u00c3\u00ba": "u",
+        "\u00c3\u0081": "A",
+        "\u00c3\u0089": "E",
+        "\u00c3\u008d": "I",
+        "\u00c3\u0093": "O",
+        "\u00c3\u009a": "U",
+    }.items():
+        texto = texto.replace(origen, destino)
+    texto = "".join(
+        caracter
+        for caracter in unicodedata.normalize("NFD", texto)
+        if unicodedata.category(caracter) != "Mn"
+    )
     return texto.lower()
 
 
@@ -503,9 +586,23 @@ def _texto_entre_x(fila: list[PalabraTexto], x_min: float, x_max: float | None =
         for palabra in fila
         if palabra.x0 > x_min
         and (x_max is None or palabra.x0 < x_max)
+        and not _es_palabra_nota(palabra)
         and palabra.texto not in {MARCA_CHECK, "m", "mm", "UN"}
     ]
     return " ".join(valores).strip()
+
+
+def _es_palabra_nota(palabra: PalabraTexto) -> bool:
+    return _es_rojo(palabra.color)
+
+
+def _es_rojo(color: int | None) -> bool:
+    if color is None:
+        return False
+    rojo = (color >> 16) & 255
+    verde = (color >> 8) & 255
+    azul = color & 255
+    return rojo >= 150 and rojo > verde + 50 and rojo > azul + 50
 
 
 def _primera_linea_numerica_en_zona(
@@ -541,6 +638,16 @@ def _primer_valor(valores: list[str]) -> str:
 
 def _normalizar_display(valor: str) -> str:
     return valor.replace('"', "").strip()
+
+
+def _actualizar_sin_degradar_checks(destino: dict[str, str], origen: dict[str, str]) -> None:
+    for campo, valor in origen.items():
+        actual = destino.get(campo, "")
+        if actual == "Si" and valor == "No":
+            continue
+        if actual and valor == "":
+            continue
+        destino[campo] = valor
 
 
 def _buscar_orientacion(valores: list[str]) -> str:

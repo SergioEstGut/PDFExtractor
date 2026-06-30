@@ -171,6 +171,8 @@ def _aplicar_regla(
         return _leer_check_x_derecha_cercana(pagina, coincidencia, regla)
     if modo == "texto_derecha_alias":
         return _texto_derecha(coincidencia, regla)
+    if modo == "texto_derecha_token_despues_alias":
+        return _texto_derecha_token_despues_alias(coincidencia, regla)
     if modo == "texto_derecha_cercana_alias":
         return _texto_derecha_cercana(pagina, coincidencia, regla)
     if modo == "texto_debajo_alias":
@@ -391,6 +393,38 @@ def _texto_derecha(coincidencia: CoincidenciaAlias, regla: dict[str, Any]) -> st
     return str(separador).join(valores).strip()
 
 
+def _texto_derecha_token_despues_alias(coincidencia: CoincidenciaAlias, regla: dict[str, Any]) -> str:
+    x_fin = coincidencia.fin_x
+    token = str(regla.get("token", ""))
+    if not token:
+        return ""
+    separador = next(
+        (
+            palabra
+            for palabra in coincidencia.fila
+            if palabra.x0 > x_fin and palabra.texto.strip() == token
+        ),
+        None,
+    )
+    if separador is None:
+        return ""
+    x_stop = _x_stop(coincidencia.fila, regla.get("hasta_aliases", []), separador.x1)
+    distancia_maxima = regla.get("distancia_maxima_derecha")
+    valores = [
+        palabra.texto
+        for palabra in coincidencia.fila
+        if palabra.x0 > separador.x1
+        and (x_stop is None or palabra.x0 < x_stop)
+        and (distancia_maxima is None or palabra.x0 - separador.x1 <= float(distancia_maxima))
+        and not _es_ruido_valor(palabra.texto)
+    ]
+    tomar = _tokens_a_tomar(regla)
+    if tomar is not None:
+        valores = valores[:tomar]
+    separador_tokens = regla.get("separador_tokens", " ")
+    return str(separador_tokens).join(valores).strip()
+
+
 def _texto_derecha_cercana(
     pagina: PaginaPdf,
     coincidencia: CoincidenciaAlias,
@@ -400,12 +434,13 @@ def _texto_derecha_cercana(
     x_stop = _x_stop(coincidencia.fila, regla.get("hasta_aliases", []), x_fin)
     distancia_maxima = regla.get("distancia_maxima_derecha")
     limite_x_derecha = regla.get("limite_x_derecha")
+    margen_solape_izquierda = float(regla.get("margen_solape_izquierda", 0))
     tolerancia_y = float(regla.get("tolerancia_y", 8))
     y_ref = coincidencia.fila[coincidencia.indice].y0
     valores = [
         palabra.texto
-        for palabra in sorted(pagina.palabras, key=lambda item: (item.x0, item.y0))
-        if palabra.x0 > x_fin
+        for palabra in sorted(pagina.palabras, key=lambda item: (abs(item.y0 - y_ref), item.x0))
+        if palabra.x0 > x_fin - margen_solape_izquierda
         and abs(palabra.y0 - y_ref) <= tolerancia_y
         and (x_stop is None or palabra.x0 < x_stop)
         and (distancia_maxima is None or palabra.x0 - x_fin <= float(distancia_maxima))

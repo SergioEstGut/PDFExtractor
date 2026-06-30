@@ -169,6 +169,7 @@ class LectorTextoPyMuPdf(LectorTextoPdf):
                         y1=caja.y1,
                     )
                 )
+        marcas.extend(LectorTextoPyMuPdf._leer_marcas_check_rellenas(pagina))
         return LectorTextoPyMuPdf._deduplicar_marcas(marcas)
 
     @staticmethod
@@ -191,6 +192,35 @@ class LectorTextoPyMuPdf(LectorTextoPdf):
                 continue
             cajas.append(rect)
         return cajas
+
+    @staticmethod
+    def _leer_marcas_check_rellenas(pagina: fitz.Page) -> list[PalabraTexto]:
+        marcas: list[PalabraTexto] = []
+        for dibujo in pagina.get_drawings():
+            rect = dibujo.get("rect")
+            relleno = dibujo.get("fill")
+            if rect is None or relleno is None:
+                continue
+
+            ancho = abs(rect.x1 - rect.x0)
+            alto = abs(rect.y1 - rect.y0)
+            if not (3 <= ancho <= 10 and 3 <= alto <= 10):
+                continue
+            if abs(ancho - alto) > 2:
+                continue
+            if not _es_color_oscuro(relleno):
+                continue
+
+            marcas.append(
+                PalabraTexto(
+                    texto=MARCA_CHECK,
+                    x0=rect.x0,
+                    y0=rect.y0,
+                    x1=rect.x1,
+                    y1=rect.y1,
+                )
+            )
+        return marcas
 
     @staticmethod
     def _hay_contenido_en_caja(caja: fitz.Rect, palabras: list[PalabraTexto]) -> bool:
@@ -327,6 +357,10 @@ def _es_color_no_neutro(color: tuple[float, float, float]) -> bool:
     if canal_max <= 0.25:
         return False
     return canal_max - canal_min > 0.08
+
+
+def _es_color_oscuro(color: tuple[float, float, float]) -> bool:
+    return max(color) <= 0.25
 
 
 def _misma_palabra_superpuesta(a: PalabraTexto, b: PalabraTexto) -> bool:

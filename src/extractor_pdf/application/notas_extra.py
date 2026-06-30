@@ -14,6 +14,7 @@ def detectar_notas_extra(
     ignorar_tonos_azules: bool = False,
     ignorar_tonos_grises_claros: bool = False,
     detectar_marcas_visuales: bool = False,
+    incluir_coordenadas: bool = False,
 ) -> list[dict[str, Any]]:
     secciones_por_pagina = secciones_por_pagina or {}
     notas: list[dict[str, Any]] = []
@@ -46,13 +47,21 @@ def detectar_notas_extra(
             valor = " ".join(palabra.texto for palabra in linea).strip()
             if not valor:
                 continue
-            notas.append(
-                {
-                    "valor": valor,
-                    "pagina": pagina.numero,
-                    "seccion": _inferir_seccion(pagina.numero, linea, secciones_por_pagina),
-                }
-            )
+            nota = {
+                "valor": valor,
+                "pagina": pagina.numero,
+                "seccion": _inferir_seccion(pagina.numero, linea, secciones_por_pagina),
+            }
+            if incluir_coordenadas:
+                nota.update(
+                    {
+                        "x0": min(palabra.x0 for palabra in linea),
+                        "y0": min(palabra.y0 for palabra in linea),
+                        "x1": max(palabra.x1 for palabra in linea),
+                        "y1": max(palabra.y1 for palabra in linea),
+                    }
+                )
+            notas.append(nota)
 
     return notas
 
@@ -60,11 +69,23 @@ def detectar_notas_extra(
 def _agrupar_por_linea(palabras: list[PalabraTexto]) -> list[list[PalabraTexto]]:
     lineas: list[list[PalabraTexto]] = []
     for palabra in sorted(palabras, key=lambda item: (item.y0, item.x0)):
-        if not lineas or abs(lineas[-1][0].y0 - palabra.y0) > 4:
+        if (
+            not lineas
+            or abs(lineas[-1][0].y0 - palabra.y0) > 4
+            or _salto_horizontal_grande(lineas[-1], palabra)
+        ):
             lineas.append([palabra])
         else:
             lineas[-1].append(palabra)
     return lineas
+
+
+def _salto_horizontal_grande(linea: list[PalabraTexto], palabra: PalabraTexto) -> bool:
+    if not linea:
+        return False
+    ultima = linea[-1]
+    min_x = min(item.x0 for item in linea)
+    return palabra.x0 - ultima.x1 > 120 or palabra.x0 + 20 < min_x
 
 
 def _inferir_seccion(
@@ -80,8 +101,13 @@ def _inferir_seccion(
 
     y = min(palabra.y0 for palabra in linea)
     x = min(palabra.x0 for palabra in linea)
+    es_marca_visual = hasattr(linea[0], "tipo") and not hasattr(linea[0], "texto")
 
     if {"Datos_Generales", "Botoneras_Exteriores", "Datos_Premontada"}.issubset(set(secciones)):
+        if not es_marca_visual and y >= 748:
+            return "Observaciones"
+        if es_marca_visual:
+            return _inferir_seccion_crono_principal_visual(x, y)
         return _inferir_seccion_crono_principal(x, y)
 
     if "Opciones" in secciones:
@@ -98,6 +124,40 @@ def _inferir_seccion(
 
 
 def _inferir_seccion_crono_principal(x: float, y: float) -> str:
+    if x < 199:
+        if y < 220:
+            return "Normas"
+        if y < 390:
+            return "Datos_Generales"
+        if y < 535:
+            return "Datos_Motor"
+        if y < 620:
+            return "Opciones_Maniobra"
+        return "Rescates"
+
+    if x < 385:
+        if y < 297:
+            return "Datos_Cabina"
+        if y < 438:
+            return "Caja_Inspeccion"
+        if y < 503:
+            return "Pesacargas"
+        if y < 621:
+            return "Botonera_Cabina"
+        return "Botoneras_Exteriores"
+
+    if y < 282:
+        return "Medidas_Premontada"
+    if y < 390:
+        return "Medidas_Entreplantas"
+    if y < 612:
+        return "Datos_Premontada"
+    if y < 656:
+        return "Opciones_Especiales"
+    return "Parametros_Variador"
+
+
+def _inferir_seccion_crono_principal_visual(x: float, y: float) -> str:
     if x < 199:
         if y < 220:
             return "Normas"

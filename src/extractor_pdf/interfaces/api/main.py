@@ -21,11 +21,13 @@ from extractor_pdf.infrastructure.ocr.extractor_visual_tesseract import (
 from extractor_pdf.infrastructure.pdf.lector_pymupdf import LectorTextoPyMuPdf
 from extractor_pdf.infrastructure.pdf.renderizador_pymupdf import RenderizadorPaginaPyMuPdf
 from extractor_pdf.interfaces.api.dependencias import (
+    crear_caso_uso_extraer_aszende_crono,
     crear_caso_uso_extraer_felesa_crono,
     crear_caso_uso_extraer_raloe_crono,
     crear_caso_uso_extraer_raloe_crono_fusionado,
 )
 
+RAIZ_PROYECTO = Path(__file__).resolve().parents[4]
 app = FastAPI(title=configuracion.nombre_app, version="0.1.0")
 
 DIRECTORIO_PRUEBAS_PEDIDOS = r"D:\Pedidos pruebas PDFExtractor\Formulario\Pruebas"
@@ -38,6 +40,28 @@ CARPETAS_PEDIDOS_POR_PLANTILLA = {
     "felesa_crono_electrico": "Felesa Electrico",
     "felesa_crono_hidraulico": "Felesa Hidraulico",
     "aszende_crono_electrico": "Aszende Electrico",
+}
+ASZENDE_ELECTRICO_SECCIONES_TXT = [
+    "Cabecera",
+    "Normas",
+    "Datos_Generales",
+    "Datos_Motor",
+    "Opciones_Maniobra",
+    "Rescates",
+    "Datos_Cabina",
+    "Caja_Inspeccion",
+    "Pesacargas",
+    "Botonera_Cabina",
+    "Botoneras_Exteriores",
+    "Medidas_Premontada",
+    "Medidas_Entreplantas",
+    "Datos_Premontada",
+    "Opciones_Especiales",
+    "Parametros_Variador",
+    "Observaciones",
+]
+CONTRATOS_SECCIONES_POR_PLANTILLA = {
+    "aszende_crono_electrico": RAIZ_PROYECTO / "docs/contrato_aszende_crono_electrico/secciones",
 }
 
 
@@ -318,7 +342,6 @@ def formatear_txt_resultados_pruebas(
     carpetas = [
         "Felesa Electrico",
         "Felesa Hidraulico",
-        "Aszende Electrico",
     ]
     if incluir_raloe:
         carpetas.insert(0, "Raloe")
@@ -486,12 +509,22 @@ def _extraer_array2d_a_txt(
     _detectar_version_formulario(bytes_pdf, profile_id)
     resultado = _extraer_por_perfil(bytes_pdf, profile_id, fusionado=False)
     data = construir_data_plana_con_observaciones(resultado)
-    array2d = [[campo, valor] for campo, valor in data.items()]
-    ruta_salida.write_text(json.dumps(array2d, ensure_ascii=True), encoding="utf-8")
+    if profile_id == "aszende_crono":
+        contenido = _txt_clave_valor_ordenado_por_contrato(
+            data=data,
+            template_id="aszende_crono_electrico",
+            secciones_ordenadas=ASZENDE_ELECTRICO_SECCIONES_TXT,
+        )
+        ruta_salida.write_text(contenido, encoding="utf-8")
+        campos = sum(1 for linea in contenido.splitlines() if linea.strip())
+    else:
+        array2d = [[campo, valor] for campo, valor in data.items()]
+        ruta_salida.write_text(json.dumps(array2d, ensure_ascii=True), encoding="utf-8")
+        campos = len(array2d)
     return {
         "archivo": ruta_pdf.name,
         "salida": str(ruta_salida),
-        "campos": len(array2d),
+        "campos": campos,
         "omitido": False,
     }
 
@@ -523,6 +556,67 @@ def _valor_txt(valor: Any) -> str:
     return texto.replace("\r\n", "\\n").replace("\r", "\\n").replace("\n", "\\n")
 
 
+def _txt_clave_valor_ordenado_por_contrato(
+    data: dict[str, Any],
+    template_id: str,
+    secciones_ordenadas: list[str],
+) -> str:
+    orden_campos = _cargar_orden_campos_contrato(template_id)
+    claves_escritas: set[str] = set()
+    bloques: list[str] = []
+
+    for seccion in secciones_ordenadas:
+        campos = orden_campos.get(seccion, [])
+        lineas_seccion: list[str] = []
+        for campo in campos:
+            clave = f"{seccion}.{campo}"
+            if clave not in data:
+                continue
+            lineas_seccion.append(f"{clave}: {_valor_txt(data.get(clave))}")
+            claves_escritas.add(clave)
+
+        extras_seccion = [
+            clave
+            for clave in data
+            if clave.startswith(f"{seccion}.") and clave not in claves_escritas
+        ]
+        for clave in extras_seccion:
+            lineas_seccion.append(f"{clave}: {_valor_txt(data.get(clave))}")
+            claves_escritas.add(clave)
+
+        if lineas_seccion:
+            bloques.append("\n".join(lineas_seccion))
+
+    lineas_extra = [
+        f"{clave}: {_valor_txt(valor)}"
+        for clave, valor in data.items()
+        if clave not in claves_escritas
+    ]
+    if lineas_extra:
+        bloques.append("\n".join(lineas_extra))
+
+    return "\n\n".join(bloques) + "\n"
+
+
+def _cargar_orden_campos_contrato(template_id: str) -> dict[str, list[str]]:
+    directorio = CONTRATOS_SECCIONES_POR_PLANTILLA.get(template_id)
+    if directorio is None:
+        return {}
+
+    orden: dict[str, list[str]] = {}
+    for ruta in sorted(directorio.glob("*.json")):
+        with ruta.open("r", encoding="utf-8-sig") as archivo:
+            contrato = json.load(archivo)
+        seccion = str(contrato.get("seccion") or ruta.stem)
+        campos = contrato.get("campos") or []
+        orden[seccion] = [
+            str(campo["nombre"])
+            for campo in campos
+            if isinstance(campo, dict) and campo.get("nombre")
+        ]
+    return orden
+
+
 def _trocear(items: list[Path], size: int) -> list[list[Path]]:
     return [items[indice : indice + size] for indice in range(0, len(items), size)]
 
@@ -536,8 +630,17 @@ def _extraer_por_perfil(
         if fusionado:
             return crear_caso_uso_extraer_raloe_crono_fusionado().ejecutar(bytes_pdf)
         return crear_caso_uso_extraer_raloe_crono().ejecutar(bytes_pdf)
-    if profile_id in {"felesa_crono", "aszende_crono"}:
+    if profile_id == "felesa_crono":
         resultado = crear_caso_uso_extraer_felesa_crono().ejecutar(bytes_pdf)
+        if fusionado:
+            warnings = resultado.setdefault("metadata", {}).setdefault("warnings", [])
+            aviso = f"OCR no implementado para {profile_id}; se usa extraccion PDF."
+            if aviso not in warnings:
+                warnings.append(aviso)
+            resultado["metadata"]["status"] = "partial"
+        return resultado
+    if profile_id == "aszende_crono":
+        resultado = crear_caso_uso_extraer_aszende_crono().ejecutar(bytes_pdf)
         if fusionado:
             warnings = resultado.setdefault("metadata", {}).setdefault("warnings", [])
             aviso = f"OCR no implementado para {profile_id}; se usa extraccion PDF."

@@ -8,44 +8,29 @@ from extractor_pdf.domain.entidades import PaginaPdf
 
 ANCLAS_POR_ROL = {
     "principal": {
-        "formulario maniobras crono": 3,
+        "formulario maniobras aszende electricas": 4,
+        "formulari crono": 3,
         "normas": 2,
         "datos generales": 2,
         "datos motor": 2,
         "datos cabina": 2,
         "medidas premontada": 2,
     },
-    "botoneras_rellano": {
-        "datos instalacion": 3,
-        "botoneras de rellano": 3,
-        "placa para botoneras de rellano": 3,
-        "neo 1t": 1,
-        "neo 2tt": 1,
-        "neo 3ktt": 1,
-    },
 }
 
 PUNTUACION_MINIMA = {
     "principal": 7,
-    "botoneras_rellano": 7,
 }
 
 
-def detectar_plantilla_felesa_crono(paginas: list[PaginaPdf]) -> str:
-    texto_inicial = _normalizar("\n".join(pagina.texto for pagina in paginas[:2]))
-    texto_documento = _normalizar("\n".join(pagina.texto for pagina in paginas))
-    if _parece_aszende_electrico(texto_inicial) or _parece_aszende_electrico(texto_documento):
+def detectar_plantilla_aszende_crono(paginas: list[PaginaPdf]) -> str:
+    texto = _normalizar("\n".join(pagina.texto for pagina in paginas))
+    if _parece_aszende_electrico(texto):
         return "aszende_crono_electrico"
-    if (
-        "formulario maniobra crono hidraulicas" in texto_inicial
-        or "datos central" in texto_documento
-        or "hidraulico" in texto_inicial
-    ):
-        return "felesa_crono_hidraulico"
-    return "felesa_crono_electrico"
+    return "aszende_crono_desconocido"
 
 
-def detectar_paginas_felesa_crono(paginas: list[PaginaPdf]) -> dict[str, int]:
+def detectar_paginas_aszende_crono(paginas: list[PaginaPdf]) -> dict[str, int]:
     resultado: dict[str, int] = {}
     for rol, anclas in ANCLAS_POR_ROL.items():
         pagina, puntuacion = _mejor_pagina(paginas, anclas)
@@ -77,9 +62,7 @@ def _normalizar(texto: str) -> str:
 
 
 def _parece_aszende_electrico(texto: str) -> bool:
-    if "aszende" not in texto:
-        return False
-    if "cliente felesa" in texto:
+    if "aszende" not in texto and "asc electricos" not in texto:
         return False
     return (
         "formulario maniobras aszende electricas" in texto

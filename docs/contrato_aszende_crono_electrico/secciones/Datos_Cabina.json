@@ -26,8 +26,9 @@
         "extraccion_pdf": {
           "modo": "texto_derecha_cercana_alias",
           "subseccion_pdf": "Datos_Cabina",
-          "aliases": ["Operador -1-", "Operador 1"],
-          "distancia_maxima_derecha": 115,
+          "aliases": ["Operador"],
+          "ocurrencia_alias": 0,
+          "distancia_maxima_derecha": 150,
           "limite_x_derecha": 382,
           "tolerancia_y": 8
         }
@@ -64,8 +65,10 @@
         "extraccion_pdf": {
           "modo": "texto_derecha_cercana_alias",
           "subseccion_pdf": "Datos_Cabina",
-          "aliases": ["Operador -2-", "Operador 2"],
-          "distancia_maxima_derecha": 115,
+          "aliases": ["Operador"],
+          "ocurrencia_alias": 1,
+          "saltar_tokens": 1,
+          "distancia_maxima_derecha": 150,
           "limite_x_derecha": 382,
           "tolerancia_y": 8
         }
@@ -176,13 +179,12 @@
     },
     {
       "nombre": "Leva_electrica_tension",
-      "tipo": "double",
+      "tipo": "texto",
       "valor_defecto": "",
       "aliases": ["Tension Leva Electrica"],
       "reglas": {
-        "tipo_valor": "double",
         "extraccion_pdf": {
-          "modo": "numero_derecha_cercana_alias",
+          "modo": "texto_derecha_cercana_alias",
           "subseccion_pdf": "Datos_Cabina",
           "aliases": ["Tension"],
           "en_fila_con": "Leva Electrica",

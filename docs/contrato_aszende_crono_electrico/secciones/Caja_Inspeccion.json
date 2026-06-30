@@ -65,6 +65,7 @@
           "hasta_aliases": ["Flechas"],
           "distancia_maxima_derecha": 45,
           "limite_x_derecha": 305,
+          "margen_solape_izquierda": 3,
           "tolerancia_y": 8
         }
       }

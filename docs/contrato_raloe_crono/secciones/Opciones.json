@@ -1359,12 +1359,11 @@
       ],
       "reglas": {
         "extraccion_pdf": {
-          "modo": "texto_derecha_alias",
+          "modo": "texto_derecha_token_despues_alias",
           "aliases": [
-            "Idioma 2",
-            "Idioma voz 2",
-            "Segundo idioma voz"
+            "Idioma"
           ],
+          "token": "/",
           "despues_de": "Opciones:",
           "hasta_aliases": [
             "Interfono Suministro",
@@ -2021,7 +2020,7 @@
           ],
           "subseccion_pdf": "Stops_y_topes",
           "distancia_maxima": 95,
-          "tolerancia_y": 18,
+          "tolerancia_y": 8,
           "si_no_hay_check": "No"
         }
       }
@@ -2105,7 +2104,7 @@
           ],
           "subseccion_pdf": "Stops_y_topes",
           "distancia_maxima": 95,
-          "tolerancia_y": 18,
+          "tolerancia_y": 8,
           "si_no_hay_check": "No"
         }
       }

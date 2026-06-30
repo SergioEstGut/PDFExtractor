@@ -206,8 +206,8 @@
             "EN 81-77"
           ],
           "hasta_aliases": [
-            "Operativa Shabbat",
-            "Shabbat"
+            "U-36",
+            "U 36"
           ],
           "tolerancia_y": 8,
           "limite_x_derecha": 205
@@ -237,30 +237,6 @@
           "tolerancia_y": 8,
           "distancia_maxima_derecha": 90,
           "limite_x_derecha": 105
-        }
-      }
-    },
-    {
-      "nombre": "Operativa_Shabbat",
-      "tipo": "texto",
-      "valor_defecto": "",
-      "aliases": [
-        "Operativa Shabbat",
-        "Shabbat"
-      ],
-      "reglas": {
-        "extraccion_pdf": {
-          "modo": "texto_derecha_alias",
-          "subseccion_pdf": "Normas",
-          "aliases": [
-            "Operativa Shabbat"
-          ],
-          "hasta_aliases": [
-            "Datos Generales",
-            "DATOS GENERALES"
-          ],
-          "tolerancia_y": 8,
-          "limite_x_derecha": 205
         }
       }
     }

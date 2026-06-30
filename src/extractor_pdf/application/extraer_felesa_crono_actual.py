@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from pathlib import Path
 from typing import Any
 
@@ -57,6 +58,7 @@ class CasoUsoExtraerFelesaCronoActual:
 
         pagina_principal = _pagina_por_rol(paginas, pages, "principal", warnings)
         if pagina_principal:
+            _avisar_si_texto_pdf_no_confiable(pagina_principal, "principal", warnings)
             _extraer_secciones(
                 data,
                 contratos,
@@ -71,6 +73,7 @@ class CasoUsoExtraerFelesaCronoActual:
             else None
         )
         if pagina_botoneras:
+            _avisar_si_texto_pdf_no_confiable(pagina_botoneras, "botoneras_rellano", warnings)
             _extraer_secciones(
                 data,
                 contratos,
@@ -80,7 +83,8 @@ class CasoUsoExtraerFelesaCronoActual:
 
         _aplicar_derivados_felesa(data, contratos)
         data["Observaciones"]["Observaciones"] = _extraer_observaciones(paginas)
-        data["Notas"]["Nota"] = _extraer_nota(paginas)
+        if "Notas" in data:
+            data["Notas"]["Nota"] = _extraer_nota(paginas)
         secciones_por_pagina = _secciones_por_pagina(pages, template_id, contratos)
         paginas_con_datos = _paginas_detectadas(paginas, pages)
         campos_extra = detectar_campos_extra(
@@ -144,6 +148,56 @@ def _extraer_secciones(
         )
         _aplicar_dependencias_felesa(extraido, especificaciones)
         data[seccion].update(extraido)
+
+
+def _avisar_si_texto_pdf_no_confiable(
+    pagina: PaginaPdf,
+    rol: str,
+    warnings: list[str],
+) -> None:
+    if not _texto_pdf_parece_no_confiable(pagina.texto):
+        return
+    aviso = (
+        f"La capa de texto PDF de la pagina {pagina.numero} ({rol}) parece no confiable; "
+        "la extraccion por texto puede ser incompleta. Revisar con OCR o validacion manual."
+    )
+    if aviso not in warnings:
+        warnings.append(aviso)
+
+
+def _texto_pdf_parece_no_confiable(texto: str) -> bool:
+    if not texto:
+        return False
+    caracteres_utiles = [caracter for caracter in texto if not caracter.isspace()]
+    if len(caracteres_utiles) < 50:
+        return False
+
+    controles = sum(
+        1
+        for caracter in caracteres_utiles
+        if unicodedata.category(caracter).startswith("C")
+    )
+    if controles / len(caracteres_utiles) >= 0.02:
+        return True
+
+    tokens = re.findall(r"\S+", texto)
+    if len(tokens) < 20:
+        return False
+    tokens_raros = sum(1 for token in tokens if _token_pdf_raro(token))
+    return tokens_raros / len(tokens) >= 0.35
+
+
+def _token_pdf_raro(token: str) -> bool:
+    caracteres = [caracter for caracter in token if not caracter.isspace()]
+    if not caracteres:
+        return False
+    malos = sum(
+        1
+        for caracter in caracteres
+        if unicodedata.category(caracter).startswith("C")
+        or (ord(caracter) < 32)
+    )
+    return malos > 0
 
 
 def _normalizar_valor(valor: str, especificacion: dict[str, Any]) -> str:
@@ -419,7 +473,8 @@ def _datos_vacios_felesa(
             for campo in contrato.get("campos", [])
             if isinstance(campo, dict) and campo.get("nombre")
         }
-    data.setdefault("Notas", {"Nota": ""})
+    if not template_id.startswith("aszende_"):
+        data.setdefault("Notas", {"Nota": ""})
     return data
 
 
