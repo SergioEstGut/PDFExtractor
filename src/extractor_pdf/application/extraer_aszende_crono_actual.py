@@ -541,16 +541,35 @@ def _decodificar_notas_aszende(
     for nota in notas:
         valor = nota.get("valor")
         if isinstance(valor, str):
+            valor_decodificado_pdf = _decodificar_texto_aszende_si_corrupto(valor)
             valor_ocr = _leer_nota_aszende_por_ocr(bytes_pdf, nota, valor)
-            if valor_ocr:
+            if _valor_pdf_decodificado_preferible(valor, valor_decodificado_pdf):
+                nota["valor"] = valor_decodificado_pdf
+            elif valor_ocr:
                 nota["valor"] = valor_ocr
             elif valor.strip() in {"P", "V"}:
                 nota["valor"] = _decodificar_token_aszende_corrupto(valor.strip())
             else:
-                nota["valor"] = _decodificar_texto_aszende_si_corrupto(valor)
+                nota["valor"] = valor_decodificado_pdf
         for clave in ("x0", "y0", "x1", "y1"):
             nota.pop(clave, None)
     return notas
+
+
+def _valor_pdf_decodificado_preferible(valor_original: str, valor_decodificado: str) -> bool:
+    if valor_decodificado == valor_original:
+        return False
+    if not _parece_texto_aszende_corrupto(valor_original):
+        return False
+    if _parece_texto_aszende_corrupto(valor_decodificado):
+        return False
+    if _tiene_mezcla_mayusculas_sospechosa(valor_decodificado):
+        return False
+    return any(caracter.isalpha() for caracter in valor_decodificado)
+
+
+def _tiene_mezcla_mayusculas_sospechosa(texto: str) -> bool:
+    return any(re.search(r"[A-ZÁÉÍÓÚÜÑ]{2,}[a-záéíóúüñ]", token) for token in texto.split())
 
 
 def _leer_nota_aszende_por_ocr(
@@ -583,7 +602,7 @@ def _leer_nota_aszende_por_ocr(
         documento = fitz.open(stream=bytes_pdf, filetype="pdf")
         pagina = documento[pagina_numero - 1]
         rect = fitz.Rect(
-            max(0, x0 - 8),
+            max(0, x0 + 1),
             max(0, y0 - 5),
             min(float(pagina.rect.width), x1 + 12),
             min(float(pagina.rect.height), y1 + 7),
@@ -612,11 +631,7 @@ def _leer_nota_aszende_por_ocr(
 
 
 def _nota_aszende_requiere_ocr(valor: str) -> bool:
-    if not _parece_texto_aszende_corrupto(valor):
-        return False
-    if valor.strip() in {"P", "V"}:
-        return False
-    return True
+    return bool(valor.strip())
 
 
 def _limpiar_texto_ocr_nota_aszende(texto: str) -> str:
@@ -626,7 +641,10 @@ def _limpiar_texto_ocr_nota_aszende(texto: str) -> str:
     texto_limpio = re.sub(r"\s+([,.;:])", r"\1", texto_limpio)
     texto_limpio = re.sub(r"\s*-\s*", "-", texto_limpio)
     texto_limpio = re.sub(r"\s+", " ", texto_limpio)
-    return texto_limpio.strip(" .\n\t")
+    texto_limpio = re.sub(r"^[^\wÁÉÍÓÚÜÑáéíóúüñ]+", "", texto_limpio)
+    texto_limpio = re.sub(r"^l(?=de\b)", "", texto_limpio)
+    texto_limpio = re.sub(r"^ii(?=\w)", "Li", texto_limpio)
+    return texto_limpio.strip(" .-[]|\n\t")
 
 
 def _texto_ocr_nota_es_util(texto_ocr: str, valor_pdf: str) -> bool:
@@ -634,15 +652,37 @@ def _texto_ocr_nota_es_util(texto_ocr: str, valor_pdf: str) -> bool:
         return False
     if texto_ocr == valor_pdf:
         return False
+    if len(texto_ocr.split()) > len(valor_pdf.split()):
+        return False
+    if _texto_pdf_nota_corto_y_confiable(valor_pdf) and _texto_pdf_nota_corto_y_confiable(texto_ocr):
+        return False
     if _parece_texto_aszende_corrupto(texto_ocr):
         return False
     return any(caracter.isalpha() for caracter in texto_ocr)
 
 
+def _texto_pdf_nota_corto_y_confiable(texto: str) -> bool:
+    texto = texto.strip()
+    if len(texto) > 4:
+        return False
+    return bool(re.fullmatch(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+", texto))
+
+
 def _decodificar_texto_aszende_si_corrupto(texto: str) -> str:
     if not _parece_texto_aszende_corrupto(texto):
-        return texto.replace("í", "t")
-    return " ".join(_decodificar_token_aszende_corrupto(token) for token in texto.split())
+        return _normalizar_texto_aszende_parcialmente_decodificado(texto)
+    texto_decodificado = " ".join(_decodificar_token_aszende_corrupto(token) for token in texto.split())
+    return _normalizar_texto_aszende_parcialmente_decodificado(texto_decodificado)
+
+
+def _normalizar_texto_aszende_parcialmente_decodificado(texto: str) -> str:
+    texto = texto.replace("í", "t")
+    texto = re.sub(r"\bii(?=\w)", "Li", texto)
+    texto = re.sub(r"\baa(?=to\b)", "Da", texto)
+    texto = re.sub(r"\bé(?=iso\b)", "p", texto)
+    texto = re.sub(r"\bé(?=lana\b)", "p", texto)
+    texto = re.sub(r"\bNm\b", "1m", texto)
+    return texto
 
 
 def _decodificar_token_aszende_corrupto(token: str) -> str:

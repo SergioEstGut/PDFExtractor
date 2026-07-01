@@ -60,7 +60,45 @@ ASZENDE_ELECTRICO_SECCIONES_TXT = [
     "Parametros_Variador",
     "Observaciones",
 ]
+FELESA_ELECTRICO_SECCIONES_TXT = [
+    "Cabecera",
+    "Normas",
+    "Datos_Generales",
+    "Datos_Motor",
+    "Control_Motor",
+    "Rescates",
+    "Datos_Cabina",
+    "Pesacargas",
+    "Botonera_Cabina",
+    "Opciones_Especiales",
+    "Medidas_Premontada",
+    "Medidas_Entreplantas",
+    "Datos_Premontada",
+    "Caja_Inspeccion",
+    "Botoneras_Rellano",
+    "Placas_Botoneras_Rellano",
+    "Observaciones",
+    "Notas",
+]
+FELESA_HIDRAULICO_SECCIONES_TXT = [
+    "Cabecera",
+    "Normas",
+    "Datos_Generales",
+    "Datos_Central",
+    "Datos_Cabina",
+    "Botonera_Cabina",
+    "Botoneras_Exteriores",
+    "Medidas_Premontada",
+    "Medida_Entreplantas",
+    "Datos_Premontada",
+    "Caja_Inspeccion",
+    "Opciones_Especiales",
+    "Observaciones",
+    "Notas",
+]
 CONTRATOS_SECCIONES_POR_PLANTILLA = {
+    "felesa_crono_electrico": RAIZ_PROYECTO / "docs/contrato_felesa_crono/secciones",
+    "felesa_crono_hidraulico": RAIZ_PROYECTO / "docs/contrato_felesa_crono_hidraulico/secciones",
     "aszende_crono_electrico": RAIZ_PROYECTO / "docs/contrato_aszende_crono_electrico/secciones",
 }
 
@@ -285,6 +323,7 @@ def extraer_array2d_felesa_electrico_pruebas(
         batch_size=batch_size,
         max_workers=max_workers,
         overwrite=overwrite,
+        template_id_txt="felesa_crono_electrico",
     )
 
 
@@ -304,6 +343,7 @@ def extraer_array2d_felesa_hidraulico_pruebas(
         batch_size=batch_size,
         max_workers=max_workers,
         overwrite=overwrite,
+        template_id_txt="felesa_crono_hidraulico",
     )
 
 
@@ -323,6 +363,7 @@ def extraer_array2d_aszende_electrico_pruebas(
         batch_size=batch_size,
         max_workers=max_workers,
         overwrite=overwrite,
+        template_id_txt="aszende_crono_electrico",
     )
 
 
@@ -339,10 +380,7 @@ def formatear_txt_resultados_pruebas(
             detail=f"No existe el directorio de pruebas: {base_path}",
         )
 
-    carpetas = [
-        "Felesa Electrico",
-        "Felesa Hidraulico",
-    ]
+    carpetas: list[str] = []
     if incluir_raloe:
         carpetas.insert(0, "Raloe")
 
@@ -414,6 +452,7 @@ def _extraer_array2d_pruebas(
     batch_size: int,
     max_workers: int,
     overwrite: bool,
+    template_id_txt: str | None = None,
 ) -> dict[str, Any]:
     directorio = Path(base_path)
     if not directorio.is_dir():
@@ -458,6 +497,7 @@ def _extraer_array2d_pruebas(
                     directorio_resultados,
                     profile_id,
                     overwrite,
+                    template_id_txt,
                 ): ruta_pdf
                 for ruta_pdf in lote
             }
@@ -495,6 +535,7 @@ def _extraer_array2d_a_txt(
     directorio_resultados: Path,
     profile_id: str,
     overwrite: bool,
+    template_id_txt: str | None = None,
 ) -> dict[str, Any]:
     ruta_salida = directorio_resultados / f"{ruta_pdf.stem}.txt"
     if ruta_salida.exists() and not overwrite:
@@ -509,11 +550,20 @@ def _extraer_array2d_a_txt(
     _detectar_version_formulario(bytes_pdf, profile_id)
     resultado = _extraer_por_perfil(bytes_pdf, profile_id, fusionado=False)
     data = construir_data_plana_con_observaciones(resultado)
-    if profile_id == "aszende_crono":
+    if template_id_txt in {
+        "aszende_crono_electrico",
+        "felesa_crono_electrico",
+        "felesa_crono_hidraulico",
+    }:
+        secciones_txt = {
+            "aszende_crono_electrico": ASZENDE_ELECTRICO_SECCIONES_TXT,
+            "felesa_crono_electrico": FELESA_ELECTRICO_SECCIONES_TXT,
+            "felesa_crono_hidraulico": FELESA_HIDRAULICO_SECCIONES_TXT,
+        }[template_id_txt]
         contenido = _txt_clave_valor_ordenado_por_contrato(
             data=data,
-            template_id="aszende_crono_electrico",
-            secciones_ordenadas=ASZENDE_ELECTRICO_SECCIONES_TXT,
+            template_id=template_id_txt,
+            secciones_ordenadas=secciones_txt,
         )
         ruta_salida.write_text(contenido, encoding="utf-8")
         campos = sum(1 for linea in contenido.splitlines() if linea.strip())

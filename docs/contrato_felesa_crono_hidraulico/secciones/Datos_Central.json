@@ -52,6 +52,18 @@
         ],
         "x_min": 0,
         "x_max": 195
+      },
+      "Rescate": {
+        "inicio": [
+          "Rescate Automatico",
+          "Rescate Automático",
+          "Rescate AutomÃ¡tico"
+        ],
+        "fin": [
+          "DATOS CABINA"
+        ],
+        "x_min": 0,
+        "x_max": 195
       }
     }
   },
@@ -84,8 +96,8 @@
           "subseccion_pdf": "Central",
           "aliases": ["Tensión", "Tension"],
           "hasta_aliases": ["Consumo"],
-          "tokens": ["I", "mono", "monofasica", "monofásica"],
-          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "tokens": ["I", "II", "mono", "monofasica", "monofásica"],
+          "tokens_grupo": ["I", "II", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
           "valor_si_presente": "Si",
           "valor_si_ausente": "No",
           "valor_si_sin_tokens_grupo": "",
@@ -106,7 +118,7 @@
           "aliases": ["Tensión", "Tension"],
           "hasta_aliases": ["Consumo"],
           "tokens": ["III", "tri", "trifasica", "trifásica"],
-          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "tokens_grupo": ["I", "II", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
           "valor_si_presente": "Si",
           "valor_si_ausente": "No",
           "valor_si_sin_tokens_grupo": "",
@@ -142,7 +154,7 @@
           "modo": "numero_derecha_cercana_alias",
           "subseccion_pdf": "Central",
           "aliases": ["Potencia"],
-          "indice_numero": 0,
+          "indice_numero": 1,
           "limite_x_derecha": 195,
           "tolerancia_y": 8
         }
@@ -159,7 +171,7 @@
           "modo": "numero_derecha_cercana_alias",
           "subseccion_pdf": "Central",
           "aliases": ["Potencia"],
-          "indice_numero": 1,
+          "indice_numero": 0,
           "limite_x_derecha": 195,
           "tolerancia_y": 8
         }
@@ -330,8 +342,8 @@
           "subseccion_pdf": "Motor_Micronivelacion",
           "aliases": ["Tensión", "Tension"],
           "hasta_aliases": ["Consumo"],
-          "tokens": ["I", "mono", "monofasica", "monofásica"],
-          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "tokens": ["I", "II", "mono", "monofasica", "monofásica"],
+          "tokens_grupo": ["I", "II", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
           "valor_si_presente": "Si",
           "valor_si_ausente": "No",
           "valor_si_sin_tokens_grupo": "",
@@ -352,7 +364,7 @@
           "aliases": ["Tensión", "Tension"],
           "hasta_aliases": ["Consumo"],
           "tokens": ["III", "tri", "trifasica", "trifásica"],
-          "tokens_grupo": ["I", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
+          "tokens_grupo": ["I", "II", "III", "mono", "tri", "monofasica", "monofásica", "trifasica", "trifásica"],
           "valor_si_presente": "Si",
           "valor_si_ausente": "No",
           "valor_si_sin_tokens_grupo": "",
@@ -486,6 +498,21 @@
           "modo": "texto_derecha_cercana_alias",
           "subseccion_pdf": "Cunas",
           "aliases": ["Modelo de Cunas", "Modelo de Cuñas"],
+          "limite_x_derecha": 195,
+          "tolerancia_y": 8
+        }
+      }
+    },
+    {
+      "nombre": "Rescate_automatico",
+      "tipo": "texto",
+      "valor_defecto": "",
+      "aliases": ["Rescate Automatico", "Rescate Automático", "Rescate AutomÃ¡tico"],
+      "reglas": {
+        "extraccion_pdf": {
+          "modo": "texto_derecha_cercana_alias",
+          "subseccion_pdf": "Rescate",
+          "aliases": ["Rescate Automatico", "Rescate Automático", "Rescate AutomÃ¡tico"],
           "limite_x_derecha": 195,
           "tolerancia_y": 8
         }

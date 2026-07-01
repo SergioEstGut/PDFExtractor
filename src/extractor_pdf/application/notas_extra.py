@@ -1,4 +1,5 @@
 from typing import Any
+import re
 
 from extractor_pdf.domain.entidades import PaginaPdf, PalabraTexto
 
@@ -45,7 +46,7 @@ def detectar_notas_extra(
         ]
         for linea in _agrupar_por_linea(palabras_color):
             valor = " ".join(palabra.texto for palabra in linea).strip()
-            if not valor:
+            if not valor or _parece_ruido_visual(valor):
                 continue
             nota = {
                 "valor": valor,
@@ -64,6 +65,12 @@ def detectar_notas_extra(
             notas.append(nota)
 
     return notas
+
+
+def _parece_ruido_visual(valor: str) -> bool:
+    if any(caracter.isdigit() for caracter in valor):
+        return False
+    return not bool(re.search(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]", valor))
 
 
 def _agrupar_por_linea(palabras: list[PalabraTexto]) -> list[list[PalabraTexto]]:

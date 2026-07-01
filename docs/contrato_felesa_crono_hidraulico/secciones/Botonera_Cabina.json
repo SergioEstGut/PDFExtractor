@@ -26,21 +26,6 @@
   },
   "campos": [
     {
-      "nombre": "Suministrar_display",
-      "tipo": "texto",
-      "valor_defecto": "",
-      "aliases": ["Suministrar display"],
-      "reglas": {
-        "extraccion_pdf": {
-          "modo": "texto_derecha_cercana_alias",
-          "subseccion_pdf": "Botonera_Cabina",
-          "aliases": ["Suministrar display"],
-          "limite_x_derecha": 385,
-          "tolerancia_y": 8
-        }
-      }
-    },
-    {
       "nombre": "Tipo_display",
       "tipo": "texto",
       "valor_defecto": "",

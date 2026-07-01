@@ -156,7 +156,7 @@
           "x_min": 260,
           "x_max": 350,
           "y_min": 328,
-          "y_max": 342,
+          "y_max": 344,
           "ignorar_valores": [
             "---"
           ]
@@ -454,7 +454,7 @@
           "x_min": 370,
           "x_max": 440,
           "y_min": 458,
-          "y_max": 472,
+          "y_max": 474,
           "ignorar_valores": [
             "---"
           ]
@@ -516,7 +516,7 @@
           "x_min": 445,
           "x_max": 515,
           "y_min": 458,
-          "y_max": 472,
+          "y_max": 474,
           "ignorar_valores": [
             "---"
           ]
@@ -578,7 +578,7 @@
           "x_min": 515,
           "x_max": 580,
           "y_min": 458,
-          "y_max": 472,
+          "y_max": 474,
           "ignorar_valores": [
             "---"
           ]
@@ -676,7 +676,7 @@
           "x_min": 145,
           "x_max": 215,
           "y_min": 588,
-          "y_max": 602,
+          "y_max": 604,
           "ignorar_valores": [
             "---"
           ]
@@ -738,7 +738,7 @@
           "x_min": 220,
           "x_max": 290,
           "y_min": 588,
-          "y_max": 602,
+          "y_max": 604,
           "ignorar_valores": [
             "---"
           ]
@@ -800,7 +800,7 @@
           "x_min": 295,
           "x_max": 365,
           "y_min": 588,
-          "y_max": 602,
+          "y_max": 604,
           "ignorar_valores": [
             "---"
           ]

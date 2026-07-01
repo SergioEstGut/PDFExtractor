@@ -222,9 +222,16 @@ def test_endpoint_batch_guarda_array2d_en_txt(
     assert cuerpo["resumen"] == {"pdfs": 2, "procesados": 2, "omitidos": 0, "errores": 0, "lotes": 1}
     uno_txt = (tmp_path / "Resultados" / "uno.txt").read_text(encoding="utf-8")
     dos_txt = (tmp_path / "Resultados" / "dos.txt").read_text(encoding="utf-8")
-    if profile_id == "aszende_crono":
-        assert uno_txt == "Campo: uno\nPerfil: aszende_crono\nObservaciones: A\u00f1adir\n"
-        assert dos_txt == "Campo: dos\nPerfil: aszende_crono\nObservaciones: A\u00f1adir\n"
+    if (
+        profile_id == "aszende_crono"
+        or endpoint
+        in {
+            "/admin/pruebas/felesa/electrico/extraer-array2d",
+            "/admin/pruebas/felesa/hidraulico/extraer-array2d",
+        }
+    ):
+        assert uno_txt == f"Campo: uno\nPerfil: {profile_id}\nObservaciones: A\u00f1adir\n"
+        assert dos_txt == f"Campo: dos\nPerfil: {profile_id}\nObservaciones: A\u00f1adir\n"
     else:
         assert json.loads(uno_txt) == [
             ["Campo", "uno"],
@@ -260,11 +267,14 @@ def test_endpoint_formatea_txt_resultados_sin_tocar_raloe_por_defecto(tmp_path: 
 
     assert respuesta.status_code == 200
     cuerpo = respuesta.json()
-    assert cuerpo["resumen"] == {"procesados": 2, "omitidos": 0, "errores": 0}
+    assert cuerpo["resumen"] == {"procesados": 0, "omitidos": 0, "errores": 0}
     assert (tmp_path / "Raloe" / "Resultados" / "pedido.txt").read_text(encoding="utf-8").startswith("[[")
-    assert (tmp_path / "Felesa Electrico" / "Resultados" / "pedido.txt").read_text(encoding="utf-8") == (
-        "Campo: Valor\nObservaciones: Linea 1\\nLinea 2\n"
-    )
+    assert (tmp_path / "Felesa Electrico" / "Resultados" / "pedido.txt").read_text(
+        encoding="utf-8"
+    ).startswith("[[")
+    assert (tmp_path / "Felesa Hidraulico" / "Resultados" / "pedido.txt").read_text(
+        encoding="utf-8"
+    ).startswith("[[")
     assert (tmp_path / "Aszende Electrico" / "Resultados" / "pedido.txt").read_text(
         encoding="utf-8"
     ).startswith("[[")

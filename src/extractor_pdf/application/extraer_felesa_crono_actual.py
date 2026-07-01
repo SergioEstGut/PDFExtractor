@@ -82,9 +82,12 @@ class CasoUsoExtraerFelesaCronoActual:
             )
 
         _aplicar_derivados_felesa(data, contratos)
-        data["Observaciones"]["Observaciones"] = _extraer_observaciones(paginas)
+        data["Observaciones"]["Observaciones"] = _extraer_observaciones(
+            pagina_principal,
+            pagina_botoneras,
+        )
         if "Notas" in data:
-            data["Notas"]["Nota"] = _extraer_nota(paginas)
+            data["Notas"]["Nota"] = _extraer_nota(pagina_botoneras)
         secciones_por_pagina = _secciones_por_pagina(pages, template_id, contratos)
         paginas_con_datos = _paginas_detectadas(paginas, pages)
         campos_extra = detectar_campos_extra(
@@ -367,23 +370,25 @@ def _paginas_detectadas(paginas: list[PaginaPdf], pages: dict[str, int]) -> list
     return [pagina for pagina in paginas if pagina.numero in numeros]
 
 
-def _extraer_observaciones(paginas: list[PaginaPdf]) -> str:
-    if paginas and paginas[0].texto.startswith("Formulari CRONO"):
-        return _extraer_observaciones_aszende(paginas[0])
-
+def _extraer_observaciones(
+    pagina_principal: PaginaPdf | None,
+    pagina_botoneras: PaginaPdf | None,
+) -> str:
+    if pagina_principal and pagina_principal.texto.startswith("Formulari CRONO"):
+        return _extraer_observaciones_aszende(pagina_principal)
     fragmentos: list[str] = []
-    if len(paginas) >= 1:
-        for bloque in paginas[0].bloques:
+    if pagina_principal is not None:
+        for bloque in pagina_principal.bloques:
             if bloque.y0 > 730 and bloque.y1 < 790:
-                texto = _limpiar_bloque_observacion(bloque.texto)
+                texto = _limpiar_bloque_observacion(
+                    _texto_bloque_sin_notas_coloreadas(pagina_principal, bloque)
+                )
                 if texto:
                     fragmentos.append(texto)
-    if len(paginas) >= 2:
-        for bloque in paginas[1].bloques:
-            if "Observaciones" in bloque.texto or "botoneras" in bloque.texto:
-                texto = _limpiar_bloque_observacion(bloque.texto)
-                if texto:
-                    fragmentos.append(texto)
+    if pagina_botoneras is not None:
+        texto_botoneras = _extraer_observaciones_botoneras(pagina_botoneras)
+        if texto_botoneras:
+            fragmentos.append(texto_botoneras)
     return "\n".join(fragmentos)
 
 
@@ -413,11 +418,11 @@ def _extraer_observaciones_aszende(pagina: PaginaPdf) -> str:
     return "\n".join(textos)
 
 
-def _extraer_nota(paginas: list[PaginaPdf]) -> str:
-    if len(paginas) < 2:
+def _extraer_nota(pagina_botoneras: PaginaPdf | None) -> str:
+    if pagina_botoneras is None:
         return ""
     lineas: list[str] = []
-    for bloque in sorted(paginas[1].bloques, key=lambda item: (item.y0, item.x0)):
+    for bloque in sorted(pagina_botoneras.bloques, key=lambda item: (item.y0, item.x0)):
         if 680 <= bloque.y0 <= 805:
             for linea in bloque.texto.splitlines():
                 linea = linea.strip()
@@ -427,13 +432,64 @@ def _extraer_nota(paginas: list[PaginaPdf]) -> str:
     return "\n".join(lineas)
 
 
+def _extraer_observaciones_botoneras(pagina_botoneras: PaginaPdf) -> str:
+    bloques = sorted(pagina_botoneras.bloques, key=lambda item: (item.y0, item.x0))
+    dentro_observaciones = False
+    fragmentos: list[str] = []
+    for bloque in bloques:
+        texto_bloque = _texto_bloque_sin_notas_coloreadas(pagina_botoneras, bloque)
+        if re.search(r"\bobservaciones\s*:", texto_bloque, re.IGNORECASE):
+            dentro_observaciones = True
+        if not dentro_observaciones:
+            continue
+        texto = _limpiar_bloque_observacion(texto_bloque)
+        if texto:
+            fragmentos.append(texto)
+        texto_normalizado = texto_bloque.strip().casefold()
+        if re.match(r"^nota\s*:", texto_normalizado) or texto_normalizado.startswith("plantilla-"):
+            break
+    return " ".join(fragmentos).strip()
+
+
+def _texto_bloque_sin_notas_coloreadas(pagina: PaginaPdf, bloque: Any) -> str:
+    palabras_bloque = [
+        palabra
+        for palabra in pagina.palabras
+        if palabra.x0 >= bloque.x0 - 4
+        and palabra.x1 <= bloque.x1 + 4
+        and palabra.y0 >= bloque.y0 - 4
+        and palabra.y1 <= bloque.y1 + 4
+    ]
+    palabras = [palabra for palabra in palabras_bloque if not _es_texto_rojo(palabra.color)]
+    if not palabras_bloque:
+        return str(bloque.texto)
+    if not palabras:
+        return ""
+    lineas: list[list[Any]] = []
+    for palabra in sorted(palabras, key=lambda item: (item.y0, item.x0)):
+        if not lineas or abs(lineas[-1][0].y0 - palabra.y0) > 4:
+            lineas.append([palabra])
+        else:
+            lineas[-1].append(palabra)
+    return "\n".join(" ".join(palabra.texto for palabra in linea) for linea in lineas)
+
+
+def _es_texto_rojo(color: int | None) -> bool:
+    if color is None:
+        return False
+    rojo = (color >> 16) & 255
+    verde = (color >> 8) & 255
+    azul = color & 255
+    return rojo >= 150 and rojo > verde * 1.4 and rojo > azul * 1.4
+
+
 def _limpiar_bloque_observacion(texto: str) -> str:
     lineas: list[str] = []
     for linea in texto.splitlines():
         linea = linea.strip()
         if not linea:
             continue
-        if linea.lower().startswith("observaciones"):
+        if re.match(r"^observaciones\s*:", linea, re.IGNORECASE):
             continue
         if linea.lower().startswith("nota"):
             break

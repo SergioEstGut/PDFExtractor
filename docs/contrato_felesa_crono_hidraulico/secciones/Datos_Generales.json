@@ -236,12 +236,14 @@
           ],
           "tokens": [
             "I",
+            "II",
             "mono",
             "monofasica",
             "monofásica"
           ],
           "tokens_grupo": [
             "I",
+            "II",
             "III",
             "mono",
             "tri",
@@ -284,6 +286,7 @@
           ],
           "tokens_grupo": [
             "I",
+            "II",
             "III",
             "mono",
             "tri",

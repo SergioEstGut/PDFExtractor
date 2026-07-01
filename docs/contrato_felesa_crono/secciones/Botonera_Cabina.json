@@ -55,7 +55,10 @@
             "Tipo Display"
           ],
           "limite_x_derecha": 410,
-          "tolerancia_y": 8
+          "tolerancia_y": 8,
+          "permitir_valores_ruido": [
+            "V"
+          ]
         }
       }
     },

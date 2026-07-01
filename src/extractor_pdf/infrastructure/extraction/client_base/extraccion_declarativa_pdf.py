@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import re
 import unicodedata
@@ -341,14 +341,14 @@ def _leer_check_x_en_zona(pagina: PaginaPdf, regla: dict[str, Any]) -> str:
 def _es_marca_check_textual(texto: str) -> bool:
     if texto.strip().upper() in {"X", "\u2713", "\u2714", "\u2611", "\u2612"}:
         return True
-    return texto.strip().upper() in {"X", "✔", "✓", "☑", "☒"}
+    return texto.strip().upper() in {"X", "âœ”", "âœ“", "â˜‘", "â˜’"}
 
 
 def _texto_en_zona(pagina: PaginaPdf, regla: dict[str, Any]) -> str:
     valores = [
         palabra.texto
         for palabra in sorted(_palabras_en_zona(pagina, regla), key=lambda item: (item.y0, item.x0))
-        if not _es_ruido_valor(palabra.texto)
+        if not _es_ruido_valor(palabra.texto, regla)
     ]
     return " ".join(valores).strip()
 
@@ -381,7 +381,7 @@ def _texto_derecha(coincidencia: CoincidenciaAlias, regla: dict[str, Any]) -> st
         and (x_stop is None or palabra.x0 < x_stop)
         and (distancia_maxima is None or palabra.x0 - x_fin <= float(distancia_maxima))
         and (limite_x_derecha is None or palabra.x0 < float(limite_x_derecha))
-        and not _es_ruido_valor(palabra.texto)
+        and not _es_ruido_valor(palabra.texto, regla)
     ]
     saltar = int(regla.get("saltar_tokens", 0))
     tomar = _tokens_a_tomar(regla)
@@ -416,7 +416,7 @@ def _texto_derecha_token_despues_alias(coincidencia: CoincidenciaAlias, regla: d
         if palabra.x0 > separador.x1
         and (x_stop is None or palabra.x0 < x_stop)
         and (distancia_maxima is None or palabra.x0 - separador.x1 <= float(distancia_maxima))
-        and not _es_ruido_valor(palabra.texto)
+        and not _es_ruido_valor(palabra.texto, regla)
     ]
     tomar = _tokens_a_tomar(regla)
     if tomar is not None:
@@ -446,7 +446,7 @@ def _texto_derecha_cercana(
         and (distancia_maxima is None or palabra.x0 - x_fin <= float(distancia_maxima))
         and (limite_x_derecha is None or palabra.x0 < float(limite_x_derecha))
         and not _es_palabra_nota(palabra)
-        and not _es_ruido_valor(palabra.texto)
+        and not _es_ruido_valor(palabra.texto, regla)
     ]
     saltar = int(regla.get("saltar_tokens", 0))
     tomar = _tokens_a_tomar(regla)
@@ -481,7 +481,7 @@ def _texto_debajo(
             for palabra in fila
             if palabra.x0 >= limite_x_izquierda
             and (limite_x_derecha is None or palabra.x0 < float(limite_x_derecha))
-            and not _es_ruido_valor(palabra.texto)
+            and not _es_ruido_valor(palabra.texto, regla)
         ]
         if palabras_fila:
             lineas.append(" ".join(palabras_fila))
@@ -540,6 +540,10 @@ def _texto_sin_tokens_con_unidad(valor: str, regla: dict[str, Any]) -> str:
     unidad = str(regla.get("unidad", "")).casefold()
     if not unidad:
         return valor
+    patron_hasta_unidad = rf"\b\d+(?:[.,]\d+)?\s*{re.escape(unidad)}\b.*$"
+    valor_sin_unidad = re.sub(patron_hasta_unidad, "", valor, flags=re.IGNORECASE).strip()
+    if valor_sin_unidad != valor.strip():
+        return valor_sin_unidad
     tokens = [
         token
         for token in _tokens(valor)
@@ -573,7 +577,13 @@ def _numero_en_texto(valor: str, entero: bool, indice: int) -> str:
     return numeros[indice] if 0 <= indice < len(numeros) else ""
 
 
-def _es_ruido_valor(texto: str) -> bool:
+def _es_ruido_valor(texto: str, regla: dict[str, Any] | None = None) -> bool:
+    if regla is not None:
+        permitidos = regla.get("permitir_valores_ruido", [])
+        if isinstance(permitidos, str):
+            permitidos = [permitidos]
+        if texto in {str(valor) for valor in permitidos}:
+            return False
     if texto in {MARCA_CHECK, "V", "m", "mm"}:
         return True
     normalizado = texto.strip()
@@ -653,3 +663,4 @@ def _reparar_mojibake(texto: str) -> str:
         return texto.encode("latin1").decode("utf-8")
     except UnicodeError:
         return texto
+

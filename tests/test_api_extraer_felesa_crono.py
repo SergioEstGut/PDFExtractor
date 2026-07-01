@@ -3,7 +3,8 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from extractor_pdf.domain.entidades import PaginaPdf
+from extractor_pdf.application.extraer_felesa_crono_actual import _extraer_nota, _extraer_observaciones
+from extractor_pdf.domain.entidades import BloqueTexto, PaginaPdf, PalabraTexto
 from extractor_pdf.infrastructure.selection.detectores_paginas_felesa_crono import (
     detectar_plantilla_felesa_crono,
 )
@@ -93,6 +94,157 @@ def test_extractor_felesa_crono_separa_maquina_y_peso_654883() -> None:
     assert data["Datos_Generales"]["Peso_maquina"] == "1000"
 
 
+def test_extraer_nota_usa_pagina_de_botoneras() -> None:
+    pagina_botoneras = PaginaPdf(
+        numero=4,
+        texto="Nota:\n- T:\nPULSADOR FLECHA EN.81-70\nPlantilla-Bot.Rellano",
+        bloques=[
+            BloqueTexto(
+                texto="Nota:\n- T:\nPULSADOR FLECHA EN.81-70\nPlantilla-Bot.Rellano",
+                x0=40,
+                y0=690,
+                x1=500,
+                y1=760,
+            )
+        ],
+        metodo_extraccion="test",
+    )
+
+    assert _extraer_nota(pagina_botoneras) == "- T:\nPULSADOR FLECHA EN.81-70"
+
+
+def test_extraer_observaciones_usa_paginas_detectadas_por_rol() -> None:
+    pagina_principal = PaginaPdf(
+        numero=3,
+        texto="",
+        bloques=[
+            BloqueTexto(
+                texto="OBSERVACIONES:\n/ Observacion principal",
+                x0=30,
+                y0=745,
+                x1=550,
+                y1=770,
+            )
+        ],
+        metodo_extraccion="test",
+    )
+    pagina_botoneras = PaginaPdf(
+        numero=7,
+        texto="",
+        bloques=[
+            BloqueTexto(
+                texto="Observaciones:\n/ Observacion botoneras\nNota:\ntexto legal",
+                x0=30,
+                y0=650,
+                x1=550,
+                y1=720,
+            )
+        ],
+        metodo_extraccion="test",
+    )
+
+    assert _extraer_observaciones(pagina_principal, pagina_botoneras) == (
+        "/ Observacion principal\n/ Observacion botoneras"
+    )
+
+
+def test_extraer_observaciones_no_descarta_linea_que_empieza_por_observaciones() -> None:
+    pagina_principal = PaginaPdf(
+        numero=1,
+        texto="",
+        bloques=[
+            BloqueTexto(
+                texto=(
+                    "OBSERVACIONES:\n"
+                    "/ Se adjunta\n"
+                    "observaciones y ficha tecnica / Suministrar modelo"
+                ),
+                x0=30,
+                y0=745,
+                x1=550,
+                y1=780,
+            )
+        ],
+        metodo_extraccion="test",
+    )
+
+    assert _extraer_observaciones(pagina_principal, None) == (
+        "/ Se adjunta observaciones y ficha tecnica / Suministrar modelo"
+    )
+
+
+def test_extraer_observaciones_ignora_texto_rojo_y_lo_deja_para_notas_extra() -> None:
+    pagina_principal = PaginaPdf(
+        numero=1,
+        texto="",
+        bloques=[
+            BloqueTexto(
+                texto="OBSERVACIONES:\n/ Maniobra duplex\n/ Pulsador selectivo",
+                x0=20,
+                y0=738,
+                x1=560,
+                y1=782,
+            ),
+            BloqueTexto(
+                texto="654682",
+                x0=20,
+                y0=760,
+                x1=90,
+                y1=774,
+            )
+        ],
+        palabras=[
+            PalabraTexto(texto="OBSERVACIONES:", x0=20, y0=738, x1=93, y1=748, color=0),
+            PalabraTexto(texto="/", x0=23, y0=750, x1=26, y1=760, color=0),
+            PalabraTexto(texto="Maniobra", x0=28, y0=750, x1=70, y1=760, color=0),
+            PalabraTexto(texto="duplex", x0=72, y0=750, x1=100, y1=760, color=0),
+            PalabraTexto(texto="654682", x0=25, y0=762, x1=65, y1=772, color=0xFF0000),
+            PalabraTexto(texto="/", x0=23, y0=774, x1=26, y1=784, color=0),
+            PalabraTexto(texto="Pulsador", x0=28, y0=774, x1=70, y1=784, color=0),
+            PalabraTexto(texto="selectivo", x0=72, y0=774, x1=115, y1=784, color=0),
+        ],
+        metodo_extraccion="test",
+    )
+
+    assert _extraer_observaciones(pagina_principal, None) == "/ Maniobra duplex / Pulsador selectivo"
+
+
+def test_extraer_observaciones_botoneras_concatena_bloques_despues_de_etiqueta() -> None:
+    pagina_botoneras = PaginaPdf(
+        numero=2,
+        texto="",
+        bloques=[
+            BloqueTexto(texto="Observaciones:", x0=21, y0=625, x1=97, y1=636),
+            BloqueTexto(
+                texto="/ Suministrar llavin LUMI.1C para colocar en puerta\nreset)",
+                x0=21,
+                y0=638,
+                x1=553,
+                y1=660,
+            ),
+            BloqueTexto(texto="Nota:", x0=21, y0=684, x1=47, y1=695),
+        ],
+        palabras=[
+            PalabraTexto(texto="Observaciones:", x0=21, y0=625, x1=97, y1=636, color=0),
+            PalabraTexto(texto="/", x0=24, y0=638, x1=27, y1=649, color=0),
+            PalabraTexto(texto="Suministrar", x0=29, y0=638, x1=75, y1=649, color=0),
+            PalabraTexto(texto="llavin", x0=77, y0=638, x1=98, y1=649, color=0),
+            PalabraTexto(texto="LUMI.1C", x0=101, y0=638, x1=136, y1=649, color=0),
+            PalabraTexto(texto="para", x0=139, y0=638, x1=160, y1=649, color=0),
+            PalabraTexto(texto="colocar", x0=163, y0=638, x1=195, y1=649, color=0),
+            PalabraTexto(texto="en", x0=198, y0=638, x1=210, y1=649, color=0),
+            PalabraTexto(texto="puerta", x0=213, y0=638, x1=245, y1=649, color=0),
+            PalabraTexto(texto="reset)", x0=21, y0=650, x1=45, y1=660, color=0),
+            PalabraTexto(texto="Nota:", x0=21, y0=684, x1=47, y1=695, color=0),
+        ],
+        metodo_extraccion="test",
+    )
+
+    assert _extraer_observaciones(None, pagina_botoneras) == (
+        "/ Suministrar llavin LUMI.1C para colocar en puerta reset)"
+    )
+
+
 def test_endpoint_extraer_felesa_crono_detecta_hidraulico_desde_profile_generico() -> None:
     with PDF_FELESA_HIDRAULICO.open("rb") as pdf_file:
         respuesta = TestClient(app).post(
@@ -106,6 +258,10 @@ def test_endpoint_extraer_felesa_crono_detecta_hidraulico_desde_profile_generico
     assert cuerpo["metadata"]["profile_id"] == "felesa_crono"
     assert cuerpo["metadata"]["template_id"] == "felesa_crono_hidraulico"
     assert "Datos_Central" in cuerpo["data"]
+    assert cuerpo["data"]["Datos_Central"]["Rescate_automatico"] == "A Planta Inferior"
+    assert cuerpo["data"]["Datos_Central"]["Potencia_cv"] == "6.50"
+    assert cuerpo["data"]["Datos_Central"]["Potencia_kw"] == "4.70"
+    assert "Suministrar_display" not in cuerpo["data"]["Botonera_Cabina"]
     assert "Datos_Motor" not in cuerpo["data"]
     assert cuerpo["data"]["Campos_extra"] == {}
     assert cuerpo["data"]["Notas_extra"] == []
